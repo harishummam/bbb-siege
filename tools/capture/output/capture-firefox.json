@@ -1,0 +1,3614 @@
+{
+  "browser": "firefox",
+  "capturedAt": "2026-08-03T11:28:27.309Z",
+  "connectionInitPayload": {
+    "type": "connection_init",
+    "payload": {
+      "headers": {
+        "X-Session-Token": "y5go1ot6q0zzxwjd",
+        "X-ClientSessionUUID": "4202106e-fc67-44e3-8a23-6df27c3cc2b4",
+        "X-ClientType": "HTML5",
+        "X-ClientIsMobile": "false"
+      }
+    }
+  },
+  "graphqlOpsCount": 113,
+  "websocketFramesCount": 165,
+  "webrtcEventsCount": 0,
+  "connectionInit": {
+    "type": "connection_init",
+    "payload": {
+      "headers": {
+        "X-Session-Token": "y5go1ot6q0zzxwjd",
+        "X-ClientSessionUUID": "4202106e-fc67-44e3-8a23-6df27c3cc2b4",
+        "X-ClientType": "HTML5",
+        "X-ClientIsMobile": "false"
+      }
+    }
+  },
+  "graphqlOps": [
+    {
+      "timestamp": "2026-08-03T11:28:07.269Z",
+      "type": "subscribe",
+      "opName": "Patched_userCurrentSubscription",
+      "payload": {
+        "id": "8569e5e6-0bd2-4230-95bd-bf4cd868496d",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_userCurrentSubscription",
+          "query": "subscription Patched_userCurrentSubscription {\n  user_current {\n    authToken\n    avatar\n    webcamBackground\n    away\n    clientType\n    color\n    ejectReason\n    ejectReasonCode\n    ejected\n    reactionEmoji\n    extId\n    guest\n    guestStatus\n    whiteboardWriteAccess\n    inactivityWarningDisplay\n    inactivityWarningTimeoutSecs\n    isDialIn\n    isModerator\n    logoutUrl\n    currentlyInMeeting\n    joinErrorCode\n    joinErrorMessage\n    joined\n    locked\n    loggedOut\n    mobile\n    name\n    nameSortable\n    pinned\n    presenter\n    raiseHand\n    registeredAt\n    role\n    speechLocale\n    captionLocale\n    userId\n    meeting {\n      ended\n      endedReasonCode\n      endedByUserName\n      logoutUrl\n      __typename\n    }\n    lastBreakoutRoom {\n      currentlyInRoom\n      sequence\n      shortName\n      __typename\n    }\n    breakoutRoomsSummary {\n      totalOfBreakoutRooms\n      totalOfIsUserCurrentlyInRoom\n      totalOfShowInvitation\n      totalOfJoinURL\n      __typename\n    }\n    cameras {\n      streamId\n      __typename\n    }\n    voice {\n      joined\n      spoke\n      listenOnly\n      deafened\n      listenOnlyInputDevice\n      __typename\n    }\n    userLockSettings {\n      disablePublicChat\n      __typename\n    }\n    sessionCurrent {\n      enforceLayout\n      __typename\n    }\n    livekit {\n      livekitToken\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.313Z",
+      "type": "data_response",
+      "opName": "8569e5e6-0bd2-4230-95bd-bf4cd868496d",
+      "payload": {
+        "type": "next",
+        "id": "8569e5e6-0bd2-4230-95bd-bf4cd868496d",
+        "payload": {
+          "data": {
+            "user_current": [
+              {
+                "authToken":"[REDACTED_AUTH_TOKEN]",
+                "avatar": "",
+                "webcamBackground": "",
+                "away": false,
+                "clientType": null,
+                "color": "#6a1b9a",
+                "ejectReason": null,
+                "ejectReasonCode": null,
+                "ejected": null,
+                "reactionEmoji": null,
+                "extId": "w_vkvorcyqkh9v",
+                "guest": false,
+                "guestStatus": "ALLOW",
+                "whiteboardWriteAccess": false,
+                "inactivityWarningDisplay": false,
+                "inactivityWarningTimeoutSecs": null,
+                "isDialIn": null,
+                "isModerator": true,
+                "logoutUrl": "https://cs.stage-beep.org",
+                "currentlyInMeeting": false,
+                "joinErrorCode": null,
+                "joinErrorMessage": null,
+                "joined": false,
+                "locked": false,
+                "loggedOut": false,
+                "mobile": null,
+                "name": "Test Moderator Firefox",
+                "nameSortable": "test moderator firefox",
+                "pinned": null,
+                "presenter": null,
+                "raiseHand": false,
+                "registeredAt": "2026-08-03T11:28:00.703+00:00",
+                "role": "MODERATOR",
+                "speechLocale": null,
+                "captionLocale": null,
+                "userId": "w_vkvorcyqkh9v",
+                "meeting": {
+                  "ended": false,
+                  "endedReasonCode": null,
+                  "endedByUserName": null,
+                  "logoutUrl": "https://cs.stage-beep.org",
+                  "__typename": "meeting"
+                },
+                "lastBreakoutRoom": null,
+                "breakoutRoomsSummary": {
+                  "totalOfBreakoutRooms": 0,
+                  "totalOfIsUserCurrentlyInRoom": 0,
+                  "totalOfShowInvitation": 0,
+                  "totalOfJoinURL": 0,
+                  "__typename": "breakoutRoom_user_summary"
+                },
+                "cameras": [],
+                "voice": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "sessionCurrent": {
+                  "enforceLayout": null,
+                  "__typename": "user_session_current"
+                },
+                "livekit": null,
+                "__typename": "user_current"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.331Z",
+      "type": "subscribe",
+      "opName": "UserJoin",
+      "payload": {
+        "id": "e717ebc6-daae-4dbe-8633-0d19dbbbb76b",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "authToken":"[REDACTED_AUTH_TOKEN]",
+            "clientType": "HTML5",
+            "clientIsMobile": false
+          },
+          "extensions": {},
+          "operationName": "UserJoin",
+          "query": "mutation UserJoin($authToken: String!, $clientType: String!, $clientIsMobile: Boolean!) {\n  userJoinMeeting(\n    authToken: $authToken\n    clientType: $clientType\n    clientIsMobile: $clientIsMobile\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.358Z",
+      "type": "data_response",
+      "opName": "e717ebc6-daae-4dbe-8633-0d19dbbbb76b",
+      "payload": {
+        "id": "e717ebc6-daae-4dbe-8633-0d19dbbbb76b",
+        "payload": {
+          "data": {
+            "userJoinMeeting": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.571Z",
+      "type": "data_response",
+      "opName": "8569e5e6-0bd2-4230-95bd-bf4cd868496d",
+      "payload": {
+        "type": "next",
+        "id": "8569e5e6-0bd2-4230-95bd-bf4cd868496d",
+        "payload": {
+          "data": {
+            "user_current": [
+              {
+                "authToken":"[REDACTED_AUTH_TOKEN]",
+                "avatar": "",
+                "webcamBackground": "",
+                "away": false,
+                "clientType": "HTML5",
+                "color": "#6a1b9a",
+                "ejectReason": null,
+                "ejectReasonCode": null,
+                "ejected": null,
+                "reactionEmoji": null,
+                "extId": "w_vkvorcyqkh9v",
+                "guest": false,
+                "guestStatus": "ALLOW",
+                "whiteboardWriteAccess": false,
+                "inactivityWarningDisplay": false,
+                "inactivityWarningTimeoutSecs": null,
+                "isDialIn": false,
+                "isModerator": true,
+                "logoutUrl": "https://cs.stage-beep.org",
+                "currentlyInMeeting": true,
+                "joinErrorCode": null,
+                "joinErrorMessage": null,
+                "joined": true,
+                "locked": false,
+                "loggedOut": false,
+                "mobile": false,
+                "name": "Test Moderator Firefox",
+                "nameSortable": "test moderator firefox",
+                "pinned": false,
+                "presenter": false,
+                "raiseHand": false,
+                "registeredAt": "2026-08-03T11:28:00.703+00:00",
+                "role": "MODERATOR",
+                "speechLocale": "",
+                "captionLocale": "",
+                "userId": "w_vkvorcyqkh9v",
+                "meeting": {
+                  "ended": false,
+                  "endedReasonCode": null,
+                  "endedByUserName": null,
+                  "logoutUrl": "https://cs.stage-beep.org",
+                  "__typename": "meeting"
+                },
+                "lastBreakoutRoom": null,
+                "breakoutRoomsSummary": {
+                  "totalOfBreakoutRooms": 0,
+                  "totalOfIsUserCurrentlyInRoom": 0,
+                  "totalOfShowInvitation": 0,
+                  "totalOfJoinURL": 0,
+                  "__typename": "breakoutRoom_user_summary"
+                },
+                "cameras": [],
+                "voice": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "sessionCurrent": {
+                  "enforceLayout": null,
+                  "__typename": "user_session_current"
+                },
+                "livekit": null,
+                "__typename": "user_current"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "type": "subscribe",
+      "opName": "Patched_MeetingSubscription",
+      "payload": {
+        "id": "bc94da22-a2bd-4529-8024-bbace71477ae",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_MeetingSubscription",
+          "query": "subscription Patched_MeetingSubscription {\n  meeting {\n    durationInSeconds\n    lockSettings {\n      disableCam\n      disableMic\n      disableNotes\n      disablePrivateChat\n      disablePublicChat\n      hasActiveLockSetting\n      hideUserList\n      hideViewersCursor\n      hideViewersAnnotation\n      webcamsOnlyForModerator\n      lockOnJoin\n      lockOnJoinConfigurable\n      __typename\n    }\n    learningDashboard {\n      learningDashboardAccessToken\n      __typename\n    }\n    screenshare {\n      contentType\n      hasAudio\n      screenshareConf\n      screenshareId\n      startedAt\n      stoppedAt\n      stream\n      vidHeight\n      vidWidth\n      voiceConf\n      __typename\n    }\n    usersPolicies {\n      guestPolicy\n      guestLobbyMessage\n      webcamsOnlyForModerator\n      __typename\n    }\n    layout {\n      cameraDockAspectRatio\n      cameraDockIsResizing\n      cameraDockPlacement\n      cameraWithFocus\n      currentLayoutType\n      presentationMinimized\n      propagateLayout\n      updatedAt\n      __typename\n    }\n    breakoutRoomsCommonProperties {\n      durationInSeconds\n      freeJoin\n      sendInvitationToModerators\n      startedAt\n      __typename\n    }\n    externalVideo {\n      externalVideoId\n      playerCurrentTime\n      playerPlaybackRate\n      playerPlaying\n      externalVideoUrl\n      startedSharingAt\n      stoppedSharingAt\n      updatedAt\n      __typename\n    }\n    componentsFlags {\n      hasBreakoutRoom\n      hasCameraAsContent\n      hasCaption\n      hasCurrentPresentation\n      hasExternalVideo\n      hasPoll\n      hasScreenshare\n      hasScreenshareAsContent\n      hasSharedNotes\n      hasTimer\n      isSharedNotesPinned\n      showRemainingTime\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "type": "subscribe",
+      "opName": "PluginConfigurationQuery",
+      "payload": {
+        "id": "4f0ac15e-ea36-402f-93c2-7005636b2f89",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "PluginConfigurationQuery",
+          "query": "query PluginConfigurationQuery {\n  plugin {\n    name\n    javascriptEntrypointUrl\n    javascriptEntrypointIntegrity\n    localesBaseUrl\n    loadFailureReason\n    loadFailureSource\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "type": "data_response",
+      "opName": "4f0ac15e-ea36-402f-93c2-7005636b2f89",
+      "payload": {
+        "type": "next",
+        "id": "4f0ac15e-ea36-402f-93c2-7005636b2f89",
+        "payload": {
+          "data": {
+            "plugin": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.039Z",
+      "type": "data_response",
+      "opName": "bc94da22-a2bd-4529-8024-bbace71477ae",
+      "payload": {
+        "type": "next",
+        "id": "bc94da22-a2bd-4529-8024-bbace71477ae",
+        "payload": {
+          "data": {
+            "meeting": [
+              {
+                "durationInSeconds": 0,
+                "lockSettings": {
+                  "disableCam": false,
+                  "disableMic": false,
+                  "disableNotes": false,
+                  "disablePrivateChat": false,
+                  "disablePublicChat": false,
+                  "hasActiveLockSetting": false,
+                  "hideUserList": false,
+                  "hideViewersCursor": false,
+                  "hideViewersAnnotation": false,
+                  "webcamsOnlyForModerator": false,
+                  "lockOnJoin": true,
+                  "lockOnJoinConfigurable": false,
+                  "__typename": "meeting_lockSettings"
+                },
+                "learningDashboard": {
+                  "learningDashboardAccessToken": "fhly8kbodrfd",
+                  "__typename": "meeting_learningDashboard"
+                },
+                "screenshare": null,
+                "usersPolicies": {
+                  "guestPolicy": "ALWAYS_ACCEPT",
+                  "guestLobbyMessage": null,
+                  "webcamsOnlyForModerator": false,
+                  "__typename": "meeting_usersPolicies"
+                },
+                "layout": {
+                  "cameraDockAspectRatio": 0,
+                  "cameraDockIsResizing": false,
+                  "cameraDockPlacement": "contentRight",
+                  "cameraWithFocus": "none",
+                  "currentLayoutType": "CUSTOM_LAYOUT",
+                  "presentationMinimized": true,
+                  "propagateLayout": true,
+                  "updatedAt": "2026-08-03T11:27:41.784+00:00",
+                  "__typename": "layout"
+                },
+                "breakoutRoomsCommonProperties": null,
+                "externalVideo": null,
+                "componentsFlags": {
+                  "hasBreakoutRoom": false,
+                  "hasCameraAsContent": false,
+                  "hasCaption": false,
+                  "hasCurrentPresentation": true,
+                  "hasExternalVideo": false,
+                  "hasPoll": false,
+                  "hasScreenshare": false,
+                  "hasScreenshareAsContent": false,
+                  "hasSharedNotes": true,
+                  "hasTimer": false,
+                  "isSharedNotesPinned": false,
+                  "showRemainingTime": false,
+                  "__typename": "meeting_componentFlags"
+                },
+                "__typename": "meeting"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.267Z",
+      "type": "subscribe",
+      "opName": "UserSetSpeechOptions",
+      "payload": {
+        "id": "7233b43d-bb46-4bdc-80dd-b7e92a542b0d",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "partialUtterances": true,
+            "minUtteranceLength": 1
+          },
+          "extensions": {},
+          "operationName": "UserSetSpeechOptions",
+          "query": "mutation UserSetSpeechOptions($partialUtterances: Boolean!, $minUtteranceLength: Float!) {\n  userSetSpeechOptions(\n    partialUtterances: $partialUtterances\n    minUtteranceLength: $minUtteranceLength\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.267Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "47c6d96a-596e-4b69-ae96-43d15d02a514",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.269Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "0c88e534-a029-4a9e-904d-5dc7485e3c5d",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.269Z",
+      "type": "data_response",
+      "opName": "7233b43d-bb46-4bdc-80dd-b7e92a542b0d",
+      "payload": {
+        "id": "7233b43d-bb46-4bdc-80dd-b7e92a542b0d",
+        "payload": {
+          "data": {
+            "userSetSpeechOptions": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.270Z",
+      "type": "data_response",
+      "opName": "47c6d96a-596e-4b69-ae96-43d15d02a514",
+      "payload": {
+        "id": "47c6d96a-596e-4b69-ae96-43d15d02a514",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.272Z",
+      "type": "data_response",
+      "opName": "0c88e534-a029-4a9e-904d-5dc7485e3c5d",
+      "payload": {
+        "id": "0c88e534-a029-4a9e-904d-5dc7485e3c5d",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.275Z",
+      "type": "subscribe",
+      "opName": "ChatSubscription",
+      "payload": {
+        "id": "de2379ae-1554-499b-8675-1c7d953fcca8",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "ChatSubscription",
+          "query": "subscription ChatSubscription {\n  chat(order_by: [{chatId: asc}]) {\n    chatId\n    participant {\n      userId\n      name\n      nameSortable\n      role\n      color\n      loggedOut\n      avatar\n      currentlyInMeeting\n      isModerator\n      __typename\n    }\n    totalMessages\n    totalUnread\n    public\n    lastSeenAt\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "type": "subscribe",
+      "opName": "Patched_FetchPluginDataChannelPublicEntry",
+      "payload": {
+        "id": "cac09dc9-2a28-432d-94c0-ae0962153f78",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_FetchPluginDataChannelPublicEntry",
+          "query": "subscription Patched_FetchPluginDataChannelPublicEntry {\n  pluginDataChannelEntry_public(order_by: {createdAt: desc}) {\n    createdAt\n    updatedAt\n    channelName\n    subChannelName\n    entryId\n    payloadJson\n    createdBy\n    pluginName\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "type": "subscribe",
+      "opName": "Patched_FetchPluginDataChannelEntry",
+      "payload": {
+        "id": "5e04c122-553a-4a06-b78c-6f6b60dcef21",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_FetchPluginDataChannelEntry",
+          "query": "subscription Patched_FetchPluginDataChannelEntry {\n  pluginDataChannelEntry_private(order_by: {createdAt: desc}) {\n    createdAt\n    updatedAt\n    channelName\n    subChannelName\n    entryId\n    payloadJson\n    createdBy\n    pluginName\n    toRoles\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "type": "subscribe",
+      "opName": "getNotificationStream",
+      "payload": {
+        "id": "034498f2-d622-4dcd-a887-cc6e79943196",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "initialCursor": "2000-01-01"
+          },
+          "extensions": {},
+          "operationName": "getNotificationStream",
+          "query": "subscription getNotificationStream($initialCursor: timestamptz!) {\n  notification_stream(\n    batch_size: 10\n    cursor: {initial_value: {createdAt: $initialCursor}}\n  ) {\n    notificationType\n    icon\n    messageId\n    messageValues\n    isSingleUserNotification\n    createdAt\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "50952485-89eb-4cd6-8d5e-c443f4abd0ac",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "type": "subscribe",
+      "opName": "Patched_VideoStreams",
+      "payload": {
+        "id": "1a7f457f-def1-49b2-8083-91ff0f33df50",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_VideoStreams",
+          "query": "subscription Patched_VideoStreams {\n  user_camera {\n    streamId\n    user {\n      name\n      userId\n      nameSortable\n      pinned\n      away\n      disconnected\n      role\n      avatar\n      color\n      presenter\n      clientType\n      raiseHand\n      isModerator\n      reactionEmoji\n      __typename\n    }\n    voice {\n      floor\n      lastFloorTime\n      joined\n      listenOnly\n      userId\n      deafened\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "type": "subscribe",
+      "opName": "UsersCount",
+      "payload": {
+        "id": "432d6b20-7870-49cd-85c2-62fc2fd5b5a8",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UsersCount",
+          "query": "subscription UsersCount {\n  user_aggregate {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "type": "subscribe",
+      "opName": "CurrentPresentationPagesSubscription",
+      "payload": {
+        "id": "5509d513-06b1-4f6c-8410-42e4c22c0e94",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "CurrentPresentationPagesSubscription",
+          "query": "subscription CurrentPresentationPagesSubscription {\n  pres_page_curr {\n    height\n    isCurrentPage\n    num\n    pageId\n    scaledHeight\n    scaledViewBoxHeight\n    scaledViewBoxWidth\n    scaledWidth\n    svgUrl: urlsJson(path: \"$.svg\")\n    width\n    xOffset\n    yOffset\n    presentationId\n    content\n    downloadFileUri\n    totalPages\n    downloadable\n    presentationName\n    isDefaultPresentation\n    infiniteWhiteboard\n    nextPagesSvg\n    fitToWidth\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "type": "subscribe",
+      "opName": "GetPadLastRev",
+      "payload": {
+        "id": "24ad1f0f-a0a1-4164-a0ee-bbb7d8eca900",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "externalId": "notes"
+          },
+          "extensions": {},
+          "operationName": "GetPadLastRev",
+          "query": "subscription GetPadLastRev($externalId: String!) {\n  sharedNotes(where: {sharedNotesExtId: {_eq: $externalId}}) {\n    lastRev\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "type": "subscribe",
+      "opName": "PresentationsSubscription",
+      "payload": {
+        "id": "223b5d3b-783e-4ada-a75d-8ddd1bdde803",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "PresentationsSubscription",
+          "query": "subscription PresentationsSubscription {\n  pres_presentation {\n    uploadTemporaryId\n    uploadInProgress\n    current\n    downloadFileUri\n    downloadable\n    uploadErrorDetailsJson\n    uploadErrorMsgKey\n    filenameConverted\n    isDefault\n    name\n    totalPages\n    totalPagesUploaded\n    presentationId\n    removable\n    uploadCompletionNotified\n    uploadCompleted\n    exportToChatInProgress\n    exportToChatStatus\n    exportToChatCurrentPage\n    exportToChatHasError\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "type": "subscribe",
+      "opName": "UserVoiceActivity",
+      "payload": {
+        "id": "607deb44-b7ff-43d2-b7d0-72425d949f2f",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UserVoiceActivity",
+          "query": "subscription UserVoiceActivity {\n  user_voice_activity_stream(\n    cursor: {initial_value: {voiceActivityAt: \"2020-01-01\"}}\n    batch_size: 10\n  ) {\n    muted\n    startTime\n    endTime\n    talking\n    userId\n    user {\n      color\n      name\n      speechLocale\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.686Z",
+      "type": "subscribe",
+      "opName": "RaisedHandUsers",
+      "payload": {
+        "id": "118cb0ac-5c07-456c-a116-a48bcbfb1a8c",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "RaisedHandUsers",
+          "query": "subscription RaisedHandUsers {\n  user(\n    where: {raiseHand: {_eq: true}}\n    order_by: [{raiseHandTime: asc_nulls_last}]\n  ) {\n    userId\n    name\n    color\n    presenter\n    isModerator\n    raiseHand\n    raiseHandTime\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.688Z",
+      "type": "subscribe",
+      "opName": "ViewerVideoStreams",
+      "payload": {
+        "id": "ca83bd74-8a7a-4c4e-ab13-6bc136ae1540",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "ViewerVideoStreams",
+          "query": "subscription ViewerVideoStreams {\n  user_camera_aggregate(\n    where: {user: {role: {_eq: \"VIEWER\"}, presenter: {_eq: false}}}\n  ) {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.689Z",
+      "type": "subscribe",
+      "opName": "getEmojisToRain",
+      "payload": {
+        "id": "557009f0-a1d2-487d-99a8-9e338c8af93d",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "initialCursor": "Mon, 03 Aug 2026 11:28:07 GMT"
+          },
+          "extensions": {},
+          "operationName": "getEmojisToRain",
+          "query": "subscription getEmojisToRain($initialCursor: timestamptz) {\n  user_reaction_stream(\n    batch_size: 10\n    cursor: {initial_value: {createdAt: $initialCursor}}\n  ) {\n    createdAt\n    reactionEmoji\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.689Z",
+      "type": "data_response",
+      "opName": "50952485-89eb-4cd6-8d5e-c443f4abd0ac",
+      "payload": {
+        "id": "50952485-89eb-4cd6-8d5e-c443f4abd0ac",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.691Z",
+      "type": "data_response",
+      "opName": "de2379ae-1554-499b-8675-1c7d953fcca8",
+      "payload": {
+        "type": "next",
+        "id": "de2379ae-1554-499b-8675-1c7d953fcca8",
+        "payload": {
+          "data": {
+            "chat": [
+              {
+                "chatId": "MAIN-PUBLIC-GROUP-CHAT",
+                "participant": null,
+                "totalMessages": 1,
+                "totalUnread": null,
+                "public": true,
+                "lastSeenAt": null,
+                "__typename": "chat"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.692Z",
+      "type": "data_response",
+      "opName": "cac09dc9-2a28-432d-94c0-ae0962153f78",
+      "payload": {
+        "type": "next",
+        "id": "cac09dc9-2a28-432d-94c0-ae0962153f78",
+        "payload": {
+          "data": {
+            "pluginDataChannelEntry_public": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.693Z",
+      "type": "data_response",
+      "opName": "5e04c122-553a-4a06-b78c-6f6b60dcef21",
+      "payload": {
+        "type": "next",
+        "id": "5e04c122-553a-4a06-b78c-6f6b60dcef21",
+        "payload": {
+          "data": {
+            "pluginDataChannelEntry_private": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.693Z",
+      "type": "data_response",
+      "opName": "1a7f457f-def1-49b2-8083-91ff0f33df50",
+      "payload": {
+        "type": "next",
+        "id": "1a7f457f-def1-49b2-8083-91ff0f33df50",
+        "payload": {
+          "data": {
+            "user_camera": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.694Z",
+      "type": "data_response",
+      "opName": "432d6b20-7870-49cd-85c2-62fc2fd5b5a8",
+      "payload": {
+        "type": "next",
+        "id": "432d6b20-7870-49cd-85c2-62fc2fd5b5a8",
+        "payload": {
+          "data": {
+            "user_aggregate": {
+              "aggregate": {
+                "count": 2,
+                "__typename": "user_aggregate_fields"
+              },
+              "__typename": "user_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.702Z",
+      "type": "data_response",
+      "opName": "5509d513-06b1-4f6c-8410-42e4c22c0e94",
+      "payload": {
+        "type": "next",
+        "id": "5509d513-06b1-4f6c-8410-42e4c22c0e94",
+        "payload": {
+          "data": {
+            "pres_page_curr": [
+              {
+                "height": 396,
+                "isCurrentPage": true,
+                "num": 1,
+                "pageId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1",
+                "scaledHeight": 931.7647058823529,
+                "scaledViewBoxHeight": 931.7647058823529,
+                "scaledViewBoxWidth": 1440,
+                "scaledWidth": 1440,
+                "svgUrl": "https://cs.stage-beep.org/bigbluebutton/presentation/98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348/98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348/d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/svg/1",
+                "width": 612,
+                "xOffset": 0,
+                "yOffset": 0,
+                "presentationId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351",
+                "content": "",
+                "downloadFileUri": null,
+                "totalPages": 1,
+                "downloadable": false,
+                "presentationName": "default.pdf",
+                "isDefaultPresentation": true,
+                "infiniteWhiteboard": false,
+                "nextPagesSvg": null,
+                "fitToWidth": false,
+                "__typename": "pres_page_curr"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.898Z",
+      "type": "data_response",
+      "opName": "24ad1f0f-a0a1-4164-a0ee-bbb7d8eca900",
+      "payload": {
+        "type": "next",
+        "id": "24ad1f0f-a0a1-4164-a0ee-bbb7d8eca900",
+        "payload": {
+          "data": {
+            "sharedNotes": [
+              {
+                "lastRev": null,
+                "__typename": "sharedNotes"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.911Z",
+      "type": "data_response",
+      "opName": "223b5d3b-783e-4ada-a75d-8ddd1bdde803",
+      "payload": {
+        "type": "next",
+        "id": "223b5d3b-783e-4ada-a75d-8ddd1bdde803",
+        "payload": {
+          "data": {
+            "pres_presentation": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.915Z",
+      "type": "data_response",
+      "opName": "118cb0ac-5c07-456c-a116-a48bcbfb1a8c",
+      "payload": {
+        "type": "next",
+        "id": "118cb0ac-5c07-456c-a116-a48bcbfb1a8c",
+        "payload": {
+          "data": {
+            "user": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.917Z",
+      "type": "data_response",
+      "opName": "ca83bd74-8a7a-4c4e-ab13-6bc136ae1540",
+      "payload": {
+        "type": "next",
+        "id": "ca83bd74-8a7a-4c4e-ab13-6bc136ae1540",
+        "payload": {
+          "data": {
+            "user_camera_aggregate": {
+              "aggregate": {
+                "count": 0,
+                "__typename": "user_camera_aggregate_fields"
+              },
+              "__typename": "user_camera_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.199Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "1f0aebd1-a5f6-4cc4-a61c-82fefabcdc11",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.199Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "61578d13-fd95-469d-bdae-073aa597fa88",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.199Z",
+      "type": "subscribe",
+      "opName": "SetLayoutProps",
+      "payload": {
+        "id": "7dee0682-67a3-4aa3-9af0-0f97880960fa",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "layout": "custom",
+            "syncWithPresenterLayout": true,
+            "presentationIsOpen": true,
+            "isResizing": false,
+            "cameraPosition": "contentTop",
+            "focusedCamera": "none",
+            "presentationVideoRate": 0
+          },
+          "extensions": {},
+          "operationName": "SetLayoutProps",
+          "query": "mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\n  meetingLayoutSetProps(\n    layout: $layout\n    syncWithPresenterLayout: $syncWithPresenterLayout\n    presentationIsOpen: $presentationIsOpen\n    isResizing: $isResizing\n    cameraPosition: $cameraPosition\n    focusedCamera: $focusedCamera\n    presentationVideoRate: $presentationVideoRate\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.199Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "7405ccdb-c0ee-415c-95b5-e2649dd05c9e",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.207Z",
+      "type": "data_response",
+      "opName": "1f0aebd1-a5f6-4cc4-a61c-82fefabcdc11",
+      "payload": {
+        "id": "1f0aebd1-a5f6-4cc4-a61c-82fefabcdc11",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.210Z",
+      "type": "data_response",
+      "opName": "61578d13-fd95-469d-bdae-073aa597fa88",
+      "payload": {
+        "id": "61578d13-fd95-469d-bdae-073aa597fa88",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.213Z",
+      "type": "data_response",
+      "opName": "7405ccdb-c0ee-415c-95b5-e2649dd05c9e",
+      "payload": {
+        "id": "7405ccdb-c0ee-415c-95b5-e2649dd05c9e",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.216Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "bfdc554f-2fc7-4d9c-ba34-e75e02f9dc36",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.216Z",
+      "type": "subscribe",
+      "opName": "SetLayoutProps",
+      "payload": {
+        "id": "d215ea21-fd88-4ecc-b82e-944cc2de101c",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "layout": "custom",
+            "syncWithPresenterLayout": true,
+            "presentationIsOpen": false,
+            "isResizing": false,
+            "cameraPosition": "contentRight",
+            "focusedCamera": "none",
+            "presentationVideoRate": 0
+          },
+          "extensions": {},
+          "operationName": "SetLayoutProps",
+          "query": "mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\n  meetingLayoutSetProps(\n    layout: $layout\n    syncWithPresenterLayout: $syncWithPresenterLayout\n    presentationIsOpen: $presentationIsOpen\n    isResizing: $isResizing\n    cameraPosition: $cameraPosition\n    focusedCamera: $focusedCamera\n    presentationVideoRate: $presentationVideoRate\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.409Z",
+      "type": "subscribe",
+      "opName": "getMeetingRecordingData",
+      "payload": {
+        "id": "91437930-8f77-4d1e-a976-32b5e48f0601",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "getMeetingRecordingData",
+          "query": "subscription getMeetingRecordingData {\n  meeting_recording {\n    isRecording\n    startedAt\n    startedBy\n    previousRecordedTimeInSeconds\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.409Z",
+      "type": "subscribe",
+      "opName": "Patched_Timer",
+      "payload": {
+        "id": "95f94cd4-ddf9-4553-83ed-d8a679e25144",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_Timer",
+          "query": "subscription Patched_Timer {\n  timer {\n    accumulated\n    active\n    songTrack\n    time\n    stopwatch\n    running\n    startedOn\n    startedAt\n    elapsed\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.410Z",
+      "type": "subscribe",
+      "opName": "activeCaptions",
+      "payload": {
+        "id": "9875d372-3f74-42f2-b769-0d2e240290c2",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "activeCaptions",
+          "query": "subscription activeCaptions {\n  caption_activeLocales {\n    locale\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.410Z",
+      "type": "data_response",
+      "opName": "bfdc554f-2fc7-4d9c-ba34-e75e02f9dc36",
+      "payload": {
+        "id": "bfdc554f-2fc7-4d9c-ba34-e75e02f9dc36",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.419Z",
+      "type": "data_response",
+      "opName": "91437930-8f77-4d1e-a976-32b5e48f0601",
+      "payload": {
+        "type": "next",
+        "id": "91437930-8f77-4d1e-a976-32b5e48f0601",
+        "payload": {
+          "data": {
+            "meeting_recording": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.433Z",
+      "type": "data_response",
+      "opName": "9875d372-3f74-42f2-b769-0d2e240290c2",
+      "payload": {
+        "type": "next",
+        "id": "9875d372-3f74-42f2-b769-0d2e240290c2",
+        "payload": {
+          "data": {
+            "caption_activeLocales": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.435Z",
+      "type": "subscribe",
+      "opName": "CurrentPageAnnotationsQuery",
+      "payload": {
+        "id": "2fb0de45-70ed-4bbf-938a-d48b32f71d5c",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "pageId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1"
+          },
+          "extensions": {},
+          "operationName": "CurrentPageAnnotationsQuery",
+          "query": "query CurrentPageAnnotationsQuery($pageId: String!) {\n  pres_annotation_curr(\n    where: {pageId: {_eq: $pageId}}\n    order_by: {lastUpdatedAt: desc}\n  ) {\n    annotationId\n    annotationInfo\n    lastUpdatedAt\n    pageId\n    presentationId\n    userId\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.435Z",
+      "type": "subscribe",
+      "opName": "whiteboardWriteAccessSubscription",
+      "payload": {
+        "id": "0ed494e1-301a-40f0-a5ae-a714305a7d75",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "whiteboardWriteAccessSubscription",
+          "query": "subscription whiteboardWriteAccessSubscription {\n  user_whiteboardWriteAccess(order_by: {userId: asc}) {\n    userId\n    name\n    presenter\n    isModerator\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.436Z",
+      "type": "data_response",
+      "opName": "2fb0de45-70ed-4bbf-938a-d48b32f71d5c",
+      "payload": {
+        "type": "next",
+        "id": "2fb0de45-70ed-4bbf-938a-d48b32f71d5c",
+        "payload": {
+          "data": {
+            "pres_annotation_curr": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.445Z",
+      "type": "data_response",
+      "opName": "0ed494e1-301a-40f0-a5ae-a714305a7d75",
+      "payload": {
+        "type": "next",
+        "id": "0ed494e1-301a-40f0-a5ae-a714305a7d75",
+        "payload": {
+          "data": {
+            "user_whiteboardWriteAccess": [
+              {
+                "userId": "w_4qwgn9h95gir",
+                "name": "Test Moderator Chromium",
+                "presenter": true,
+                "isModerator": true,
+                "__typename": "user_whiteboardWriteAccess"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.592Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "f5ec302d-42c9-46d4-945b-e90849133a77",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.592Z",
+      "type": "subscribe",
+      "opName": "SetLayoutProps",
+      "payload": {
+        "id": "7b47b9c7-02ae-4325-b62e-dd7a10463cad",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "layout": "custom",
+            "syncWithPresenterLayout": true,
+            "presentationIsOpen": false,
+            "isResizing": false,
+            "cameraPosition": "contentRight",
+            "focusedCamera": "none",
+            "presentationVideoRate": 0
+          },
+          "extensions": {},
+          "operationName": "SetLayoutProps",
+          "query": "mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\n  meetingLayoutSetProps(\n    layout: $layout\n    syncWithPresenterLayout: $syncWithPresenterLayout\n    presentationIsOpen: $presentationIsOpen\n    isResizing: $isResizing\n    cameraPosition: $cameraPosition\n    focusedCamera: $focusedCamera\n    presentationVideoRate: $presentationVideoRate\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.594Z",
+      "type": "data_response",
+      "opName": "f5ec302d-42c9-46d4-945b-e90849133a77",
+      "payload": {
+        "id": "f5ec302d-42c9-46d4-945b-e90849133a77",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.617Z",
+      "type": "subscribe",
+      "opName": "UsersWithAudioCount",
+      "payload": {
+        "id": "b0a6b3b4-f111-4844-8375-cbe329123f4f",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UsersWithAudioCount",
+          "query": "subscription UsersWithAudioCount {\n  user_aggregate(where: {voice: {joined: {_eq: true}}}) {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.617Z",
+      "type": "subscribe",
+      "opName": "annotationHistoryStream",
+      "payload": {
+        "id": "8a8b4149-6eb2-4729-ac14-4ae5410b23a8",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "pageId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1",
+            "updatedAt": "2026-08-03T11:27:34.348Z"
+          },
+          "extensions": {},
+          "operationName": "annotationHistoryStream",
+          "query": "subscription annotationHistoryStream($updatedAt: timestamptz, $pageId: String!) {\n  pres_annotation_history_curr_stream(\n    batch_size: 1000\n    where: {pageId: {_eq: $pageId}}\n    cursor: {initial_value: {updatedAt: $updatedAt}, ordering: ASC}\n  ) {\n    annotationId\n    annotationInfo\n    pageId\n    presentationId\n    updatedAt\n    userId\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.617Z",
+      "type": "data_response",
+      "opName": "b0a6b3b4-f111-4844-8375-cbe329123f4f",
+      "payload": {
+        "type": "next",
+        "id": "b0a6b3b4-f111-4844-8375-cbe329123f4f",
+        "payload": {
+          "data": {
+            "user_aggregate": {
+              "aggregate": {
+                "count": 0,
+                "__typename": "user_aggregate_fields"
+              },
+              "__typename": "user_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.632Z",
+      "type": "subscribe",
+      "opName": "getGuestsCount",
+      "payload": {
+        "id": "5588df40-c8dd-4684-a280-20e706864c9f",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "getGuestsCount",
+          "query": "subscription getGuestsCount {\n  user_guest_aggregate(where: {isWaiting: {_eq: true}}) {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.632Z",
+      "type": "subscribe",
+      "opName": "Patched_UserListSubscription",
+      "payload": {
+        "id": "c8da1c85-8595-4642-839e-a5f099308fde",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "offset": 0,
+            "limit": 50
+          },
+          "extensions": {},
+          "operationName": "Patched_UserListSubscription",
+          "query": "subscription Patched_UserListSubscription($offset: Int!, $limit: Int!) {\n  user(\n    limit: $limit\n    offset: $offset\n    order_by: [{presenter: desc}, {role: asc}, {raiseHandTime: asc_nulls_last}, {isDialIn: desc}, {whiteboardWriteAccess: desc}, {nameSortable: asc}, {registeredAt: asc}, {userId: asc}]\n  ) {\n    isDialIn\n    userId\n    meetingId\n    extId\n    name\n    isModerator\n    role\n    color\n    avatar\n    away\n    raiseHand\n    reactionEmoji\n    avatar\n    presenter\n    pinned\n    locked\n    authed\n    mobile\n    bot\n    guest\n    clientType\n    disconnected\n    loggedOut\n    voice {\n      joined\n      deafened\n      listenOnly\n      voiceUserId\n      listenOnlyInputDevice\n      __typename\n    }\n    cameras {\n      streamId\n      __typename\n    }\n    whiteboardWriteAccess\n    lastBreakoutRoom {\n      isDefaultName\n      sequence\n      shortName\n      currentlyInRoom\n      __typename\n    }\n    userLockSettings {\n      disablePublicChat\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.775Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "6003d806-ef2e-456d-b10c-d6fff5ba0bc1",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.775Z",
+      "type": "data_response",
+      "opName": "5588df40-c8dd-4684-a280-20e706864c9f",
+      "payload": {
+        "type": "next",
+        "id": "5588df40-c8dd-4684-a280-20e706864c9f",
+        "payload": {
+          "data": {
+            "user_guest_aggregate": {
+              "aggregate": {
+                "count": 0,
+                "__typename": "user_guest_aggregate_fields"
+              },
+              "__typename": "user_guest_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.776Z",
+      "type": "data_response",
+      "opName": "c8da1c85-8595-4642-839e-a5f099308fde",
+      "payload": {
+        "type": "next",
+        "id": "c8da1c85-8595-4642-839e-a5f099308fde",
+        "payload": {
+          "data": {
+            "user": [
+              {
+                "isDialIn": false,
+                "userId": "w_4qwgn9h95gir",
+                "meetingId": "98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348",
+                "extId": "w_4qwgn9h95gir",
+                "name": "Test Moderator Chromium",
+                "isModerator": true,
+                "role": "MODERATOR",
+                "color": "#7b1fa2",
+                "avatar": "",
+                "away": false,
+                "raiseHand": false,
+                "reactionEmoji": null,
+                "presenter": true,
+                "pinned": false,
+                "locked": false,
+                "authed": true,
+                "mobile": false,
+                "bot": false,
+                "guest": false,
+                "clientType": "HTML5",
+                "disconnected": true,
+                "loggedOut": false,
+                "voice": null,
+                "cameras": [],
+                "whiteboardWriteAccess": true,
+                "lastBreakoutRoom": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "__typename": "user"
+              },
+              {
+                "isDialIn": false,
+                "userId": "w_vkvorcyqkh9v",
+                "meetingId": "98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348",
+                "extId": "w_vkvorcyqkh9v",
+                "name": "Test Moderator Firefox",
+                "isModerator": true,
+                "role": "MODERATOR",
+                "color": "#6a1b9a",
+                "avatar": "",
+                "away": false,
+                "raiseHand": false,
+                "reactionEmoji": null,
+                "presenter": false,
+                "pinned": false,
+                "locked": false,
+                "authed": true,
+                "mobile": false,
+                "bot": false,
+                "guest": false,
+                "clientType": "HTML5",
+                "disconnected": false,
+                "loggedOut": false,
+                "voice": null,
+                "cameras": [],
+                "whiteboardWriteAccess": false,
+                "lastBreakoutRoom": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "__typename": "user"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.777Z",
+      "type": "data_response",
+      "opName": "6003d806-ef2e-456d-b10c-d6fff5ba0bc1",
+      "payload": {
+        "id": "6003d806-ef2e-456d-b10c-d6fff5ba0bc1",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.113Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "aeac44b4-758b-4517-a2d2-e4b8b09c0d81",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.145Z",
+      "type": "data_response",
+      "opName": "aeac44b4-758b-4517-a2d2-e4b8b09c0d81",
+      "payload": {
+        "id": "aeac44b4-758b-4517-a2d2-e4b8b09c0d81",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.370Z",
+      "type": "data_response",
+      "opName": "034498f2-d622-4dcd-a887-cc6e79943196",
+      "payload": {
+        "id": "034498f2-d622-4dcd-a887-cc6e79943196",
+        "payload": {
+          "data": {
+            "notification_stream": [
+              {
+                "__typename": "notification",
+                "createdAt": "2026-08-03T11:28:09.360Z",
+                "icon": "user",
+                "isSingleUserNotification": false,
+                "messageId": "app.notification.userLeavePushAlert",
+                "messageValues": {
+                  "userName": "Test Moderator Chromium"
+                },
+                "notificationType": "info"
+              }
+            ]
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.464Z",
+      "type": "data_response",
+      "opName": "8569e5e6-0bd2-4230-95bd-bf4cd868496d",
+      "payload": {
+        "type": "next",
+        "id": "8569e5e6-0bd2-4230-95bd-bf4cd868496d",
+        "payload": {
+          "data": {
+            "user_current": [
+              {
+                "authToken":"[REDACTED_AUTH_TOKEN]",
+                "avatar": "",
+                "webcamBackground": "",
+                "away": false,
+                "clientType": "HTML5",
+                "color": "#6a1b9a",
+                "ejectReason": null,
+                "ejectReasonCode": null,
+                "ejected": null,
+                "reactionEmoji": null,
+                "extId": "w_vkvorcyqkh9v",
+                "guest": false,
+                "guestStatus": "ALLOW",
+                "whiteboardWriteAccess": true,
+                "inactivityWarningDisplay": false,
+                "inactivityWarningTimeoutSecs": null,
+                "isDialIn": false,
+                "isModerator": true,
+                "logoutUrl": "https://cs.stage-beep.org",
+                "currentlyInMeeting": true,
+                "joinErrorCode": null,
+                "joinErrorMessage": null,
+                "joined": true,
+                "locked": false,
+                "loggedOut": false,
+                "mobile": false,
+                "name": "Test Moderator Firefox",
+                "nameSortable": "test moderator firefox",
+                "pinned": false,
+                "presenter": true,
+                "raiseHand": false,
+                "registeredAt": "2026-08-03T11:28:00.703+00:00",
+                "role": "MODERATOR",
+                "speechLocale": "",
+                "captionLocale": "",
+                "userId": "w_vkvorcyqkh9v",
+                "meeting": {
+                  "ended": false,
+                  "endedReasonCode": null,
+                  "endedByUserName": null,
+                  "logoutUrl": "https://cs.stage-beep.org",
+                  "__typename": "meeting"
+                },
+                "lastBreakoutRoom": null,
+                "breakoutRoomsSummary": {
+                  "totalOfBreakoutRooms": 0,
+                  "totalOfIsUserCurrentlyInRoom": 0,
+                  "totalOfShowInvitation": 0,
+                  "totalOfJoinURL": 0,
+                  "__typename": "breakoutRoom_user_summary"
+                },
+                "cameras": [],
+                "voice": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "sessionCurrent": {
+                  "enforceLayout": null,
+                  "__typename": "user_session_current"
+                },
+                "livekit": null,
+                "__typename": "user_current"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.717Z",
+      "type": "data_response",
+      "opName": "c8da1c85-8595-4642-839e-a5f099308fde",
+      "payload": {
+        "type": "next",
+        "id": "c8da1c85-8595-4642-839e-a5f099308fde",
+        "payload": {
+          "data": {
+            "user": [
+              {
+                "isDialIn": false,
+                "userId": "w_vkvorcyqkh9v",
+                "meetingId": "98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348",
+                "extId": "w_vkvorcyqkh9v",
+                "name": "Test Moderator Firefox",
+                "isModerator": true,
+                "role": "MODERATOR",
+                "color": "#6a1b9a",
+                "avatar": "",
+                "away": false,
+                "raiseHand": false,
+                "reactionEmoji": null,
+                "presenter": true,
+                "pinned": false,
+                "locked": false,
+                "authed": true,
+                "mobile": false,
+                "bot": false,
+                "guest": false,
+                "clientType": "HTML5",
+                "disconnected": false,
+                "loggedOut": false,
+                "voice": null,
+                "cameras": [],
+                "whiteboardWriteAccess": true,
+                "lastBreakoutRoom": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "__typename": "user"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.838Z",
+      "type": "data_response",
+      "opName": "223b5d3b-783e-4ada-a75d-8ddd1bdde803",
+      "payload": {
+        "type": "next",
+        "id": "223b5d3b-783e-4ada-a75d-8ddd1bdde803",
+        "payload": {
+          "data": {
+            "pres_presentation": [
+              {
+                "uploadTemporaryId": "",
+                "uploadInProgress": false,
+                "current": true,
+                "downloadFileUri": null,
+                "downloadable": false,
+                "uploadErrorDetailsJson": null,
+                "uploadErrorMsgKey": null,
+                "filenameConverted": "default.pdf",
+                "isDefault": true,
+                "name": "default.pdf",
+                "totalPages": 1,
+                "totalPagesUploaded": 1,
+                "presentationId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351",
+                "removable": true,
+                "uploadCompletionNotified": true,
+                "uploadCompleted": true,
+                "exportToChatInProgress": false,
+                "exportToChatStatus": null,
+                "exportToChatCurrentPage": null,
+                "exportToChatHasError": null,
+                "__typename": "pres_presentation"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.864Z",
+      "type": "data_response",
+      "opName": "0ed494e1-301a-40f0-a5ae-a714305a7d75",
+      "payload": {
+        "type": "next",
+        "id": "0ed494e1-301a-40f0-a5ae-a714305a7d75",
+        "payload": {
+          "data": {
+            "user_whiteboardWriteAccess": [
+              {
+                "userId": "w_vkvorcyqkh9v",
+                "name": "Test Moderator Firefox",
+                "presenter": true,
+                "isModerator": true,
+                "__typename": "user_whiteboardWriteAccess"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.867Z",
+      "type": "data_response",
+      "opName": "432d6b20-7870-49cd-85c2-62fc2fd5b5a8",
+      "payload": {
+        "type": "next",
+        "id": "432d6b20-7870-49cd-85c2-62fc2fd5b5a8",
+        "payload": {
+          "data": {
+            "user_aggregate": {
+              "aggregate": {
+                "count": 1,
+                "__typename": "user_aggregate_fields"
+              },
+              "__typename": "user_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.888Z",
+      "type": "data_response",
+      "opName": "b0a6b3b4-f111-4844-8375-cbe329123f4f",
+      "payload": {
+        "type": "next",
+        "id": "b0a6b3b4-f111-4844-8375-cbe329123f4f",
+        "payload": {
+          "data": {
+            "user_aggregate": {
+              "aggregate": {
+                "count": 0,
+                "__typename": "user_aggregate_fields"
+              },
+              "__typename": "user_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.898Z",
+      "type": "data_response",
+      "opName": "ca83bd74-8a7a-4c4e-ab13-6bc136ae1540",
+      "payload": {
+        "type": "next",
+        "id": "ca83bd74-8a7a-4c4e-ab13-6bc136ae1540",
+        "payload": {
+          "data": {
+            "user_camera_aggregate": {
+              "aggregate": {
+                "count": 0,
+                "__typename": "user_camera_aggregate_fields"
+              },
+              "__typename": "user_camera_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.901Z",
+      "type": "data_response",
+      "opName": "de2379ae-1554-499b-8675-1c7d953fcca8",
+      "payload": {
+        "type": "next",
+        "id": "de2379ae-1554-499b-8675-1c7d953fcca8",
+        "payload": {
+          "data": {
+            "chat": [
+              {
+                "chatId": "MAIN-PUBLIC-GROUP-CHAT",
+                "participant": null,
+                "totalMessages": 2,
+                "totalUnread": null,
+                "public": true,
+                "lastSeenAt": null,
+                "__typename": "chat"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.902Z",
+      "type": "data_response",
+      "opName": "5588df40-c8dd-4684-a280-20e706864c9f",
+      "payload": {
+        "type": "next",
+        "id": "5588df40-c8dd-4684-a280-20e706864c9f",
+        "payload": {
+          "data": {
+            "user_guest_aggregate": {
+              "aggregate": {
+                "count": 0,
+                "__typename": "user_guest_aggregate_fields"
+              },
+              "__typename": "user_guest_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.911Z",
+      "type": "subscribe",
+      "opName": "ConnStatusWithTraceLog",
+      "payload": {
+        "id": "51906fdd-63d8-4710-9d81-1b99f7fb5b33",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "clientSessionUUID": "4202106e-fc67-44e3-8a23-6df27c3cc2b4"
+          },
+          "extensions": {},
+          "operationName": "ConnStatusWithTraceLog",
+          "query": "subscription ConnStatusWithTraceLog($clientSessionUUID: String!) {\n  user_connectionStatus(where: {clientSessionUUID: {_eq: $clientSessionUUID}}) {\n    meetingId\n    userId\n    sessionToken\n    traceLog\n    networkRttInMs\n    applicationRttInMs\n    statusUpdatedAt\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.914Z",
+      "type": "data_response",
+      "opName": "51906fdd-63d8-4710-9d81-1b99f7fb5b33",
+      "payload": {
+        "type": "next",
+        "id": "51906fdd-63d8-4710-9d81-1b99f7fb5b33",
+        "payload": {
+          "data": {
+            "user_connectionStatus": [
+              {
+                "meetingId": "98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348",
+                "userId": "w_vkvorcyqkh9v",
+                "sessionToken":"[REDACTED_SESSION_TOKEN]",
+                "traceLog": null,
+                "networkRttInMs": null,
+                "applicationRttInMs": null,
+                "statusUpdatedAt": "2026-08-03T11:28:04.279536+00:00",
+                "__typename": "user_connectionStatus"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:13.109Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "b6b09e19-8525-4a0b-a411-e7f2bd2739d6",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:13.142Z",
+      "type": "data_response",
+      "opName": "b6b09e19-8525-4a0b-a411-e7f2bd2739d6",
+      "payload": {
+        "id": "b6b09e19-8525-4a0b-a411-e7f2bd2739d6",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:14.122Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "c36c1aae-8b1a-488e-b95b-1a988d3a640b",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:14.144Z",
+      "type": "data_response",
+      "opName": "c36c1aae-8b1a-488e-b95b-1a988d3a640b",
+      "payload": {
+        "id": "c36c1aae-8b1a-488e-b95b-1a988d3a640b",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:15.110Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "982e993a-39a4-4021-a5d9-57d505415c6b",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:15.147Z",
+      "type": "data_response",
+      "opName": "982e993a-39a4-4021-a5d9-57d505415c6b",
+      "payload": {
+        "id": "982e993a-39a4-4021-a5d9-57d505415c6b",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:16.113Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "e95a9f32-834e-46c8-b565-3f91b9b2e4e2",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:16.142Z",
+      "type": "data_response",
+      "opName": "e95a9f32-834e-46c8-b565-3f91b9b2e4e2",
+      "payload": {
+        "id": "e95a9f32-834e-46c8-b565-3f91b9b2e4e2",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:17.110Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "eb36a85e-fe7a-4ff7-afd5-a642b77ba07f",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:17.147Z",
+      "type": "data_response",
+      "opName": "eb36a85e-fe7a-4ff7-afd5-a642b77ba07f",
+      "payload": {
+        "id": "eb36a85e-fe7a-4ff7-afd5-a642b77ba07f",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:18.142Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "c28504fd-51e4-4ca6-8fbd-c684796130a5",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:18.153Z",
+      "type": "data_response",
+      "opName": "c28504fd-51e4-4ca6-8fbd-c684796130a5",
+      "payload": {
+        "id": "c28504fd-51e4-4ca6-8fbd-c684796130a5",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:19.112Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "13003e0a-3b5d-48b5-b62b-e88eadf37dfd",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:19.141Z",
+      "type": "data_response",
+      "opName": "13003e0a-3b5d-48b5-b62b-e88eadf37dfd",
+      "payload": {
+        "id": "13003e0a-3b5d-48b5-b62b-e88eadf37dfd",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:20.115Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "3e9c85c0-a540-4296-916f-718add440921",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:20.141Z",
+      "type": "data_response",
+      "opName": "3e9c85c0-a540-4296-916f-718add440921",
+      "payload": {
+        "id": "3e9c85c0-a540-4296-916f-718add440921",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:21.115Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "b30bb8b0-fd96-4e8c-b3c3-a9e8667c4d5d",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:21.143Z",
+      "type": "data_response",
+      "opName": "b30bb8b0-fd96-4e8c-b3c3-a9e8667c4d5d",
+      "payload": {
+        "id": "b30bb8b0-fd96-4e8c-b3c3-a9e8667c4d5d",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:22.115Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "20e2edae-5c43-4cc8-8325-bc5587ae6fce",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:22.142Z",
+      "type": "data_response",
+      "opName": "20e2edae-5c43-4cc8-8325-bc5587ae6fce",
+      "payload": {
+        "id": "20e2edae-5c43-4cc8-8325-bc5587ae6fce",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:23.116Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "e34c35fa-3efe-48c7-bf76-84d84b88957d",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:23.143Z",
+      "type": "data_response",
+      "opName": "e34c35fa-3efe-48c7-bf76-84d84b88957d",
+      "payload": {
+        "id": "e34c35fa-3efe-48c7-bf76-84d84b88957d",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:24.118Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "be2cddbc-d0e0-4b7b-b67b-058e2fd45c3e",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:24.154Z",
+      "type": "data_response",
+      "opName": "be2cddbc-d0e0-4b7b-b67b-058e2fd45c3e",
+      "payload": {
+        "id": "be2cddbc-d0e0-4b7b-b67b-058e2fd45c3e",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:25.116Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "13f363f7-6c10-48d7-97d3-501b5d751102",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:25.142Z",
+      "type": "data_response",
+      "opName": "13f363f7-6c10-48d7-97d3-501b5d751102",
+      "payload": {
+        "id": "13f363f7-6c10-48d7-97d3-501b5d751102",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:26.116Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "e825fee3-31ca-42d5-b51e-891258c06709",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:26.146Z",
+      "type": "data_response",
+      "opName": "e825fee3-31ca-42d5-b51e-891258c06709",
+      "payload": {
+        "id": "e825fee3-31ca-42d5-b51e-891258c06709",
+        "payload": {
+          "data": {
+            "userSetEchoTestRunning": true
+          }
+        },
+        "type": "next"
+      }
+    }
+  ],
+  "websocketFrames": [
+    {
+      "timestamp": "2026-08-03T11:28:07.225Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"connection_init\",\"payload\":{\"headers\":{\"X-Session-Token\":\"y5go1ot6q0zzxwjd\",\"X-ClientSessionUUID\":\"4202106e-fc67-44e3-8a23-6df27c3cc2b4\",\"X-ClientType\":\"HTML5\",\"X-ClientIsMobile\":\"false\"}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.257Z",
+      "direction": "received",
+      "payload": "{\"type\":\"ping\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.259Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"pong\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.263Z",
+      "direction": "received",
+      "payload": "{\"type\":\"connection_ack\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.267Z",
+      "direction": "received",
+      "payload": "{\"type\":\"ping\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.269Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"8569e5e6-0bd2-4230-95bd-bf4cd868496d\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"Patched_userCurrentSubscription\",\"query\":\"subscription Patched_userCurrentSubscription {\\n  user_current {\\n    authToken\\n    avatar\\n    webcamBackground\\n    away\\n    clientType\\n    color\\n    ejectReason\\n    ejectReasonCode\\n    ejected\\n    reactionEmoji\\n    extId\\n    guest\\n    guestStatus\\n    whiteboardWriteAccess\\n    inactivityWarningDisplay\\n    inactivityWarningTimeoutSecs\\n    isDialIn\\n    isModerator\\n    logoutUrl\\n    currentlyInMeeting\\n    joinErrorCode\\n    joinErrorMessage\\n    joined\\n    locked\\n    loggedOut\\n    mobile\\n    name\\n    nameSortable\\n    pinned\\n    presenter\\n    raiseHand\\n    registeredAt\\n    role\\n    speechLocale\\n    captionLocale\\n    userId\\n    meeting {\\n      ended\\n      endedReasonCode\\n      endedByUserName\\n      logoutUrl\\n      __typename\\n    }\\n    lastBreakoutRoom {\\n      currentlyInRoom\\n      sequence\\n      shortName\\n      __typename\\n    }\\n    breakoutRoomsSummary {\\n      totalOfBreakoutRooms\\n      totalOfIsUserCurrentlyInRoom\\n      totalOfShowInvitation\\n      totalOfJoinURL\\n      __typename\\n    }\\n    cameras {\\n      streamId\\n      __typename\\n    }\\n    voice {\\n      joined\\n      spoke\\n      listenOnly\\n      deafened\\n      listenOnlyInputDevice\\n      __typename\\n    }\\n    userLockSettings {\\n      disablePublicChat\\n      __typename\\n    }\\n    sessionCurrent {\\n      enforceLayout\\n      __typename\\n    }\\n    livekit {\\n      livekitToken\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.269Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"pong\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.313Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"8569e5e6-0bd2-4230-95bd-bf4cd868496d\",\"payload\":{\"data\":{\"user_current\" : [{\"authToken\":\"mirolvno96kh\",\"avatar\":\"\",\"webcamBackground\":\"\",\"away\":false,\"clientType\":null,\"color\":\"#6a1b9a\",\"ejectReason\":null,\"ejectReasonCode\":null,\"ejected\":null,\"reactionEmoji\":null,\"extId\":\"w_vkvorcyqkh9v\",\"guest\":false,\"guestStatus\":\"ALLOW\",\"whiteboardWriteAccess\":false,\"inactivityWarningDisplay\":false,\"inactivityWarningTimeoutSecs\":null,\"isDialIn\":null,\"isModerator\":true,\"logoutUrl\":\"https://cs.stage-beep.org\",\"currentlyInMeeting\":false,\"joinErrorCode\":null,\"joinErrorMessage\":null,\"joined\":false,\"locked\":false,\"loggedOut\":false,\"mobile\":null,\"name\":\"Test Moderator Firefox\",\"nameSortable\":\"test moderator firefox\",\"pinned\":null,\"presenter\":null,\"raiseHand\":false,\"registeredAt\":\"2026-08-03T11:28:00.703+00:00\",\"role\":\"MODERATOR\",\"speechLocale\":null,\"captionLocale\":null,\"userId\":\"w_vkvorcyqkh9v\",\"meeting\":{\"ended\":false,\"endedReasonCode\":null,\"endedByUserName\":null,\"logoutUrl\":\"https://cs.stage-beep.org\",\"__typename\":\"meeting\"},\"lastBreakoutRoom\":null,\"breakoutRoomsSummary\":{\"totalOfBreakoutRooms\":0,\"totalOfIsUserCurrentlyInRoom\":0,\"totalOfShowInvitation\":0,\"totalOfJoinURL\":0,\"__typename\":\"breakoutRoom_user_summary\"},\"cameras\":[],\"voice\":null,\"userLockSettings\":{\"disablePublicChat\":false,\"__typename\":\"user_lockSettings\"},\"sessionCurrent\":{\"enforceLayout\":null,\"__typename\":\"user_session_current\"},\"livekit\":null,\"__typename\":\"user_current\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.331Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"e717ebc6-daae-4dbe-8633-0d19dbbbb76b\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"authToken\":\"mirolvno96kh\",\"clientType\":\"HTML5\",\"clientIsMobile\":false},\"extensions\":{},\"operationName\":\"UserJoin\",\"query\":\"mutation UserJoin($authToken: String!, $clientType: String!, $clientIsMobile: Boolean!) {\\n  userJoinMeeting(\\n    authToken: $authToken\\n    clientType: $clientType\\n    clientIsMobile: $clientIsMobile\\n  )\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.358Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e717ebc6-daae-4dbe-8633-0d19dbbbb76b\",\"payload\":{\"data\":{\"userJoinMeeting\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.364Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e717ebc6-daae-4dbe-8633-0d19dbbbb76b\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.569Z",
+      "direction": "received",
+      "payload": "{\"type\":\"ping\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.570Z",
+      "direction": "received",
+      "payload": "{\"type\":\"ping\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.571Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"8569e5e6-0bd2-4230-95bd-bf4cd868496d\",\"payload\":{\"data\":{\"user_current\" : [{\"authToken\":\"mirolvno96kh\",\"avatar\":\"\",\"webcamBackground\":\"\",\"away\":false,\"clientType\":\"HTML5\",\"color\":\"#6a1b9a\",\"ejectReason\":null,\"ejectReasonCode\":null,\"ejected\":null,\"reactionEmoji\":null,\"extId\":\"w_vkvorcyqkh9v\",\"guest\":false,\"guestStatus\":\"ALLOW\",\"whiteboardWriteAccess\":false,\"inactivityWarningDisplay\":false,\"inactivityWarningTimeoutSecs\":null,\"isDialIn\":false,\"isModerator\":true,\"logoutUrl\":\"https://cs.stage-beep.org\",\"currentlyInMeeting\":true,\"joinErrorCode\":null,\"joinErrorMessage\":null,\"joined\":true,\"locked\":false,\"loggedOut\":false,\"mobile\":false,\"name\":\"Test Moderator Firefox\",\"nameSortable\":\"test moderator firefox\",\"pinned\":false,\"presenter\":false,\"raiseHand\":false,\"registeredAt\":\"2026-08-03T11:28:00.703+00:00\",\"role\":\"MODERATOR\",\"speechLocale\":\"\",\"captionLocale\":\"\",\"userId\":\"w_vkvorcyqkh9v\",\"meeting\":{\"ended\":false,\"endedReasonCode\":null,\"endedByUserName\":null,\"logoutUrl\":\"https://cs.stage-beep.org\",\"__typename\":\"meeting\"},\"lastBreakoutRoom\":null,\"breakoutRoomsSummary\":{\"totalOfBreakoutRooms\":0,\"totalOfIsUserCurrentlyInRoom\":0,\"totalOfShowInvitation\":0,\"totalOfJoinURL\":0,\"__typename\":\"breakoutRoom_user_summary\"},\"cameras\":[],\"voice\":null,\"userLockSettings\":{\"disablePublicChat\":false,\"__typename\":\"user_lockSettings\"},\"sessionCurrent\":{\"enforceLayout\":null,\"__typename\":\"user_session_current\"},\"livekit\":null,\"__typename\":\"user_current\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.587Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"pong\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:07.587Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"pong\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"bc94da22-a2bd-4529-8024-bbace71477ae\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"Patched_MeetingSubscription\",\"query\":\"subscription Patched_MeetingSubscription {\\n  meeting {\\n    durationInSeconds\\n    lockSettings {\\n      disableCam\\n      disableMic\\n      disableNotes\\n      disablePrivateChat\\n      disablePublicChat\\n      hasActiveLockSetting\\n      hideUserList\\n      hideViewersCursor\\n      hideViewersAnnotation\\n      webcamsOnlyForModerator\\n      lockOnJoin\\n      lockOnJoinConfigurable\\n      __typename\\n    }\\n    learningDashboard {\\n      learningDashboardAccessToken\\n      __typename\\n    }\\n    screenshare {\\n      contentType\\n      hasAudio\\n      screenshareConf\\n      screenshareId\\n      startedAt\\n      stoppedAt\\n      stream\\n      vidHeight\\n      vidWidth\\n      voiceConf\\n      __typename\\n    }\\n    usersPolicies {\\n      guestPolicy\\n      guestLobbyMessage\\n      webcamsOnlyForModerator\\n      __typename\\n    }\\n    layout {\\n      cameraDockAspectRatio\\n      cameraDockIsResizing\\n      cameraDockPlacement\\n      cameraWithFocus\\n      currentLayoutType\\n      presentationMinimized\\n      propagateLayout\\n      updatedAt\\n      __typename\\n    }\\n    breakoutRoomsCommonProperties {\\n      durationInSeconds\\n      freeJoin\\n      sendInvitationToModerators\\n      startedAt\\n      __typename\\n    }\\n    externalVideo {\\n      externalVideoId\\n      playerCurrentTime\\n      playerPlaybackRate\\n      playerPlaying\\n      externalVideoUrl\\n      startedSharingAt\\n      stoppedSharingAt\\n      updatedAt\\n      __typename\\n    }\\n    componentsFlags {\\n      hasBreakoutRoom\\n      hasCameraAsContent\\n      hasCaption\\n      hasCurrentPresentation\\n      hasExternalVideo\\n      hasPoll\\n      hasScreenshare\\n      hasScreenshareAsContent\\n      hasSharedNotes\\n      hasTimer\\n      isSharedNotesPinned\\n      showRemainingTime\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"4f0ac15e-ea36-402f-93c2-7005636b2f89\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"PluginConfigurationQuery\",\"query\":\"query PluginConfigurationQuery {\\n  plugin {\\n    name\\n    javascriptEntrypointUrl\\n    javascriptEntrypointIntegrity\\n    localesBaseUrl\\n    loadFailureReason\\n    loadFailureSource\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"4f0ac15e-ea36-402f-93c2-7005636b2f89\",\"payload\":{\"data\":{\"plugin\":[]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "direction": "received",
+      "payload": "{\"type\":\"complete\",\"id\":\"4f0ac15e-ea36-402f-93c2-7005636b2f89\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.038Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"bc94da22-a2bd-4529-8024-bbace71477ae\",\"payload\":{\"data\":{\"meeting\" : [{\"durationInSeconds\":0,\"lockSettings\":{\"disableCam\":false,\"disableMic\":false,\"disableNotes\":false,\"disablePrivateChat\":false,\"disablePublicChat\":false,\"hasActiveLockSetting\":false,\"hideUserList\":false,\"hideViewersCursor\":false,\"hideViewersAnnotation\":false,\"webcamsOnlyForModerator\":false,\"lockOnJoin\":true,\"lockOnJoinConfigurable\":false,\"__typename\":\"meeting_lockSettings\"},\"learningDashboard\":{\"learningDashboardAccessToken\":\"fhly8kbodrfd\",\"__typename\":\"meeting_learningDashboard\"},\"screenshare\":null,\"usersPolicies\":{\"guestPolicy\":\"ALWAYS_ACCEPT\",\"guestLobbyMessage\":null,\"webcamsOnlyForModerator\":false,\"__typename\":\"meeting_usersPolicies\"},\"layout\":{\"cameraDockAspectRatio\":0,\"cameraDockIsResizing\":false,\"cameraDockPlacement\":\"contentRight\",\"cameraWithFocus\":\"none\",\"currentLayoutType\":\"CUSTOM_LAYOUT\",\"presentationMinimized\":true,\"propagateLayout\":true,\"updatedAt\":\"2026-08-03T11:27:41.784+00:00\",\"__typename\":\"layout\"},\"breakoutRoomsCommonProperties\":null,\"externalVideo\":null,\"componentsFlags\":{\"hasBreakoutRoom\":false,\"hasCameraAsContent\":false,\"hasCaption\":false,\"hasCurrentPresentation\":true,\"hasExternalVideo\":false,\"hasPoll\":false,\"hasScreenshare\":false,\"hasScreenshareAsContent\":false,\"hasSharedNotes\":true,\"hasTimer\":false,\"isSharedNotesPinned\":false,\"showRemainingTime\":false,\"__typename\":\"meeting_componentFlags\"},\"__typename\":\"meeting\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.267Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"7233b43d-bb46-4bdc-80dd-b7e92a542b0d\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"partialUtterances\":true,\"minUtteranceLength\":1},\"extensions\":{},\"operationName\":\"UserSetSpeechOptions\",\"query\":\"mutation UserSetSpeechOptions($partialUtterances: Boolean!, $minUtteranceLength: Float!) {\\n  userSetSpeechOptions(\\n    partialUtterances: $partialUtterances\\n    minUtteranceLength: $minUtteranceLength\\n  )\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.267Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"47c6d96a-596e-4b69-ae96-43d15d02a514\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.269Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"0c88e534-a029-4a9e-904d-5dc7485e3c5d\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.269Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7233b43d-bb46-4bdc-80dd-b7e92a542b0d\",\"payload\":{\"data\":{\"userSetSpeechOptions\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.269Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7233b43d-bb46-4bdc-80dd-b7e92a542b0d\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.270Z",
+      "direction": "received",
+      "payload": "{\"id\":\"47c6d96a-596e-4b69-ae96-43d15d02a514\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.272Z",
+      "direction": "received",
+      "payload": "{\"id\":\"47c6d96a-596e-4b69-ae96-43d15d02a514\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.272Z",
+      "direction": "received",
+      "payload": "{\"id\":\"0c88e534-a029-4a9e-904d-5dc7485e3c5d\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.274Z",
+      "direction": "received",
+      "payload": "{\"id\":\"0c88e534-a029-4a9e-904d-5dc7485e3c5d\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.275Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"de2379ae-1554-499b-8675-1c7d953fcca8\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"ChatSubscription\",\"query\":\"subscription ChatSubscription {\\n  chat(order_by: [{chatId: asc}]) {\\n    chatId\\n    participant {\\n      userId\\n      name\\n      nameSortable\\n      role\\n      color\\n      loggedOut\\n      avatar\\n      currentlyInMeeting\\n      isModerator\\n      __typename\\n    }\\n    totalMessages\\n    totalUnread\\n    public\\n    lastSeenAt\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"cac09dc9-2a28-432d-94c0-ae0962153f78\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"Patched_FetchPluginDataChannelPublicEntry\",\"query\":\"subscription Patched_FetchPluginDataChannelPublicEntry {\\n  pluginDataChannelEntry_public(order_by: {createdAt: desc}) {\\n    createdAt\\n    updatedAt\\n    channelName\\n    subChannelName\\n    entryId\\n    payloadJson\\n    createdBy\\n    pluginName\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"5e04c122-553a-4a06-b78c-6f6b60dcef21\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"Patched_FetchPluginDataChannelEntry\",\"query\":\"subscription Patched_FetchPluginDataChannelEntry {\\n  pluginDataChannelEntry_private(order_by: {createdAt: desc}) {\\n    createdAt\\n    updatedAt\\n    channelName\\n    subChannelName\\n    entryId\\n    payloadJson\\n    createdBy\\n    pluginName\\n    toRoles\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"034498f2-d622-4dcd-a887-cc6e79943196\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"initialCursor\":\"2000-01-01\"},\"extensions\":{},\"operationName\":\"getNotificationStream\",\"query\":\"subscription getNotificationStream($initialCursor: timestamptz!) {\\n  notification_stream(\\n    batch_size: 10\\n    cursor: {initial_value: {createdAt: $initialCursor}}\\n  ) {\\n    notificationType\\n    icon\\n    messageId\\n    messageValues\\n    isSingleUserNotification\\n    createdAt\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"50952485-89eb-4cd6-8d5e-c443f4abd0ac\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.276Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"1a7f457f-def1-49b2-8083-91ff0f33df50\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"Patched_VideoStreams\",\"query\":\"subscription Patched_VideoStreams {\\n  user_camera {\\n    streamId\\n    user {\\n      name\\n      userId\\n      nameSortable\\n      pinned\\n      away\\n      disconnected\\n      role\\n      avatar\\n      color\\n      presenter\\n      clientType\\n      raiseHand\\n      isModerator\\n      reactionEmoji\\n      __typename\\n    }\\n    voice {\\n      floor\\n      lastFloorTime\\n      joined\\n      listenOnly\\n      userId\\n      deafened\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"432d6b20-7870-49cd-85c2-62fc2fd5b5a8\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UsersCount\",\"query\":\"subscription UsersCount {\\n  user_aggregate {\\n    aggregate {\\n      count\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"5509d513-06b1-4f6c-8410-42e4c22c0e94\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"CurrentPresentationPagesSubscription\",\"query\":\"subscription CurrentPresentationPagesSubscription {\\n  pres_page_curr {\\n    height\\n    isCurrentPage\\n    num\\n    pageId\\n    scaledHeight\\n    scaledViewBoxHeight\\n    scaledViewBoxWidth\\n    scaledWidth\\n    svgUrl: urlsJson(path: \\\"$.svg\\\")\\n    width\\n    xOffset\\n    yOffset\\n    presentationId\\n    content\\n    downloadFileUri\\n    totalPages\\n    downloadable\\n    presentationName\\n    isDefaultPresentation\\n    infiniteWhiteboard\\n    nextPagesSvg\\n    fitToWidth\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"24ad1f0f-a0a1-4164-a0ee-bbb7d8eca900\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"externalId\":\"notes\"},\"extensions\":{},\"operationName\":\"GetPadLastRev\",\"query\":\"subscription GetPadLastRev($externalId: String!) {\\n  sharedNotes(where: {sharedNotesExtId: {_eq: $externalId}}) {\\n    lastRev\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"223b5d3b-783e-4ada-a75d-8ddd1bdde803\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"PresentationsSubscription\",\"query\":\"subscription PresentationsSubscription {\\n  pres_presentation {\\n    uploadTemporaryId\\n    uploadInProgress\\n    current\\n    downloadFileUri\\n    downloadable\\n    uploadErrorDetailsJson\\n    uploadErrorMsgKey\\n    filenameConverted\\n    isDefault\\n    name\\n    totalPages\\n    totalPagesUploaded\\n    presentationId\\n    removable\\n    uploadCompletionNotified\\n    uploadCompleted\\n    exportToChatInProgress\\n    exportToChatStatus\\n    exportToChatCurrentPage\\n    exportToChatHasError\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.277Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"607deb44-b7ff-43d2-b7d0-72425d949f2f\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UserVoiceActivity\",\"query\":\"subscription UserVoiceActivity {\\n  user_voice_activity_stream(\\n    cursor: {initial_value: {voiceActivityAt: \\\"2020-01-01\\\"}}\\n    batch_size: 10\\n  ) {\\n    muted\\n    startTime\\n    endTime\\n    talking\\n    userId\\n    user {\\n      color\\n      name\\n      speechLocale\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.686Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"118cb0ac-5c07-456c-a116-a48bcbfb1a8c\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"RaisedHandUsers\",\"query\":\"subscription RaisedHandUsers {\\n  user(\\n    where: {raiseHand: {_eq: true}}\\n    order_by: [{raiseHandTime: asc_nulls_last}]\\n  ) {\\n    userId\\n    name\\n    color\\n    presenter\\n    isModerator\\n    raiseHand\\n    raiseHandTime\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.688Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"ca83bd74-8a7a-4c4e-ab13-6bc136ae1540\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"ViewerVideoStreams\",\"query\":\"subscription ViewerVideoStreams {\\n  user_camera_aggregate(\\n    where: {user: {role: {_eq: \\\"VIEWER\\\"}, presenter: {_eq: false}}}\\n  ) {\\n    aggregate {\\n      count\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.689Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"557009f0-a1d2-487d-99a8-9e338c8af93d\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"initialCursor\":\"Mon, 03 Aug 2026 11:28:07 GMT\"},\"extensions\":{},\"operationName\":\"getEmojisToRain\",\"query\":\"subscription getEmojisToRain($initialCursor: timestamptz) {\\n  user_reaction_stream(\\n    batch_size: 10\\n    cursor: {initial_value: {createdAt: $initialCursor}}\\n  ) {\\n    createdAt\\n    reactionEmoji\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.689Z",
+      "direction": "received",
+      "payload": "{\"id\":\"50952485-89eb-4cd6-8d5e-c443f4abd0ac\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.690Z",
+      "direction": "received",
+      "payload": "{\"id\":\"50952485-89eb-4cd6-8d5e-c443f4abd0ac\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.691Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"de2379ae-1554-499b-8675-1c7d953fcca8\",\"payload\":{\"data\":{\"chat\" : [{\"chatId\":\"MAIN-PUBLIC-GROUP-CHAT\",\"participant\":null,\"totalMessages\":1,\"totalUnread\":null,\"public\":true,\"lastSeenAt\":null,\"__typename\":\"chat\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.692Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"cac09dc9-2a28-432d-94c0-ae0962153f78\",\"payload\":{\"data\":{\"pluginDataChannelEntry_public\" : []}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.693Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"5e04c122-553a-4a06-b78c-6f6b60dcef21\",\"payload\":{\"data\":{\"pluginDataChannelEntry_private\" : []}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.693Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"1a7f457f-def1-49b2-8083-91ff0f33df50\",\"payload\":{\"data\":{\"user_camera\" : []}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.694Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"432d6b20-7870-49cd-85c2-62fc2fd5b5a8\",\"payload\":{\"data\":{\"user_aggregate\" : {\"aggregate\" : {\"count\" : 2, \"__typename\" : \"user_aggregate_fields\"}, \"__typename\" : \"user_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.702Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"5509d513-06b1-4f6c-8410-42e4c22c0e94\",\"payload\":{\"data\":{\"pres_page_curr\" : [{\"height\":396,\"isCurrentPage\":true,\"num\":1,\"pageId\":\"d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1\",\"scaledHeight\":931.7647058823529272,\"scaledViewBoxHeight\":931.76470588235292720000000000000000,\"scaledViewBoxWidth\":1439.99999999999997840000000000000000,\"scaledWidth\":1439.9999999999999784,\"svgUrl\":\"https://cs.stage-beep.org/bigbluebutton/presentation/98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348/98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348/d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/svg/1\",\"width\":612,\"xOffset\":0,\"yOffset\":0,\"presentationId\":\"d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351\",\"content\":\"\",\"downloadFileUri\":null,\"totalPages\":1,\"downloadable\":false,\"presentationName\":\"default.pdf\",\"isDefaultPresentation\":true,\"infiniteWhiteboard\":false,\"nextPagesSvg\":null,\"fitToWidth\":false,\"__typename\":\"pres_page_curr\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.898Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"24ad1f0f-a0a1-4164-a0ee-bbb7d8eca900\",\"payload\":{\"data\":{\"sharedNotes\" : [{\"lastRev\":null,\"__typename\":\"sharedNotes\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.911Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"223b5d3b-783e-4ada-a75d-8ddd1bdde803\",\"payload\":{\"data\":{\"pres_presentation\" : []}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.915Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"118cb0ac-5c07-456c-a116-a48bcbfb1a8c\",\"payload\":{\"data\":{\"user\" : []}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:08.917Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"ca83bd74-8a7a-4c4e-ab13-6bc136ae1540\",\"payload\":{\"data\":{\"user_camera_aggregate\" : {\"aggregate\" : {\"count\" : 0, \"__typename\" : \"user_camera_aggregate_fields\"}, \"__typename\" : \"user_camera_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.198Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"1f0aebd1-a5f6-4cc4-a61c-82fefabcdc11\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.199Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"61578d13-fd95-469d-bdae-073aa597fa88\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.199Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"7dee0682-67a3-4aa3-9af0-0f97880960fa\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"layout\":\"custom\",\"syncWithPresenterLayout\":true,\"presentationIsOpen\":true,\"isResizing\":false,\"cameraPosition\":\"contentTop\",\"focusedCamera\":\"none\",\"presentationVideoRate\":0},\"extensions\":{},\"operationName\":\"SetLayoutProps\",\"query\":\"mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\\n  meetingLayoutSetProps(\\n    layout: $layout\\n    syncWithPresenterLayout: $syncWithPresenterLayout\\n    presentationIsOpen: $presentationIsOpen\\n    isResizing: $isResizing\\n    cameraPosition: $cameraPosition\\n    focusedCamera: $focusedCamera\\n    presentationVideoRate: $presentationVideoRate\\n  )\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.199Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"7405ccdb-c0ee-415c-95b5-e2649dd05c9e\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.207Z",
+      "direction": "received",
+      "payload": "{\"id\":\"1f0aebd1-a5f6-4cc4-a61c-82fefabcdc11\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.207Z",
+      "direction": "received",
+      "payload": "{\"id\":\"1f0aebd1-a5f6-4cc4-a61c-82fefabcdc11\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.210Z",
+      "direction": "received",
+      "payload": "{\"id\":\"61578d13-fd95-469d-bdae-073aa597fa88\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.210Z",
+      "direction": "received",
+      "payload": "{\"id\":\"61578d13-fd95-469d-bdae-073aa597fa88\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.210Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7dee0682-67a3-4aa3-9af0-0f97880960fa\",\"payload\":[{\"message\":\"It was not able to send the request to Graphql Actions: graphql actions request failed: meetingLayoutSetProps: Permission Denied (not presenter).\"}],\"type\":\"error\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.213Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7dee0682-67a3-4aa3-9af0-0f97880960fa\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.213Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7405ccdb-c0ee-415c-95b5-e2649dd05c9e\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.215Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7405ccdb-c0ee-415c-95b5-e2649dd05c9e\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.216Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"bfdc554f-2fc7-4d9c-ba34-e75e02f9dc36\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.216Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"d215ea21-fd88-4ecc-b82e-944cc2de101c\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"layout\":\"custom\",\"syncWithPresenterLayout\":true,\"presentationIsOpen\":false,\"isResizing\":false,\"cameraPosition\":\"contentRight\",\"focusedCamera\":\"none\",\"presentationVideoRate\":0},\"extensions\":{},\"operationName\":\"SetLayoutProps\",\"query\":\"mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\\n  meetingLayoutSetProps(\\n    layout: $layout\\n    syncWithPresenterLayout: $syncWithPresenterLayout\\n    presentationIsOpen: $presentationIsOpen\\n    isResizing: $isResizing\\n    cameraPosition: $cameraPosition\\n    focusedCamera: $focusedCamera\\n    presentationVideoRate: $presentationVideoRate\\n  )\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.409Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"91437930-8f77-4d1e-a976-32b5e48f0601\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"getMeetingRecordingData\",\"query\":\"subscription getMeetingRecordingData {\\n  meeting_recording {\\n    isRecording\\n    startedAt\\n    startedBy\\n    previousRecordedTimeInSeconds\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.409Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"95f94cd4-ddf9-4553-83ed-d8a679e25144\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"Patched_Timer\",\"query\":\"subscription Patched_Timer {\\n  timer {\\n    accumulated\\n    active\\n    songTrack\\n    time\\n    stopwatch\\n    running\\n    startedOn\\n    startedAt\\n    elapsed\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.410Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"9875d372-3f74-42f2-b769-0d2e240290c2\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"activeCaptions\",\"query\":\"subscription activeCaptions {\\n  caption_activeLocales {\\n    locale\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.410Z",
+      "direction": "received",
+      "payload": "{\"id\":\"bfdc554f-2fc7-4d9c-ba34-e75e02f9dc36\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.411Z",
+      "direction": "received",
+      "payload": "{\"id\":\"bfdc554f-2fc7-4d9c-ba34-e75e02f9dc36\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.411Z",
+      "direction": "received",
+      "payload": "{\"id\":\"d215ea21-fd88-4ecc-b82e-944cc2de101c\",\"payload\":[{\"message\":\"It was not able to send the request to Graphql Actions: graphql actions request failed: meetingLayoutSetProps: Permission Denied (not presenter).\"}],\"type\":\"error\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.414Z",
+      "direction": "received",
+      "payload": "{\"id\":\"d215ea21-fd88-4ecc-b82e-944cc2de101c\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.414Z",
+      "direction": "received",
+      "payload": "{\"type\":\"error\",\"id\":\"95f94cd4-ddf9-4553-83ed-d8a679e25144\",\"payload\":[{\"message\":\"field 'startedOn' not found in type: 'timer'\",\"extensions\":{\"path\":\"$.selectionSet.timer.selectionSet.startedOn\",\"code\":\"validation-failed\"}}]}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.419Z",
+      "direction": "received",
+      "payload": "{\"type\":\"complete\",\"id\":\"95f94cd4-ddf9-4553-83ed-d8a679e25144\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.419Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"91437930-8f77-4d1e-a976-32b5e48f0601\",\"payload\":{\"data\":{\"meeting_recording\" : []}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.432Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"9875d372-3f74-42f2-b769-0d2e240290c2\",\"payload\":{\"data\":{\"caption_activeLocales\" : []}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.435Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"2fb0de45-70ed-4bbf-938a-d48b32f71d5c\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"pageId\":\"d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1\"},\"extensions\":{},\"operationName\":\"CurrentPageAnnotationsQuery\",\"query\":\"query CurrentPageAnnotationsQuery($pageId: String!) {\\n  pres_annotation_curr(\\n    where: {pageId: {_eq: $pageId}}\\n    order_by: {lastUpdatedAt: desc}\\n  ) {\\n    annotationId\\n    annotationInfo\\n    lastUpdatedAt\\n    pageId\\n    presentationId\\n    userId\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.435Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"0ed494e1-301a-40f0-a5ae-a714305a7d75\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"whiteboardWriteAccessSubscription\",\"query\":\"subscription whiteboardWriteAccessSubscription {\\n  user_whiteboardWriteAccess(order_by: {userId: asc}) {\\n    userId\\n    name\\n    presenter\\n    isModerator\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.436Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"2fb0de45-70ed-4bbf-938a-d48b32f71d5c\",\"payload\":{\"data\":{\"pres_annotation_curr\":[]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.444Z",
+      "direction": "received",
+      "payload": "{\"type\":\"complete\",\"id\":\"2fb0de45-70ed-4bbf-938a-d48b32f71d5c\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.445Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"0ed494e1-301a-40f0-a5ae-a714305a7d75\",\"payload\":{\"data\":{\"user_whiteboardWriteAccess\" : [{\"userId\":\"w_4qwgn9h95gir\",\"name\":\"Test Moderator Chromium\",\"presenter\":true,\"isModerator\":true,\"__typename\":\"user_whiteboardWriteAccess\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.592Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"f5ec302d-42c9-46d4-945b-e90849133a77\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en-US\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.592Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"7b47b9c7-02ae-4325-b62e-dd7a10463cad\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"layout\":\"custom\",\"syncWithPresenterLayout\":true,\"presentationIsOpen\":false,\"isResizing\":false,\"cameraPosition\":\"contentRight\",\"focusedCamera\":\"none\",\"presentationVideoRate\":0},\"extensions\":{},\"operationName\":\"SetLayoutProps\",\"query\":\"mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\\n  meetingLayoutSetProps(\\n    layout: $layout\\n    syncWithPresenterLayout: $syncWithPresenterLayout\\n    presentationIsOpen: $presentationIsOpen\\n    isResizing: $isResizing\\n    cameraPosition: $cameraPosition\\n    focusedCamera: $focusedCamera\\n    presentationVideoRate: $presentationVideoRate\\n  )\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.594Z",
+      "direction": "received",
+      "payload": "{\"id\":\"f5ec302d-42c9-46d4-945b-e90849133a77\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.597Z",
+      "direction": "received",
+      "payload": "{\"id\":\"f5ec302d-42c9-46d4-945b-e90849133a77\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.597Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7b47b9c7-02ae-4325-b62e-dd7a10463cad\",\"payload\":[{\"message\":\"It was not able to send the request to Graphql Actions: graphql actions request failed: meetingLayoutSetProps: Permission Denied (not presenter).\"}],\"type\":\"error\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.599Z",
+      "direction": "received",
+      "payload": "{\"id\":\"7b47b9c7-02ae-4325-b62e-dd7a10463cad\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.617Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"b0a6b3b4-f111-4844-8375-cbe329123f4f\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UsersWithAudioCount\",\"query\":\"subscription UsersWithAudioCount {\\n  user_aggregate(where: {voice: {joined: {_eq: true}}}) {\\n    aggregate {\\n      count\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.617Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"8a8b4149-6eb2-4729-ac14-4ae5410b23a8\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"pageId\":\"d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1\",\"updatedAt\":\"2026-08-03T11:27:34.348Z\"},\"extensions\":{},\"operationName\":\"annotationHistoryStream\",\"query\":\"subscription annotationHistoryStream($updatedAt: timestamptz, $pageId: String!) {\\n  pres_annotation_history_curr_stream(\\n    batch_size: 1000\\n    where: {pageId: {_eq: $pageId}}\\n    cursor: {initial_value: {updatedAt: $updatedAt}, ordering: ASC}\\n  ) {\\n    annotationId\\n    annotationInfo\\n    pageId\\n    presentationId\\n    updatedAt\\n    userId\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.617Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"b0a6b3b4-f111-4844-8375-cbe329123f4f\",\"payload\":{\"data\":{\"user_aggregate\" : {\"aggregate\" : {\"count\" : 0, \"__typename\" : \"user_aggregate_fields\"}, \"__typename\" : \"user_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.632Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"5588df40-c8dd-4684-a280-20e706864c9f\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"getGuestsCount\",\"query\":\"subscription getGuestsCount {\\n  user_guest_aggregate(where: {isWaiting: {_eq: true}}) {\\n    aggregate {\\n      count\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.632Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"c8da1c85-8595-4642-839e-a5f099308fde\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"offset\":0,\"limit\":50},\"extensions\":{},\"operationName\":\"Patched_UserListSubscription\",\"query\":\"subscription Patched_UserListSubscription($offset: Int!, $limit: Int!) {\\n  user(\\n    limit: $limit\\n    offset: $offset\\n    order_by: [{presenter: desc}, {role: asc}, {raiseHandTime: asc_nulls_last}, {isDialIn: desc}, {whiteboardWriteAccess: desc}, {nameSortable: asc}, {registeredAt: asc}, {userId: asc}]\\n  ) {\\n    isDialIn\\n    userId\\n    meetingId\\n    extId\\n    name\\n    isModerator\\n    role\\n    color\\n    avatar\\n    away\\n    raiseHand\\n    reactionEmoji\\n    avatar\\n    presenter\\n    pinned\\n    locked\\n    authed\\n    mobile\\n    bot\\n    guest\\n    clientType\\n    disconnected\\n    loggedOut\\n    voice {\\n      joined\\n      deafened\\n      listenOnly\\n      voiceUserId\\n      listenOnlyInputDevice\\n      __typename\\n    }\\n    cameras {\\n      streamId\\n      __typename\\n    }\\n    whiteboardWriteAccess\\n    lastBreakoutRoom {\\n      isDefaultName\\n      sequence\\n      shortName\\n      currentlyInRoom\\n      __typename\\n    }\\n    userLockSettings {\\n      disablePublicChat\\n      __typename\\n    }\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.774Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"6003d806-ef2e-456d-b10c-d6fff5ba0bc1\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"settings\":{\"application\":{\"wakeLock\":true,\"darkTheme\":false,\"animations\":true,\"pushLayout\":true,\"chatPushAlerts\":false,\"fallbackLocale\":\"en\",\"overrideLocale\":null,\"selectedLayout\":\"custom\",\"chatAudioAlerts\":false,\"directLeaveButton\":true,\"paginationEnabled\":true,\"pushToTalkEnabled\":false,\"userJoinPushAlerts\":false,\"raiseHandPushAlerts\":true,\"userJoinAudioAlerts\":false,\"userLeavePushAlerts\":false,\"raiseHandAudioAlerts\":true,\"userLeaveAudioAlerts\":false,\"autoCloseReactionsBar\":true,\"muteUnmuteAudioAlerts\":true,\"guestWaitingPushAlerts\":true,\"guestWaitingAudioAlerts\":true,\"whiteboardToolbarAutoHide\":false,\"webcamBorderHighlightColor\":[],\"locale\":\"en\",\"isRTL\":false},\"audio\":{\"inputDeviceId\":\"undefined\",\"outputDeviceId\":\"undefined\"},\"dataSaving\":{\"viewScreenshare\":true,\"viewParticipantsWebcams\":true},\"transcription\":{\"partialUtterances\":true,\"minUtteranceLength\":1}}},\"extensions\":{},\"operationName\":\"UserChangedLocalSettings\",\"query\":\"mutation UserChangedLocalSettings($settings: json!) {\\n  userSetClientSettings(userClientSettingsJson: $settings)\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.775Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"5588df40-c8dd-4684-a280-20e706864c9f\",\"payload\":{\"data\":{\"user_guest_aggregate\" : {\"aggregate\" : {\"count\" : 0, \"__typename\" : \"user_guest_aggregate_fields\"}, \"__typename\" : \"user_guest_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.776Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"c8da1c85-8595-4642-839e-a5f099308fde\",\"payload\":{\"data\":{\"user\" : [{\"isDialIn\":false,\"userId\":\"w_4qwgn9h95gir\",\"meetingId\":\"98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348\",\"extId\":\"w_4qwgn9h95gir\",\"name\":\"Test Moderator Chromium\",\"isModerator\":true,\"role\":\"MODERATOR\",\"color\":\"#7b1fa2\",\"avatar\":\"\",\"away\":false,\"raiseHand\":false,\"reactionEmoji\":null,\"presenter\":true,\"pinned\":false,\"locked\":false,\"authed\":true,\"mobile\":false,\"bot\":false,\"guest\":false,\"clientType\":\"HTML5\",\"disconnected\":true,\"loggedOut\":false,\"voice\":null,\"cameras\":[],\"whiteboardWriteAccess\":true,\"lastBreakoutRoom\":null,\"userLockSettings\":{\"disablePublicChat\":false,\"__typename\":\"user_lockSettings\"},\"__typename\":\"user\"}, {\"isDialIn\":false,\"userId\":\"w_vkvorcyqkh9v\",\"meetingId\":\"98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348\",\"extId\":\"w_vkvorcyqkh9v\",\"name\":\"Test Moderator Firefox\",\"isModerator\":true,\"role\":\"MODERATOR\",\"color\":\"#6a1b9a\",\"avatar\":\"\",\"away\":false,\"raiseHand\":false,\"reactionEmoji\":null,\"presenter\":false,\"pinned\":false,\"locked\":false,\"authed\":true,\"mobile\":false,\"bot\":false,\"guest\":false,\"clientType\":\"HTML5\",\"disconnected\":false,\"loggedOut\":false,\"voice\":null,\"cameras\":[],\"whiteboardWriteAccess\":false,\"lastBreakoutRoom\":null,\"userLockSettings\":{\"disablePublicChat\":false,\"__typename\":\"user_lockSettings\"},\"__typename\":\"user\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.777Z",
+      "direction": "received",
+      "payload": "{\"id\":\"6003d806-ef2e-456d-b10c-d6fff5ba0bc1\",\"payload\":{\"data\":{\"userSetClientSettings\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:09.778Z",
+      "direction": "received",
+      "payload": "{\"id\":\"6003d806-ef2e-456d-b10c-d6fff5ba0bc1\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.113Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"aeac44b4-758b-4517-a2d2-e4b8b09c0d81\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.145Z",
+      "direction": "received",
+      "payload": "{\"id\":\"aeac44b4-758b-4517-a2d2-e4b8b09c0d81\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.147Z",
+      "direction": "received",
+      "payload": "{\"id\":\"aeac44b4-758b-4517-a2d2-e4b8b09c0d81\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.370Z",
+      "direction": "received",
+      "payload": "{\"id\":\"034498f2-d622-4dcd-a887-cc6e79943196\",\"payload\":{\"data\":{\"notification_stream\":[{\"__typename\":\"notification\",\"createdAt\":\"2026-08-03T11:28:09.360Z\",\"icon\":\"user\",\"isSingleUserNotification\":false,\"messageId\":\"app.notification.userLeavePushAlert\",\"messageValues\":{\"userName\":\"Test Moderator Chromium\"},\"notificationType\":\"info\"}]}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.443Z",
+      "direction": "received",
+      "payload": "{\"type\":\"ping\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.444Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"pong\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.447Z",
+      "direction": "received",
+      "payload": "{\"type\":\"ping\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.448Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"pong\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.464Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"8569e5e6-0bd2-4230-95bd-bf4cd868496d\",\"payload\":{\"data\":{\"user_current\" : [{\"authToken\":\"mirolvno96kh\",\"avatar\":\"\",\"webcamBackground\":\"\",\"away\":false,\"clientType\":\"HTML5\",\"color\":\"#6a1b9a\",\"ejectReason\":null,\"ejectReasonCode\":null,\"ejected\":null,\"reactionEmoji\":null,\"extId\":\"w_vkvorcyqkh9v\",\"guest\":false,\"guestStatus\":\"ALLOW\",\"whiteboardWriteAccess\":true,\"inactivityWarningDisplay\":false,\"inactivityWarningTimeoutSecs\":null,\"isDialIn\":false,\"isModerator\":true,\"logoutUrl\":\"https://cs.stage-beep.org\",\"currentlyInMeeting\":true,\"joinErrorCode\":null,\"joinErrorMessage\":null,\"joined\":true,\"locked\":false,\"loggedOut\":false,\"mobile\":false,\"name\":\"Test Moderator Firefox\",\"nameSortable\":\"test moderator firefox\",\"pinned\":false,\"presenter\":true,\"raiseHand\":false,\"registeredAt\":\"2026-08-03T11:28:00.703+00:00\",\"role\":\"MODERATOR\",\"speechLocale\":\"\",\"captionLocale\":\"\",\"userId\":\"w_vkvorcyqkh9v\",\"meeting\":{\"ended\":false,\"endedReasonCode\":null,\"endedByUserName\":null,\"logoutUrl\":\"https://cs.stage-beep.org\",\"__typename\":\"meeting\"},\"lastBreakoutRoom\":null,\"breakoutRoomsSummary\":{\"totalOfBreakoutRooms\":0,\"totalOfIsUserCurrentlyInRoom\":0,\"totalOfShowInvitation\":0,\"totalOfJoinURL\":0,\"__typename\":\"breakoutRoom_user_summary\"},\"cameras\":[],\"voice\":null,\"userLockSettings\":{\"disablePublicChat\":false,\"__typename\":\"user_lockSettings\"},\"sessionCurrent\":{\"enforceLayout\":null,\"__typename\":\"user_session_current\"},\"livekit\":null,\"__typename\":\"user_current\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.717Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"c8da1c85-8595-4642-839e-a5f099308fde\",\"payload\":{\"data\":{\"user\" : [{\"isDialIn\":false,\"userId\":\"w_vkvorcyqkh9v\",\"meetingId\":\"98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348\",\"extId\":\"w_vkvorcyqkh9v\",\"name\":\"Test Moderator Firefox\",\"isModerator\":true,\"role\":\"MODERATOR\",\"color\":\"#6a1b9a\",\"avatar\":\"\",\"away\":false,\"raiseHand\":false,\"reactionEmoji\":null,\"presenter\":true,\"pinned\":false,\"locked\":false,\"authed\":true,\"mobile\":false,\"bot\":false,\"guest\":false,\"clientType\":\"HTML5\",\"disconnected\":false,\"loggedOut\":false,\"voice\":null,\"cameras\":[],\"whiteboardWriteAccess\":true,\"lastBreakoutRoom\":null,\"userLockSettings\":{\"disablePublicChat\":false,\"__typename\":\"user_lockSettings\"},\"__typename\":\"user\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.838Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"223b5d3b-783e-4ada-a75d-8ddd1bdde803\",\"payload\":{\"data\":{\"pres_presentation\" : [{\"uploadTemporaryId\":\"\",\"uploadInProgress\":false,\"current\":true,\"downloadFileUri\":null,\"downloadable\":false,\"uploadErrorDetailsJson\":null,\"uploadErrorMsgKey\":null,\"filenameConverted\":\"default.pdf\",\"isDefault\":true,\"name\":\"default.pdf\",\"totalPages\":1,\"totalPagesUploaded\":1,\"presentationId\":\"d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351\",\"removable\":true,\"uploadCompletionNotified\":true,\"uploadCompleted\":true,\"exportToChatInProgress\":false,\"exportToChatStatus\":null,\"exportToChatCurrentPage\":null,\"exportToChatHasError\":null,\"__typename\":\"pres_presentation\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.864Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"0ed494e1-301a-40f0-a5ae-a714305a7d75\",\"payload\":{\"data\":{\"user_whiteboardWriteAccess\" : [{\"userId\":\"w_vkvorcyqkh9v\",\"name\":\"Test Moderator Firefox\",\"presenter\":true,\"isModerator\":true,\"__typename\":\"user_whiteboardWriteAccess\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.867Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"432d6b20-7870-49cd-85c2-62fc2fd5b5a8\",\"payload\":{\"data\":{\"user_aggregate\" : {\"aggregate\" : {\"count\" : 1, \"__typename\" : \"user_aggregate_fields\"}, \"__typename\" : \"user_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.888Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"b0a6b3b4-f111-4844-8375-cbe329123f4f\",\"payload\":{\"data\":{\"user_aggregate\" : {\"aggregate\" : {\"count\" : 0, \"__typename\" : \"user_aggregate_fields\"}, \"__typename\" : \"user_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.898Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"ca83bd74-8a7a-4c4e-ab13-6bc136ae1540\",\"payload\":{\"data\":{\"user_camera_aggregate\" : {\"aggregate\" : {\"count\" : 0, \"__typename\" : \"user_camera_aggregate_fields\"}, \"__typename\" : \"user_camera_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.901Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"de2379ae-1554-499b-8675-1c7d953fcca8\",\"payload\":{\"data\":{\"chat\" : [{\"chatId\":\"MAIN-PUBLIC-GROUP-CHAT\",\"participant\":null,\"totalMessages\":2,\"totalUnread\":null,\"public\":true,\"lastSeenAt\":null,\"__typename\":\"chat\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.902Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"5588df40-c8dd-4684-a280-20e706864c9f\",\"payload\":{\"data\":{\"user_guest_aggregate\" : {\"aggregate\" : {\"count\" : 0, \"__typename\" : \"user_guest_aggregate_fields\"}, \"__typename\" : \"user_guest_aggregate\"}}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.911Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"51906fdd-63d8-4710-9d81-1b99f7fb5b33\",\"type\":\"subscribe\",\"payload\":{\"variables\":{\"clientSessionUUID\":\"4202106e-fc67-44e3-8a23-6df27c3cc2b4\"},\"extensions\":{},\"operationName\":\"ConnStatusWithTraceLog\",\"query\":\"subscription ConnStatusWithTraceLog($clientSessionUUID: String!) {\\n  user_connectionStatus(where: {clientSessionUUID: {_eq: $clientSessionUUID}}) {\\n    meetingId\\n    userId\\n    sessionToken\\n    traceLog\\n    networkRttInMs\\n    applicationRttInMs\\n    statusUpdatedAt\\n    __typename\\n  }\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:12.914Z",
+      "direction": "received",
+      "payload": "{\"type\":\"next\",\"id\":\"51906fdd-63d8-4710-9d81-1b99f7fb5b33\",\"payload\":{\"data\":{\"user_connectionStatus\" : [{\"meetingId\":\"98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348\",\"userId\":\"w_vkvorcyqkh9v\",\"sessionToken\":\"y5go1ot6q0zzxwjd\",\"traceLog\":null,\"networkRttInMs\":null,\"applicationRttInMs\":null,\"statusUpdatedAt\":\"2026-08-03T11:28:04.279536+00:00\",\"__typename\":\"user_connectionStatus\"}]}}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:13.109Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"b6b09e19-8525-4a0b-a411-e7f2bd2739d6\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:13.142Z",
+      "direction": "received",
+      "payload": "{\"id\":\"b6b09e19-8525-4a0b-a411-e7f2bd2739d6\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:13.143Z",
+      "direction": "received",
+      "payload": "{\"id\":\"b6b09e19-8525-4a0b-a411-e7f2bd2739d6\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:14.122Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"c36c1aae-8b1a-488e-b95b-1a988d3a640b\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:14.144Z",
+      "direction": "received",
+      "payload": "{\"id\":\"c36c1aae-8b1a-488e-b95b-1a988d3a640b\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:14.147Z",
+      "direction": "received",
+      "payload": "{\"id\":\"c36c1aae-8b1a-488e-b95b-1a988d3a640b\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:15.110Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"982e993a-39a4-4021-a5d9-57d505415c6b\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:15.147Z",
+      "direction": "received",
+      "payload": "{\"id\":\"982e993a-39a4-4021-a5d9-57d505415c6b\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:15.148Z",
+      "direction": "received",
+      "payload": "{\"id\":\"982e993a-39a4-4021-a5d9-57d505415c6b\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:16.113Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"e95a9f32-834e-46c8-b565-3f91b9b2e4e2\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:16.142Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e95a9f32-834e-46c8-b565-3f91b9b2e4e2\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:16.145Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e95a9f32-834e-46c8-b565-3f91b9b2e4e2\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:17.110Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"eb36a85e-fe7a-4ff7-afd5-a642b77ba07f\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:17.147Z",
+      "direction": "received",
+      "payload": "{\"id\":\"eb36a85e-fe7a-4ff7-afd5-a642b77ba07f\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:17.150Z",
+      "direction": "received",
+      "payload": "{\"id\":\"eb36a85e-fe7a-4ff7-afd5-a642b77ba07f\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:18.142Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"c28504fd-51e4-4ca6-8fbd-c684796130a5\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:18.153Z",
+      "direction": "received",
+      "payload": "{\"id\":\"c28504fd-51e4-4ca6-8fbd-c684796130a5\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:18.161Z",
+      "direction": "received",
+      "payload": "{\"id\":\"c28504fd-51e4-4ca6-8fbd-c684796130a5\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:19.112Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"13003e0a-3b5d-48b5-b62b-e88eadf37dfd\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:19.141Z",
+      "direction": "received",
+      "payload": "{\"id\":\"13003e0a-3b5d-48b5-b62b-e88eadf37dfd\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:19.142Z",
+      "direction": "received",
+      "payload": "{\"id\":\"13003e0a-3b5d-48b5-b62b-e88eadf37dfd\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:20.115Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"3e9c85c0-a540-4296-916f-718add440921\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:20.141Z",
+      "direction": "received",
+      "payload": "{\"id\":\"3e9c85c0-a540-4296-916f-718add440921\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:20.144Z",
+      "direction": "received",
+      "payload": "{\"id\":\"3e9c85c0-a540-4296-916f-718add440921\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:21.115Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"b30bb8b0-fd96-4e8c-b3c3-a9e8667c4d5d\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:21.143Z",
+      "direction": "received",
+      "payload": "{\"id\":\"b30bb8b0-fd96-4e8c-b3c3-a9e8667c4d5d\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:21.147Z",
+      "direction": "received",
+      "payload": "{\"id\":\"b30bb8b0-fd96-4e8c-b3c3-a9e8667c4d5d\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:22.115Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"20e2edae-5c43-4cc8-8325-bc5587ae6fce\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:22.142Z",
+      "direction": "received",
+      "payload": "{\"id\":\"20e2edae-5c43-4cc8-8325-bc5587ae6fce\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:22.145Z",
+      "direction": "received",
+      "payload": "{\"id\":\"20e2edae-5c43-4cc8-8325-bc5587ae6fce\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:22.511Z",
+      "direction": "received",
+      "payload": "{\"type\":\"ping\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:22.512Z",
+      "direction": "sent",
+      "payload": "{\"type\":\"pong\",\"payload\":{\"message\":\"keepalive\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:23.116Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"e34c35fa-3efe-48c7-bf76-84d84b88957d\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:23.143Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e34c35fa-3efe-48c7-bf76-84d84b88957d\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:23.151Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e34c35fa-3efe-48c7-bf76-84d84b88957d\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:24.118Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"be2cddbc-d0e0-4b7b-b67b-058e2fd45c3e\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:24.154Z",
+      "direction": "received",
+      "payload": "{\"id\":\"be2cddbc-d0e0-4b7b-b67b-058e2fd45c3e\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:24.159Z",
+      "direction": "received",
+      "payload": "{\"id\":\"be2cddbc-d0e0-4b7b-b67b-058e2fd45c3e\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:25.116Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"13f363f7-6c10-48d7-97d3-501b5d751102\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:25.142Z",
+      "direction": "received",
+      "payload": "{\"id\":\"13f363f7-6c10-48d7-97d3-501b5d751102\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:25.143Z",
+      "direction": "received",
+      "payload": "{\"id\":\"13f363f7-6c10-48d7-97d3-501b5d751102\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:26.116Z",
+      "direction": "sent",
+      "payload": "{\"id\":\"e825fee3-31ca-42d5-b51e-891258c06709\",\"type\":\"subscribe\",\"payload\":{\"variables\":{},\"extensions\":{},\"operationName\":\"UpdateUserClientEchoTestRunningAt\",\"query\":\"mutation UpdateUserClientEchoTestRunningAt {\\n  userSetEchoTestRunning\\n}\"}}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:26.146Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e825fee3-31ca-42d5-b51e-891258c06709\",\"payload\":{\"data\":{\"userSetEchoTestRunning\":true}},\"type\":\"next\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    },
+    {
+      "timestamp": "2026-08-03T11:28:26.149Z",
+      "direction": "received",
+      "payload": "{\"id\":\"e825fee3-31ca-42d5-b51e-891258c06709\",\"type\":\"complete\"}",
+      "url": "wss://cs.stage-beep.org/graphql"
+    }
+  ],
+  "webrtcEvents": []
+}
