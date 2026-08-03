@@ -14,5 +14,8 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.0.8"
   }
 }
