@@ -1,0 +1,11 @@
+{
+  "returncode": "SUCCESS",
+  "messageKey": "successfullyJoined",
+  "message": "You have joined successfully.",
+  "meeting_id": "capture-fixture-meeting-id",
+  "user_id": "w_1jkljqx8r5ze",
+  "auth_token": "[REDACTED_AUTH_TOKEN]",
+  "session_token": "[REDACTED_SESSION_TOKEN]",
+  "guestStatus": "ALLOW",
+  "url": "https://bbb.example.com/html5client/?sessionToken=[REDACTED_SESSION_TOKEN]"
+}

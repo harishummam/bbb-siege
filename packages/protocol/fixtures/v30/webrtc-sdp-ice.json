@@ -1,0 +1,131 @@
+{
+  "chromium": [
+    {
+      "timestamp": "2026-08-03T11:27:45.704Z",
+      "event": "createPeerConnection"
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.708Z",
+      "event": "createPeerConnection"
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.710Z",
+      "event": "createOffer",
+      "data": {
+        "sdp": "v=0\r\no=- 2117095339638163485 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS e98d25d7-7b53-41d0-b05f-2f1e99ed865d\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:qsft\r\na=ice-pwd:O2QeONxD3dZt/bG1i2Grjeov\r\na=ice-options:trickle\r\na=fingerprint:sha-256 78:E8:00:8C:FC:21:C1:4F:75:71:DC:4D:33:A4:FF:5B:87:00:04:4E:50:70:50:2F:78:B0:05:AD:02:29:F2:5E\r\na=setup:actpass\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=sendonly\r\na=msid:e98d25d7-7b53-41d0-b05f-2f1e99ed865d 0c092a23-5d56-41d1-a207-3814fe89f14f\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:111 rrtr\r\na=rtcp-fb:63 rrtr\r\na=rtcp-fb:9 rrtr\r\na=rtcp-fb:0 rrtr\r\na=rtcp-fb:8 rrtr\r\na=rtcp-fb:13 rrtr\r\na=rtcp-fb:110 rrtr\r\na=rtcp-fb:126 rrtr\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2\r\na=fmtp:63 111/111\r\na=rtpmap:9 G722/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:126 telephone-event/8000\r\na=ssrc:1854422942 cname:7cX+RkqTCKVZgjyI\r\na=ssrc:1854422942 msid:e98d25d7-7b53-41d0-b05f-2f1e99ed865d 0c092a23-5d56-41d1-a207-3814fe89f14f\r\n",
+        "type": "offer"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.710Z",
+      "event": "setLocalDescription",
+      "data": {
+        "sdp": "v=0\r\no=- 2117095339638163485 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS e98d25d7-7b53-41d0-b05f-2f1e99ed865d\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:qsft\r\na=ice-pwd:O2QeONxD3dZt/bG1i2Grjeov\r\na=ice-options:trickle\r\na=fingerprint:sha-256 78:E8:00:8C:FC:21:C1:4F:75:71:DC:4D:33:A4:FF:5B:87:00:04:4E:50:70:50:2F:78:B0:05:AD:02:29:F2:5E\r\na=setup:actpass\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=sendonly\r\na=msid:e98d25d7-7b53-41d0-b05f-2f1e99ed865d 0c092a23-5d56-41d1-a207-3814fe89f14f\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:111 rrtr\r\na=rtcp-fb:63 rrtr\r\na=rtcp-fb:9 rrtr\r\na=rtcp-fb:0 rrtr\r\na=rtcp-fb:8 rrtr\r\na=rtcp-fb:13 rrtr\r\na=rtcp-fb:110 rrtr\r\na=rtcp-fb:126 rrtr\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2\r\na=fmtp:63 111/111\r\na=rtpmap:9 G722/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:126 telephone-event/8000\r\na=ssrc:1854422942 cname:7cX+RkqTCKVZgjyI\r\na=ssrc:1854422942 msid:e98d25d7-7b53-41d0-b05f-2f1e99ed865d 0c092a23-5d56-41d1-a207-3814fe89f14f\r\n",
+        "type": "offer"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.713Z",
+      "event": "setRemoteDescription",
+      "data": {
+        "sdp": "v=0\r\no=- 2117095339638163485 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS e98d25d7-7b53-41d0-b05f-2f1e99ed865d\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:qsft\r\na=ice-pwd:O2QeONxD3dZt/bG1i2Grjeov\r\na=ice-options:trickle\r\na=fingerprint:sha-256 78:E8:00:8C:FC:21:C1:4F:75:71:DC:4D:33:A4:FF:5B:87:00:04:4E:50:70:50:2F:78:B0:05:AD:02:29:F2:5E\r\na=setup:actpass\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=sendonly\r\na=msid:e98d25d7-7b53-41d0-b05f-2f1e99ed865d 0c092a23-5d56-41d1-a207-3814fe89f14f\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:111 rrtr\r\na=rtcp-fb:63 rrtr\r\na=rtcp-fb:9 rrtr\r\na=rtcp-fb:0 rrtr\r\na=rtcp-fb:8 rrtr\r\na=rtcp-fb:13 rrtr\r\na=rtcp-fb:110 rrtr\r\na=rtcp-fb:126 rrtr\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2\r\na=fmtp:63 111/111\r\na=rtpmap:9 G722/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:126 telephone-event/8000\r\na=ssrc:1854422942 cname:7cX+RkqTCKVZgjyI\r\na=ssrc:1854422942 msid:e98d25d7-7b53-41d0-b05f-2f1e99ed865d 0c092a23-5d56-41d1-a207-3814fe89f14f\r\n",
+        "type": "offer"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.716Z",
+      "event": "icecandidate",
+      "data": {
+        "candidate": "candidate:352708876 1 udp 2122260223 172.18.0.1 47685 typ host generation 0 ufrag qsft network-id 1",
+        "sdpMid": "0",
+        "sdpMLineIndex": 0,
+        "usernameFragment": "qsft"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.717Z",
+      "event": "icecandidate",
+      "data": {
+        "candidate": "candidate:1882463648 1 udp 2122194687 192.168.1.29 55496 typ host generation 0 ufrag qsft network-id 2 network-cost 10",
+        "sdpMid": "0",
+        "sdpMLineIndex": 0,
+        "usernameFragment": "qsft"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.718Z",
+      "event": "createAnswer",
+      "data": {
+        "sdp": "v=0\r\no=- 911759398779794046 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:2OES\r\na=ice-pwd:KQQGGmcs1R+JlHVftX83c5s9\r\na=ice-options:trickle\r\na=fingerprint:sha-256 F5:20:CE:77:74:8B:36:8A:8F:E8:E1:1C:00:BA:82:24:FB:87:E0:96:D8:4F:CA:23:42:5F:F4:3A:86:09:B9:AD\r\na=setup:active\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=recvonly\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:111 rrtr\r\na=rtcp-fb:63 rrtr\r\na=rtcp-fb:9 rrtr\r\na=rtcp-fb:0 rrtr\r\na=rtcp-fb:8 rrtr\r\na=rtcp-fb:13 rrtr\r\na=rtcp-fb:110 rrtr\r\na=rtcp-fb:126 rrtr\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2\r\na=fmtp:63 111/111\r\na=rtpmap:9 G722/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:126 telephone-event/8000\r\n",
+        "type": "answer"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.718Z",
+      "event": "setLocalDescription",
+      "data": {
+        "sdp": "v=0\r\no=- 911759398779794046 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:2OES\r\na=ice-pwd:KQQGGmcs1R+JlHVftX83c5s9\r\na=ice-options:trickle\r\na=fingerprint:sha-256 F5:20:CE:77:74:8B:36:8A:8F:E8:E1:1C:00:BA:82:24:FB:87:E0:96:D8:4F:CA:23:42:5F:F4:3A:86:09:B9:AD\r\na=setup:active\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=recvonly\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:111 rrtr\r\na=rtcp-fb:63 rrtr\r\na=rtcp-fb:9 rrtr\r\na=rtcp-fb:0 rrtr\r\na=rtcp-fb:8 rrtr\r\na=rtcp-fb:13 rrtr\r\na=rtcp-fb:110 rrtr\r\na=rtcp-fb:126 rrtr\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2\r\na=fmtp:63 111/111\r\na=rtpmap:9 G722/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:126 telephone-event/8000\r\n",
+        "type": "answer"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.719Z",
+      "event": "setRemoteDescription",
+      "data": {
+        "sdp": "v=0\r\no=- 911759398779794046 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111 63 9 0 8 13 110 126\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:2OES\r\na=ice-pwd:KQQGGmcs1R+JlHVftX83c5s9\r\na=ice-options:trickle\r\na=fingerprint:sha-256 F5:20:CE:77:74:8B:36:8A:8F:E8:E1:1C:00:BA:82:24:FB:87:E0:96:D8:4F:CA:23:42:5F:F4:3A:86:09:B9:AD\r\na=setup:active\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:ssrc-audio-level\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:4 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=recvonly\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:111 rrtr\r\na=rtcp-fb:63 rrtr\r\na=rtcp-fb:9 rrtr\r\na=rtcp-fb:0 rrtr\r\na=rtcp-fb:8 rrtr\r\na=rtcp-fb:13 rrtr\r\na=rtcp-fb:110 rrtr\r\na=rtcp-fb:126 rrtr\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=rtpmap:63 red/48000/2\r\na=fmtp:63 111/111\r\na=rtpmap:9 G722/8000\r\na=rtpmap:0 PCMU/8000\r\na=rtpmap:8 PCMA/8000\r\na=rtpmap:13 CN/8000\r\na=rtpmap:110 telephone-event/48000\r\na=rtpmap:126 telephone-event/8000\r\n",
+        "type": "answer"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.720Z",
+      "event": "iceconnectionstatechange",
+      "data": "checking"
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.724Z",
+      "event": "icecandidate",
+      "data": {
+        "candidate": "candidate:2129723959 1 udp 2122260223 172.18.0.1 34280 typ host generation 0 ufrag 2OES network-id 1",
+        "sdpMid": "0",
+        "sdpMLineIndex": 0,
+        "usernameFragment": "2OES"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.725Z",
+      "event": "icecandidate",
+      "data": {
+        "candidate": "candidate:465630875 1 udp 2122194687 192.168.1.29 50206 typ host generation 0 ufrag 2OES network-id 2 network-cost 10",
+        "sdpMid": "0",
+        "sdpMLineIndex": 0,
+        "usernameFragment": "2OES"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.725Z",
+      "event": "iceconnectionstatechange",
+      "data": "checking"
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.729Z",
+      "event": "iceconnectionstatechange",
+      "data": "connected"
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.730Z",
+      "event": "icecandidate",
+      "data": null
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.730Z",
+      "event": "iceconnectionstatechange",
+      "data": "connected"
+    },
+    {
+      "timestamp": "2026-08-03T11:27:45.731Z",
+      "event": "icecandidate",
+      "data": null
+    }
+  ],
+  "firefox": []
+}

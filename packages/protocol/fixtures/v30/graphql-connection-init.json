@@ -1,0 +1,11 @@
+{
+  "type": "connection_init",
+  "payload": {
+    "headers": {
+      "X-Session-Token": "i1j0cqzmtzkh2kto",
+      "X-ClientSessionUUID": "cb6559cc-d90b-459f-8642-c05f969a0443",
+      "X-ClientType": "HTML5",
+      "X-ClientIsMobile": "false"
+    }
+  }
+}

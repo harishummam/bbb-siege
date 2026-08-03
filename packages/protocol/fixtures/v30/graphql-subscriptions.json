@@ -1,0 +1,1875 @@
+{
+  "subscriptions": [
+    {
+      "timestamp": "2026-08-03T11:27:42.625Z",
+      "type": "subscribe",
+      "opName": "Patched_userCurrentSubscription",
+      "payload": {
+        "id": "b7809418-f629-42fa-8013-58777797d53a",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_userCurrentSubscription",
+          "query": "subscription Patched_userCurrentSubscription {\n  user_current {\n    authToken\n    avatar\n    webcamBackground\n    away\n    clientType\n    color\n    ejectReason\n    ejectReasonCode\n    ejected\n    reactionEmoji\n    extId\n    guest\n    guestStatus\n    whiteboardWriteAccess\n    inactivityWarningDisplay\n    inactivityWarningTimeoutSecs\n    isDialIn\n    isModerator\n    logoutUrl\n    currentlyInMeeting\n    joinErrorCode\n    joinErrorMessage\n    joined\n    locked\n    loggedOut\n    mobile\n    name\n    nameSortable\n    pinned\n    presenter\n    raiseHand\n    registeredAt\n    role\n    speechLocale\n    captionLocale\n    userId\n    meeting {\n      ended\n      endedReasonCode\n      endedByUserName\n      logoutUrl\n      __typename\n    }\n    lastBreakoutRoom {\n      currentlyInRoom\n      sequence\n      shortName\n      __typename\n    }\n    breakoutRoomsSummary {\n      totalOfBreakoutRooms\n      totalOfIsUserCurrentlyInRoom\n      totalOfShowInvitation\n      totalOfJoinURL\n      __typename\n    }\n    cameras {\n      streamId\n      __typename\n    }\n    voice {\n      joined\n      spoke\n      listenOnly\n      deafened\n      listenOnlyInputDevice\n      __typename\n    }\n    userLockSettings {\n      disablePublicChat\n      __typename\n    }\n    sessionCurrent {\n      enforceLayout\n      __typename\n    }\n    livekit {\n      livekitToken\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.696Z",
+      "type": "subscribe",
+      "opName": "UserJoin",
+      "payload": {
+        "id": "03c3df92-30b8-4ff8-9c8e-b730d3959d88",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "authToken": "[REDACTED_AUTH_TOKEN]",
+            "clientType": "HTML5",
+            "clientIsMobile": false
+          },
+          "extensions": {},
+          "operationName": "UserJoin",
+          "query": "mutation UserJoin($authToken: String!, $clientType: String!, $clientIsMobile: Boolean!) {\n  userJoinMeeting(\n    authToken: $authToken\n    clientType: $clientType\n    clientIsMobile: $clientIsMobile\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.899Z",
+      "type": "subscribe",
+      "opName": "Patched_MeetingSubscription",
+      "payload": {
+        "id": "e1a0fc08-4adc-42d8-b349-e4c279cd4b55",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_MeetingSubscription",
+          "query": "subscription Patched_MeetingSubscription {\n  meeting {\n    durationInSeconds\n    lockSettings {\n      disableCam\n      disableMic\n      disableNotes\n      disablePrivateChat\n      disablePublicChat\n      hasActiveLockSetting\n      hideUserList\n      hideViewersCursor\n      hideViewersAnnotation\n      webcamsOnlyForModerator\n      lockOnJoin\n      lockOnJoinConfigurable\n      __typename\n    }\n    learningDashboard {\n      learningDashboardAccessToken\n      __typename\n    }\n    screenshare {\n      contentType\n      hasAudio\n      screenshareConf\n      screenshareId\n      startedAt\n      stoppedAt\n      stream\n      vidHeight\n      vidWidth\n      voiceConf\n      __typename\n    }\n    usersPolicies {\n      guestPolicy\n      guestLobbyMessage\n      webcamsOnlyForModerator\n      __typename\n    }\n    layout {\n      cameraDockAspectRatio\n      cameraDockIsResizing\n      cameraDockPlacement\n      cameraWithFocus\n      currentLayoutType\n      presentationMinimized\n      propagateLayout\n      updatedAt\n      __typename\n    }\n    breakoutRoomsCommonProperties {\n      durationInSeconds\n      freeJoin\n      sendInvitationToModerators\n      startedAt\n      __typename\n    }\n    externalVideo {\n      externalVideoId\n      playerCurrentTime\n      playerPlaybackRate\n      playerPlaying\n      externalVideoUrl\n      startedSharingAt\n      stoppedSharingAt\n      updatedAt\n      __typename\n    }\n    componentsFlags {\n      hasBreakoutRoom\n      hasCameraAsContent\n      hasCaption\n      hasCurrentPresentation\n      hasExternalVideo\n      hasPoll\n      hasScreenshare\n      hasScreenshareAsContent\n      hasSharedNotes\n      hasTimer\n      isSharedNotesPinned\n      showRemainingTime\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.899Z",
+      "type": "subscribe",
+      "opName": "PluginConfigurationQuery",
+      "payload": {
+        "id": "8102ec42-c804-4ddb-946a-1a9186d886f0",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "PluginConfigurationQuery",
+          "query": "query PluginConfigurationQuery {\n  plugin {\n    name\n    javascriptEntrypointUrl\n    javascriptEntrypointIntegrity\n    localesBaseUrl\n    loadFailureReason\n    loadFailureSource\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.939Z",
+      "type": "subscribe",
+      "opName": "UserSetSpeechOptions",
+      "payload": {
+        "id": "1fde560e-8a4e-4fa3-b011-e9dfcceffaca",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "partialUtterances": true,
+            "minUtteranceLength": 1
+          },
+          "extensions": {},
+          "operationName": "UserSetSpeechOptions",
+          "query": "mutation UserSetSpeechOptions($partialUtterances: Boolean!, $minUtteranceLength: Float!) {\n  userSetSpeechOptions(\n    partialUtterances: $partialUtterances\n    minUtteranceLength: $minUtteranceLength\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.939Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "0b25be63-8822-4f3b-956b-8af2d24ddace",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.939Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "c37c7ce8-1526-4836-9965-259ddfa45a78",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.200Z",
+      "type": "subscribe",
+      "opName": "ChatSubscription",
+      "payload": {
+        "id": "b99904a9-c4ef-4b4a-8582-0e3396c752cc",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "ChatSubscription",
+          "query": "subscription ChatSubscription {\n  chat(order_by: [{chatId: asc}]) {\n    chatId\n    participant {\n      userId\n      name\n      nameSortable\n      role\n      color\n      loggedOut\n      avatar\n      currentlyInMeeting\n      isModerator\n      __typename\n    }\n    totalMessages\n    totalUnread\n    public\n    lastSeenAt\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.200Z",
+      "type": "subscribe",
+      "opName": "Patched_FetchPluginDataChannelPublicEntry",
+      "payload": {
+        "id": "9c7448dd-4b39-4977-ae9d-ace007e40421",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_FetchPluginDataChannelPublicEntry",
+          "query": "subscription Patched_FetchPluginDataChannelPublicEntry {\n  pluginDataChannelEntry_public(order_by: {createdAt: desc}) {\n    createdAt\n    updatedAt\n    channelName\n    subChannelName\n    entryId\n    payloadJson\n    createdBy\n    pluginName\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.200Z",
+      "type": "subscribe",
+      "opName": "Patched_FetchPluginDataChannelEntry",
+      "payload": {
+        "id": "8adf4bf4-3425-43ee-b987-270d4a37a1fe",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_FetchPluginDataChannelEntry",
+          "query": "subscription Patched_FetchPluginDataChannelEntry {\n  pluginDataChannelEntry_private(order_by: {createdAt: desc}) {\n    createdAt\n    updatedAt\n    channelName\n    subChannelName\n    entryId\n    payloadJson\n    createdBy\n    pluginName\n    toRoles\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.200Z",
+      "type": "subscribe",
+      "opName": "getNotificationStream",
+      "payload": {
+        "id": "2fde0cd3-fc72-4319-955d-fcc214ba4b94",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "initialCursor": "2000-01-01"
+          },
+          "extensions": {},
+          "operationName": "getNotificationStream",
+          "query": "subscription getNotificationStream($initialCursor: timestamptz!) {\n  notification_stream(\n    batch_size: 10\n    cursor: {initial_value: {createdAt: $initialCursor}}\n  ) {\n    notificationType\n    icon\n    messageId\n    messageValues\n    isSingleUserNotification\n    createdAt\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "d34dad5c-79ad-4782-8a21-45731be03812",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "Patched_VideoStreams",
+      "payload": {
+        "id": "ea730ea7-f8da-49b7-9dcc-ed43d55d59b6",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_VideoStreams",
+          "query": "subscription Patched_VideoStreams {\n  user_camera {\n    streamId\n    user {\n      name\n      userId\n      nameSortable\n      pinned\n      away\n      disconnected\n      role\n      avatar\n      color\n      presenter\n      clientType\n      raiseHand\n      isModerator\n      reactionEmoji\n      __typename\n    }\n    voice {\n      floor\n      lastFloorTime\n      joined\n      listenOnly\n      userId\n      deafened\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "UsersCount",
+      "payload": {
+        "id": "79e79829-8c33-41ab-9fb9-3bc9f26818b1",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UsersCount",
+          "query": "subscription UsersCount {\n  user_aggregate {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "CurrentPresentationPagesSubscription",
+      "payload": {
+        "id": "9018973c-91d4-4d61-a6ce-1906c1eda106",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "CurrentPresentationPagesSubscription",
+          "query": "subscription CurrentPresentationPagesSubscription {\n  pres_page_curr {\n    height\n    isCurrentPage\n    num\n    pageId\n    scaledHeight\n    scaledViewBoxHeight\n    scaledViewBoxWidth\n    scaledWidth\n    svgUrl: urlsJson(path: \"$.svg\")\n    width\n    xOffset\n    yOffset\n    presentationId\n    content\n    downloadFileUri\n    totalPages\n    downloadable\n    presentationName\n    isDefaultPresentation\n    infiniteWhiteboard\n    nextPagesSvg\n    fitToWidth\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "GetPadLastRev",
+      "payload": {
+        "id": "f5d138ee-d70d-48ed-b712-9b9c088cc2e4",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "externalId": "notes"
+          },
+          "extensions": {},
+          "operationName": "GetPadLastRev",
+          "query": "subscription GetPadLastRev($externalId: String!) {\n  sharedNotes(where: {sharedNotesExtId: {_eq: $externalId}}) {\n    lastRev\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "PresentationsSubscription",
+      "payload": {
+        "id": "21394c3d-885c-4f3a-9388-73c69cc6b713",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "PresentationsSubscription",
+          "query": "subscription PresentationsSubscription {\n  pres_presentation {\n    uploadTemporaryId\n    uploadInProgress\n    current\n    downloadFileUri\n    downloadable\n    uploadErrorDetailsJson\n    uploadErrorMsgKey\n    filenameConverted\n    isDefault\n    name\n    totalPages\n    totalPagesUploaded\n    presentationId\n    removable\n    uploadCompletionNotified\n    uploadCompleted\n    exportToChatInProgress\n    exportToChatStatus\n    exportToChatCurrentPage\n    exportToChatHasError\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "UserVoiceActivity",
+      "payload": {
+        "id": "1d62445b-7047-4129-9e3e-cd564b2b8811",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UserVoiceActivity",
+          "query": "subscription UserVoiceActivity {\n  user_voice_activity_stream(\n    cursor: {initial_value: {voiceActivityAt: \"2020-01-01\"}}\n    batch_size: 10\n  ) {\n    muted\n    startTime\n    endTime\n    talking\n    userId\n    user {\n      color\n      name\n      speechLocale\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "RaisedHandUsers",
+      "payload": {
+        "id": "6e3647be-8337-4433-8155-e8c3c823eea2",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "RaisedHandUsers",
+          "query": "subscription RaisedHandUsers {\n  user(\n    where: {raiseHand: {_eq: true}}\n    order_by: [{raiseHandTime: asc_nulls_last}]\n  ) {\n    userId\n    name\n    color\n    presenter\n    isModerator\n    raiseHand\n    raiseHandTime\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "ViewerVideoStreams",
+      "payload": {
+        "id": "e20111bb-6c75-41c4-ad3d-b6fb5c15d47b",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "ViewerVideoStreams",
+          "query": "subscription ViewerVideoStreams {\n  user_camera_aggregate(\n    where: {user: {role: {_eq: \"VIEWER\"}, presenter: {_eq: false}}}\n  ) {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.201Z",
+      "type": "subscribe",
+      "opName": "getEmojisToRain",
+      "payload": {
+        "id": "3d3ffcd0-ea7d-41de-9bf7-1d3338fa0308",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "initialCursor": "Mon, 03 Aug 2026 11:27:43 GMT"
+          },
+          "extensions": {},
+          "operationName": "getEmojisToRain",
+          "query": "subscription getEmojisToRain($initialCursor: timestamptz) {\n  user_reaction_stream(\n    batch_size: 10\n    cursor: {initial_value: {createdAt: $initialCursor}}\n  ) {\n    createdAt\n    reactionEmoji\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.342Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "cd926798-07c1-436e-bd3c-dcf0a79f26f5",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "dfe82184-7ff8-4191-830e-2e6d35cff264",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "31a74923-1314-4e6d-8890-1e7caaae75d7",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "SetLayoutProps",
+      "payload": {
+        "id": "bf8d1dae-5113-4977-9e87-c9dfab1f7ec0",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "layout": "custom",
+            "syncWithPresenterLayout": true,
+            "presentationIsOpen": true,
+            "isResizing": false,
+            "cameraPosition": "contentRight",
+            "focusedCamera": "none",
+            "presentationVideoRate": 0
+          },
+          "extensions": {},
+          "operationName": "SetLayoutProps",
+          "query": "mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\n  meetingLayoutSetProps(\n    layout: $layout\n    syncWithPresenterLayout: $syncWithPresenterLayout\n    presentationIsOpen: $presentationIsOpen\n    isResizing: $isResizing\n    cameraPosition: $cameraPosition\n    focusedCamera: $focusedCamera\n    presentationVideoRate: $presentationVideoRate\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "getMeetingRecordingData",
+      "payload": {
+        "id": "5aa21415-3155-4220-a733-2a7604b8039a",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "getMeetingRecordingData",
+          "query": "subscription getMeetingRecordingData {\n  meeting_recording {\n    isRecording\n    startedAt\n    startedBy\n    previousRecordedTimeInSeconds\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "Patched_Timer",
+      "payload": {
+        "id": "c68212d5-15e6-4b10-983f-f62977974f86",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "Patched_Timer",
+          "query": "subscription Patched_Timer {\n  timer {\n    accumulated\n    active\n    songTrack\n    time\n    stopwatch\n    running\n    startedOn\n    startedAt\n    elapsed\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "whiteboardCursorAccessSubscription",
+      "payload": {
+        "id": "0df28408-489e-4623-baf5-32a2efd1586c",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "whiteboardCursorAccessSubscription",
+          "query": "subscription whiteboardCursorAccessSubscription {\n  user_whiteboardCursorAccess(order_by: {userId: asc}) {\n    userId\n    name\n    presenter\n    isModerator\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "getCursorCoordinatesStream",
+      "payload": {
+        "id": "d0b4dd80-339c-4062-8046-5494829f4261",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "getCursorCoordinatesStream",
+          "query": "subscription getCursorCoordinatesStream {\n  pres_page_cursor_stream(\n    cursor: {initial_value: {lastUpdatedAt: \"2020-01-01\"}}\n    where: {isCurrentPage: {_eq: true}}\n    batch_size: 100\n  ) {\n    xPercent\n    yPercent\n    userId\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.715Z",
+      "type": "subscribe",
+      "opName": "activeCaptions",
+      "payload": {
+        "id": "02ccc6cf-3b95-4673-8a96-688d50fb4b30",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "activeCaptions",
+          "query": "subscription activeCaptions {\n  caption_activeLocales {\n    locale\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.966Z",
+      "type": "subscribe",
+      "opName": "CurrentPageAnnotationsQuery",
+      "payload": {
+        "id": "c603c6cc-19ab-41e0-9eb0-b06386cd93d5",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "pageId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1"
+          },
+          "extensions": {},
+          "operationName": "CurrentPageAnnotationsQuery",
+          "query": "query CurrentPageAnnotationsQuery($pageId: String!) {\n  pres_annotation_curr(\n    where: {pageId: {_eq: $pageId}}\n    order_by: {lastUpdatedAt: desc}\n  ) {\n    annotationId\n    annotationInfo\n    lastUpdatedAt\n    pageId\n    presentationId\n    userId\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.966Z",
+      "type": "subscribe",
+      "opName": "whiteboardWriteAccessSubscription",
+      "payload": {
+        "id": "4240d96e-1032-4c18-8a0d-230b825a0624",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "whiteboardWriteAccessSubscription",
+          "query": "subscription whiteboardWriteAccessSubscription {\n  user_whiteboardWriteAccess(order_by: {userId: asc}) {\n    userId\n    name\n    presenter\n    isModerator\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.022Z",
+      "type": "subscribe",
+      "opName": "PresentationSetUploadCompletionNotified",
+      "payload": {
+        "id": "db8d7b22-40c0-4ca6-83d8-4314a4508659",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "presentationId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351"
+          },
+          "extensions": {},
+          "operationName": "PresentationSetUploadCompletionNotified",
+          "query": "mutation PresentationSetUploadCompletionNotified($presentationId: String!) {\n  presentationSetUploadCompletionNotified(presentationId: $presentationId)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.317Z",
+      "type": "subscribe",
+      "opName": "ConnStatusWithTraceLog",
+      "payload": {
+        "id": "05e38792-cd78-4b0c-ae1f-86f76ad48e25",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "clientSessionUUID": "cb6559cc-d90b-459f-8642-c05f969a0443"
+          },
+          "extensions": {},
+          "operationName": "ConnStatusWithTraceLog",
+          "query": "subscription ConnStatusWithTraceLog($clientSessionUUID: String!) {\n  user_connectionStatus(where: {clientSessionUUID: {_eq: $clientSessionUUID}}) {\n    meetingId\n    userId\n    sessionToken\n    traceLog\n    networkRttInMs\n    applicationRttInMs\n    statusUpdatedAt\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.317Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "d9614551-0a93-4a9a-a83a-792e05742989",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.317Z",
+      "type": "subscribe",
+      "opName": "SetLayoutProps",
+      "payload": {
+        "id": "87bb7811-b4d3-4b3c-a087-7c7a25d25c1e",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "layout": "custom",
+            "syncWithPresenterLayout": true,
+            "presentationIsOpen": false,
+            "isResizing": false,
+            "cameraPosition": "contentRight",
+            "focusedCamera": "none",
+            "presentationVideoRate": 0
+          },
+          "extensions": {},
+          "operationName": "SetLayoutProps",
+          "query": "mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\n  meetingLayoutSetProps(\n    layout: $layout\n    syncWithPresenterLayout: $syncWithPresenterLayout\n    presentationIsOpen: $presentationIsOpen\n    isResizing: $isResizing\n    cameraPosition: $cameraPosition\n    focusedCamera: $focusedCamera\n    presentationVideoRate: $presentationVideoRate\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.363Z",
+      "type": "subscribe",
+      "opName": "annotationHistoryStream",
+      "payload": {
+        "id": "25cc51ca-bba5-4cbe-aff8-6a69409c2343",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "pageId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1",
+            "updatedAt": "2026-08-03T11:27:34.348Z"
+          },
+          "extensions": {},
+          "operationName": "annotationHistoryStream",
+          "query": "subscription annotationHistoryStream($updatedAt: timestamptz, $pageId: String!) {\n  pres_annotation_history_curr_stream(\n    batch_size: 1000\n    where: {pageId: {_eq: $pageId}}\n    cursor: {initial_value: {updatedAt: $updatedAt}, ordering: ASC}\n  ) {\n    annotationId\n    annotationInfo\n    pageId\n    presentationId\n    updatedAt\n    userId\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.729Z",
+      "type": "subscribe",
+      "opName": "PresentationSetUploadCompletionNotified",
+      "payload": {
+        "id": "0b2a90e1-729d-4355-8544-1da276612ef9",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "presentationId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351"
+          },
+          "extensions": {},
+          "operationName": "PresentationSetUploadCompletionNotified",
+          "query": "mutation PresentationSetUploadCompletionNotified($presentationId: String!) {\n  presentationSetUploadCompletionNotified(presentationId: $presentationId)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.729Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "69fd37cc-fcde-404e-a42e-0fd14e9c8318",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en-US",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.729Z",
+      "type": "subscribe",
+      "opName": "SetLayoutProps",
+      "payload": {
+        "id": "af55e19a-e846-4e4e-9f94-d9ae47b108b5",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "layout": "custom",
+            "syncWithPresenterLayout": true,
+            "presentationIsOpen": false,
+            "isResizing": false,
+            "cameraPosition": "contentRight",
+            "focusedCamera": "none",
+            "presentationVideoRate": 0
+          },
+          "extensions": {},
+          "operationName": "SetLayoutProps",
+          "query": "mutation SetLayoutProps($layout: String!, $syncWithPresenterLayout: Boolean!, $presentationIsOpen: Boolean!, $isResizing: Boolean!, $cameraPosition: String!, $focusedCamera: String!, $presentationVideoRate: Float!) {\n  meetingLayoutSetProps(\n    layout: $layout\n    syncWithPresenterLayout: $syncWithPresenterLayout\n    presentationIsOpen: $presentationIsOpen\n    isResizing: $isResizing\n    cameraPosition: $cameraPosition\n    focusedCamera: $focusedCamera\n    presentationVideoRate: $presentationVideoRate\n  )\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.729Z",
+      "type": "subscribe",
+      "opName": "UsersWithAudioCount",
+      "payload": {
+        "id": "918e2958-1846-4349-99c4-dae3309521f3",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UsersWithAudioCount",
+          "query": "subscription UsersWithAudioCount {\n  user_aggregate(where: {voice: {joined: {_eq: true}}}) {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.928Z",
+      "type": "subscribe",
+      "opName": "getGuestsCount",
+      "payload": {
+        "id": "f6580f81-a9cc-4a17-a335-1e382f8d631e",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "getGuestsCount",
+          "query": "subscription getGuestsCount {\n  user_guest_aggregate(where: {isWaiting: {_eq: true}}) {\n    aggregate {\n      count\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.928Z",
+      "type": "subscribe",
+      "opName": "Patched_UserListSubscription",
+      "payload": {
+        "id": "47eb2224-a931-4acb-8044-ad1f034eb5ba",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "offset": 0,
+            "limit": 50
+          },
+          "extensions": {},
+          "operationName": "Patched_UserListSubscription",
+          "query": "subscription Patched_UserListSubscription($offset: Int!, $limit: Int!) {\n  user(\n    limit: $limit\n    offset: $offset\n    order_by: [{presenter: desc}, {role: asc}, {raiseHandTime: asc_nulls_last}, {isDialIn: desc}, {whiteboardWriteAccess: desc}, {nameSortable: asc}, {registeredAt: asc}, {userId: asc}]\n  ) {\n    isDialIn\n    userId\n    meetingId\n    extId\n    name\n    isModerator\n    role\n    color\n    avatar\n    away\n    raiseHand\n    reactionEmoji\n    avatar\n    presenter\n    pinned\n    locked\n    authed\n    mobile\n    bot\n    guest\n    clientType\n    disconnected\n    loggedOut\n    voice {\n      joined\n      deafened\n      listenOnly\n      voiceUserId\n      listenOnlyInputDevice\n      __typename\n    }\n    cameras {\n      streamId\n      __typename\n    }\n    whiteboardWriteAccess\n    lastBreakoutRoom {\n      isDefaultName\n      sequence\n      shortName\n      currentlyInRoom\n      __typename\n    }\n    userLockSettings {\n      disablePublicChat\n      __typename\n    }\n    __typename\n  }\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.943Z",
+      "type": "subscribe",
+      "opName": "UserChangedLocalSettings",
+      "payload": {
+        "id": "44045a10-e003-4d72-858f-25514c5e1e90",
+        "type": "subscribe",
+        "payload": {
+          "variables": {
+            "settings": {
+              "application": {
+                "wakeLock": true,
+                "darkTheme": false,
+                "animations": true,
+                "pushLayout": true,
+                "chatPushAlerts": false,
+                "fallbackLocale": "en",
+                "overrideLocale": null,
+                "selectedLayout": "custom",
+                "chatAudioAlerts": false,
+                "directLeaveButton": true,
+                "paginationEnabled": true,
+                "pushToTalkEnabled": false,
+                "userJoinPushAlerts": false,
+                "raiseHandPushAlerts": true,
+                "userJoinAudioAlerts": false,
+                "userLeavePushAlerts": false,
+                "raiseHandAudioAlerts": true,
+                "userLeaveAudioAlerts": false,
+                "autoCloseReactionsBar": true,
+                "muteUnmuteAudioAlerts": true,
+                "guestWaitingPushAlerts": true,
+                "guestWaitingAudioAlerts": true,
+                "whiteboardToolbarAutoHide": false,
+                "webcamBorderHighlightColor": [],
+                "locale": "en",
+                "isRTL": false
+              },
+              "audio": {
+                "inputDeviceId": "undefined",
+                "outputDeviceId": "undefined"
+              },
+              "dataSaving": {
+                "viewScreenshare": true,
+                "viewParticipantsWebcams": true
+              },
+              "transcription": {
+                "partialUtterances": true,
+                "minUtteranceLength": 1
+              }
+            }
+          },
+          "extensions": {},
+          "operationName": "UserChangedLocalSettings",
+          "query": "mutation UserChangedLocalSettings($settings: json!) {\n  userSetClientSettings(userClientSettingsJson: $settings)\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:46.639Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "2c756352-2ccb-4c1c-80b7-08a32bfb9626",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:47.639Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "4f68b563-ceeb-404f-bbe2-e41a71607e76",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:48.639Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "c77874d8-dda4-404b-a91d-6bfdd1898b73",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:49.639Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "540a9b3f-d5af-412a-a757-67bd847817ba",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:50.639Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "b027fb9c-1ff2-48f7-810c-c403b3781ab0",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:51.640Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "87166ccc-3bea-4e77-83e0-615391a53af5",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:52.641Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "4db63752-aee0-4182-b2b2-83225c4f196c",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:53.640Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "00685c91-be79-488c-ac49-fd0ce1993c0a",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:54.640Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "d8f78a57-e364-4457-96ae-68b954d09d88",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:55.640Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "9c455dbf-b52a-4c27-8d38-2ec87f59b4fa",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:56.640Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "65b820d8-3a49-4b05-82f8-407faae4bd8e",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:57.641Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "72495a01-8a94-4520-8e38-219364d7f95f",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:58.640Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "0287543f-f15c-4ef5-8548-03cf2fbf4b23",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:59.640Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "22a1e7c6-cdfa-4e60-a823-d7483b92af8a",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:28:00.639Z",
+      "type": "subscribe",
+      "opName": "UpdateUserClientEchoTestRunningAt",
+      "payload": {
+        "id": "ef702fd5-8d15-42fb-a77b-7a4b64396fe8",
+        "type": "subscribe",
+        "payload": {
+          "variables": {},
+          "extensions": {},
+          "operationName": "UpdateUserClientEchoTestRunningAt",
+          "query": "mutation UpdateUserClientEchoTestRunningAt {\n  userSetEchoTestRunning\n}"
+        }
+      }
+    }
+  ],
+  "dataResponses": [
+    {
+      "timestamp": "2026-08-03T11:27:42.683Z",
+      "type": "data_response",
+      "opName": "b7809418-f629-42fa-8013-58777797d53a",
+      "payload": {
+        "type": "next",
+        "id": "b7809418-f629-42fa-8013-58777797d53a",
+        "payload": {
+          "data": {
+            "user_current": [
+              {
+                "authToken": "[REDACTED_AUTH_TOKEN]",
+                "avatar": "",
+                "webcamBackground": "",
+                "away": false,
+                "clientType": null,
+                "color": "#7b1fa2",
+                "ejectReason": null,
+                "ejectReasonCode": null,
+                "ejected": null,
+                "reactionEmoji": null,
+                "extId": "w_4qwgn9h95gir",
+                "guest": false,
+                "guestStatus": "ALLOW",
+                "whiteboardWriteAccess": false,
+                "inactivityWarningDisplay": false,
+                "inactivityWarningTimeoutSecs": null,
+                "isDialIn": null,
+                "isModerator": true,
+                "logoutUrl": "https://bbb.example.com",
+                "currentlyInMeeting": false,
+                "joinErrorCode": null,
+                "joinErrorMessage": null,
+                "joined": false,
+                "locked": false,
+                "loggedOut": false,
+                "mobile": null,
+                "name": "Test Moderator Chromium",
+                "nameSortable": "test moderator chromium",
+                "pinned": null,
+                "presenter": null,
+                "raiseHand": false,
+                "registeredAt": "2026-08-03T11:27:35.142+00:00",
+                "role": "MODERATOR",
+                "speechLocale": null,
+                "captionLocale": null,
+                "userId": "w_4qwgn9h95gir",
+                "meeting": {
+                  "ended": false,
+                  "endedReasonCode": null,
+                  "endedByUserName": null,
+                  "logoutUrl": "https://bbb.example.com",
+                  "__typename": "meeting"
+                },
+                "lastBreakoutRoom": null,
+                "breakoutRoomsSummary": {
+                  "totalOfBreakoutRooms": 0,
+                  "totalOfIsUserCurrentlyInRoom": 0,
+                  "totalOfShowInvitation": 0,
+                  "totalOfJoinURL": 0,
+                  "__typename": "breakoutRoom_user_summary"
+                },
+                "cameras": [],
+                "voice": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "sessionCurrent": {
+                  "enforceLayout": null,
+                  "__typename": "user_session_current"
+                },
+                "livekit": null,
+                "__typename": "user_current"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.741Z",
+      "type": "data_response",
+      "opName": "03c3df92-30b8-4ff8-9c8e-b730d3959d88",
+      "payload": {
+        "id": "03c3df92-30b8-4ff8-9c8e-b730d3959d88",
+        "payload": {
+          "data": {
+            "userJoinMeeting": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:42.883Z",
+      "type": "data_response",
+      "opName": "b7809418-f629-42fa-8013-58777797d53a",
+      "payload": {
+        "type": "next",
+        "id": "b7809418-f629-42fa-8013-58777797d53a",
+        "payload": {
+          "data": {
+            "user_current": [
+              {
+                "authToken": "[REDACTED_AUTH_TOKEN]",
+                "avatar": "",
+                "webcamBackground": "",
+                "away": false,
+                "clientType": "HTML5",
+                "color": "#7b1fa2",
+                "ejectReason": null,
+                "ejectReasonCode": null,
+                "ejected": null,
+                "reactionEmoji": null,
+                "extId": "w_4qwgn9h95gir",
+                "guest": false,
+                "guestStatus": "ALLOW",
+                "whiteboardWriteAccess": true,
+                "inactivityWarningDisplay": false,
+                "inactivityWarningTimeoutSecs": null,
+                "isDialIn": false,
+                "isModerator": true,
+                "logoutUrl": "https://bbb.example.com",
+                "currentlyInMeeting": true,
+                "joinErrorCode": null,
+                "joinErrorMessage": null,
+                "joined": true,
+                "locked": false,
+                "loggedOut": false,
+                "mobile": false,
+                "name": "Test Moderator Chromium",
+                "nameSortable": "test moderator chromium",
+                "pinned": false,
+                "presenter": true,
+                "raiseHand": false,
+                "registeredAt": "2026-08-03T11:27:35.142+00:00",
+                "role": "MODERATOR",
+                "speechLocale": "",
+                "captionLocale": "",
+                "userId": "w_4qwgn9h95gir",
+                "meeting": {
+                  "ended": false,
+                  "endedReasonCode": null,
+                  "endedByUserName": null,
+                  "logoutUrl": "https://bbb.example.com",
+                  "__typename": "meeting"
+                },
+                "lastBreakoutRoom": null,
+                "breakoutRoomsSummary": {
+                  "totalOfBreakoutRooms": 0,
+                  "totalOfIsUserCurrentlyInRoom": 0,
+                  "totalOfShowInvitation": 0,
+                  "totalOfJoinURL": 0,
+                  "__typename": "breakoutRoom_user_summary"
+                },
+                "cameras": [],
+                "voice": null,
+                "userLockSettings": {
+                  "disablePublicChat": false,
+                  "__typename": "user_lockSettings"
+                },
+                "sessionCurrent": {
+                  "enforceLayout": null,
+                  "__typename": "user_session_current"
+                },
+                "livekit": null,
+                "__typename": "user_current"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.202Z",
+      "type": "data_response",
+      "opName": "8102ec42-c804-4ddb-946a-1a9186d886f0",
+      "payload": {
+        "type": "next",
+        "id": "8102ec42-c804-4ddb-946a-1a9186d886f0",
+        "payload": {
+          "data": {
+            "plugin": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.346Z",
+      "type": "data_response",
+      "opName": "e1a0fc08-4adc-42d8-b349-e4c279cd4b55",
+      "payload": {
+        "type": "next",
+        "id": "e1a0fc08-4adc-42d8-b349-e4c279cd4b55",
+        "payload": {
+          "data": {
+            "meeting": [
+              {
+                "durationInSeconds": 0,
+                "lockSettings": {
+                  "disableCam": false,
+                  "disableMic": false,
+                  "disableNotes": false,
+                  "disablePrivateChat": false,
+                  "disablePublicChat": false,
+                  "hasActiveLockSetting": false,
+                  "hideUserList": false,
+                  "hideViewersCursor": false,
+                  "hideViewersAnnotation": false,
+                  "webcamsOnlyForModerator": false,
+                  "lockOnJoin": true,
+                  "lockOnJoinConfigurable": false,
+                  "__typename": "meeting_lockSettings"
+                },
+                "learningDashboard": {
+                  "learningDashboardAccessToken": "fhly8kbodrfd",
+                  "__typename": "meeting_learningDashboard"
+                },
+                "screenshare": null,
+                "usersPolicies": {
+                  "guestPolicy": "ALWAYS_ACCEPT",
+                  "guestLobbyMessage": null,
+                  "webcamsOnlyForModerator": false,
+                  "__typename": "meeting_usersPolicies"
+                },
+                "layout": {
+                  "cameraDockAspectRatio": 0,
+                  "cameraDockIsResizing": false,
+                  "cameraDockPlacement": "",
+                  "cameraWithFocus": "none",
+                  "currentLayoutType": "CUSTOM_LAYOUT",
+                  "presentationMinimized": false,
+                  "propagateLayout": false,
+                  "updatedAt": "2026-08-03T11:27:34.356+00:00",
+                  "__typename": "layout"
+                },
+                "breakoutRoomsCommonProperties": null,
+                "externalVideo": null,
+                "componentsFlags": {
+                  "hasBreakoutRoom": false,
+                  "hasCameraAsContent": false,
+                  "hasCaption": false,
+                  "hasCurrentPresentation": true,
+                  "hasExternalVideo": false,
+                  "hasPoll": false,
+                  "hasScreenshare": false,
+                  "hasScreenshareAsContent": false,
+                  "hasSharedNotes": true,
+                  "hasTimer": false,
+                  "isSharedNotesPinned": false,
+                  "showRemainingTime": false,
+                  "__typename": "meeting_componentFlags"
+                },
+                "__typename": "meeting"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.347Z",
+      "type": "data_response",
+      "opName": "1fde560e-8a4e-4fa3-b011-e9dfcceffaca",
+      "payload": {
+        "id": "1fde560e-8a4e-4fa3-b011-e9dfcceffaca",
+        "payload": {
+          "data": {
+            "userSetSpeechOptions": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.348Z",
+      "type": "data_response",
+      "opName": "0b25be63-8822-4f3b-956b-8af2d24ddace",
+      "payload": {
+        "id": "0b25be63-8822-4f3b-956b-8af2d24ddace",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.348Z",
+      "type": "data_response",
+      "opName": "c37c7ce8-1526-4836-9965-259ddfa45a78",
+      "payload": {
+        "id": "c37c7ce8-1526-4836-9965-259ddfa45a78",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.769Z",
+      "type": "data_response",
+      "opName": "d34dad5c-79ad-4782-8a21-45731be03812",
+      "payload": {
+        "id": "d34dad5c-79ad-4782-8a21-45731be03812",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.770Z",
+      "type": "data_response",
+      "opName": "b99904a9-c4ef-4b4a-8582-0e3396c752cc",
+      "payload": {
+        "type": "next",
+        "id": "b99904a9-c4ef-4b4a-8582-0e3396c752cc",
+        "payload": {
+          "data": {
+            "chat": [
+              {
+                "chatId": "MAIN-PUBLIC-GROUP-CHAT",
+                "participant": null,
+                "totalMessages": 1,
+                "totalUnread": null,
+                "public": true,
+                "lastSeenAt": null,
+                "__typename": "chat"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.770Z",
+      "type": "data_response",
+      "opName": "9c7448dd-4b39-4977-ae9d-ace007e40421",
+      "payload": {
+        "type": "next",
+        "id": "9c7448dd-4b39-4977-ae9d-ace007e40421",
+        "payload": {
+          "data": {
+            "pluginDataChannelEntry_public": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.770Z",
+      "type": "data_response",
+      "opName": "8adf4bf4-3425-43ee-b987-270d4a37a1fe",
+      "payload": {
+        "type": "next",
+        "id": "8adf4bf4-3425-43ee-b987-270d4a37a1fe",
+        "payload": {
+          "data": {
+            "pluginDataChannelEntry_private": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.771Z",
+      "type": "data_response",
+      "opName": "ea730ea7-f8da-49b7-9dcc-ed43d55d59b6",
+      "payload": {
+        "type": "next",
+        "id": "ea730ea7-f8da-49b7-9dcc-ed43d55d59b6",
+        "payload": {
+          "data": {
+            "user_camera": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.781Z",
+      "type": "data_response",
+      "opName": "79e79829-8c33-41ab-9fb9-3bc9f26818b1",
+      "payload": {
+        "type": "next",
+        "id": "79e79829-8c33-41ab-9fb9-3bc9f26818b1",
+        "payload": {
+          "data": {
+            "user_aggregate": {
+              "aggregate": {
+                "count": 1,
+                "__typename": "user_aggregate_fields"
+              },
+              "__typename": "user_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:43.788Z",
+      "type": "data_response",
+      "opName": "9018973c-91d4-4d61-a6ce-1906c1eda106",
+      "payload": {
+        "type": "next",
+        "id": "9018973c-91d4-4d61-a6ce-1906c1eda106",
+        "payload": {
+          "data": {
+            "pres_page_curr": [
+              {
+                "height": 396,
+                "isCurrentPage": true,
+                "num": 1,
+                "pageId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/1",
+                "scaledHeight": 931.7647058823529,
+                "scaledViewBoxHeight": 931.7647058823529,
+                "scaledViewBoxWidth": 1440,
+                "scaledWidth": 1440,
+                "svgUrl": "https://bbb.example.com/bigbluebutton/presentation/98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348/98a75f593036d17ce5b2b6a634b9796a2be98002-1785756454348/d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351/svg/1",
+                "width": 612,
+                "xOffset": 0,
+                "yOffset": 0,
+                "presentationId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351",
+                "content": "",
+                "downloadFileUri": null,
+                "totalPages": 1,
+                "downloadable": false,
+                "presentationName": "default.pdf",
+                "isDefaultPresentation": true,
+                "infiniteWhiteboard": false,
+                "nextPagesSvg": null,
+                "fitToWidth": false,
+                "__typename": "pres_page_curr"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.006Z",
+      "type": "data_response",
+      "opName": "f5d138ee-d70d-48ed-b712-9b9c088cc2e4",
+      "payload": {
+        "type": "next",
+        "id": "f5d138ee-d70d-48ed-b712-9b9c088cc2e4",
+        "payload": {
+          "data": {
+            "sharedNotes": [
+              {
+                "lastRev": null,
+                "__typename": "sharedNotes"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.022Z",
+      "type": "data_response",
+      "opName": "21394c3d-885c-4f3a-9388-73c69cc6b713",
+      "payload": {
+        "type": "next",
+        "id": "21394c3d-885c-4f3a-9388-73c69cc6b713",
+        "payload": {
+          "data": {
+            "pres_presentation": [
+              {
+                "uploadTemporaryId": "",
+                "uploadInProgress": false,
+                "current": true,
+                "downloadFileUri": null,
+                "downloadable": false,
+                "uploadErrorDetailsJson": null,
+                "uploadErrorMsgKey": null,
+                "filenameConverted": "default.pdf",
+                "isDefault": true,
+                "name": "default.pdf",
+                "totalPages": 1,
+                "totalPagesUploaded": 1,
+                "presentationId": "d1177503b8013a544ca78c08ef1d2c88fcb26db4-1785756454351",
+                "removable": true,
+                "uploadCompletionNotified": false,
+                "uploadCompleted": true,
+                "exportToChatInProgress": false,
+                "exportToChatStatus": null,
+                "exportToChatCurrentPage": null,
+                "exportToChatHasError": null,
+                "__typename": "pres_presentation"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.023Z",
+      "type": "data_response",
+      "opName": "6e3647be-8337-4433-8155-e8c3c823eea2",
+      "payload": {
+        "type": "next",
+        "id": "6e3647be-8337-4433-8155-e8c3c823eea2",
+        "payload": {
+          "data": {
+            "user": []
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.025Z",
+      "type": "data_response",
+      "opName": "e20111bb-6c75-41c4-ad3d-b6fb5c15d47b",
+      "payload": {
+        "type": "next",
+        "id": "e20111bb-6c75-41c4-ad3d-b6fb5c15d47b",
+        "payload": {
+          "data": {
+            "user_camera_aggregate": {
+              "aggregate": {
+                "count": 0,
+                "__typename": "user_camera_aggregate_fields"
+              },
+              "__typename": "user_camera_aggregate"
+            }
+          }
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-03T11:27:44.324Z",
+      "type": "data_response",
+      "opName": "cd926798-07c1-436e-bd3c-dcf0a79f26f5",
+      "payload": {
+        "id": "cd926798-07c1-436e-bd3c-dcf0a79f26f5",
+        "payload": {
+          "data": {
+            "userSetClientSettings": true
+          }
+        },
+        "type": "next"
+      }
+    }
+  ]
+}

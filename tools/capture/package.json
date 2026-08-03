@@ -1,0 +1,20 @@
+{
+  "name": "bbb-siege-capture",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "capture": "tsx capture.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "playwright": "^1.50.1",
+    "tsx": "^4.19.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "@types/ws": "^8.5.14"
+  }
+}

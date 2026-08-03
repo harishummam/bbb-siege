@@ -1,0 +1,15 @@
+{
+  "returncode": "SUCCESS",
+  "meetingID": "capture-fixture-meeting-id",
+  "internalMeetingID": "d33c15532363b650ff83f9d2a268162a647a0030-1785753110005",
+  "parentMeetingID": "BBB",
+  "attendeePW": "ap",
+  "moderatorPW": "mp",
+  "createTime": 1785753110005,
+  "voiceBridge": 73821,
+  "dialNumber": "613-555-1234",
+  "createDate": "Mon Aug 03 11:27:00 UTC 2026",
+  "hasUserJoined": false,
+  "duration": 0,
+  "hasBeenEndly": false
+}
