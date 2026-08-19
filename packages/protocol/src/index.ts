@@ -1,4 +1,7 @@
 export * from './adapter.js';
-export * from './adapters/v30/index.js';
+export * from './types.js';
+export { V30Adapter } from './adapters/v30/index.js';
+export { discoverClientConfig, parseVersion } from './adapters/v30/config.js';
+export { openV30Signaling } from './adapters/v30/signaling.js';
 
 export const PROTOCOL_PLACEHOLDER = 'protocol';

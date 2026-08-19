@@ -61,6 +61,10 @@ export class BbbApiClient {
     return this.activeHashAlgorithm;
   }
 
+  public getBaseUrl(): string {
+    return this.config.url;
+  }
+
   private async executeRequest<T>(
     apiCall: string,
     params: Record<string, unknown>,
