@@ -1,3 +1,13 @@
+import type { BbbApiClient, CreateMeetingOptions, CreateMeetingResponse } from '@bbb-siege/api-client';
+import type {
+  BbbVersion,
+  JoinContext,
+  JoinOptions,
+  MediaStack,
+  OpenSignalingOptions,
+  SignalingSession,
+} from './types.js';
+
 export class NotImplemented extends Error {
   constructor(methodName?: string) {
     super(methodName ? `NotImplemented: ${methodName}` : 'NotImplemented');
@@ -5,54 +15,37 @@ export class NotImplemented extends Error {
   }
 }
 
-export type MediaStack = 'mediasoup' | 'livekit' | 'unknown';
-
 export interface BbbAdapter {
-  createMeeting(...args: unknown[]): Promise<never>;
-  join(...args: unknown[]): Promise<never>;
-  openSignaling(...args: unknown[]): Promise<never>;
-  subscribe(...args: unknown[]): Promise<never>;
-  mutate(...args: unknown[]): Promise<never>;
-  negotiateMedia(...args: unknown[]): Promise<never>;
-  leave(...args: unknown[]): Promise<never>;
-  detectVersion(...args: unknown[]): Promise<never>;
-  detectMediaStack(...args: unknown[]): Promise<MediaStack>;
+  detectVersion(client: BbbApiClient, signal?: AbortSignal): Promise<BbbVersion>;
+  detectMediaStack(client: BbbApiClient, signal?: AbortSignal): Promise<MediaStack>;
+  createMeeting(client: BbbApiClient, options: CreateMeetingOptions): Promise<CreateMeetingResponse>;
+  join(client: BbbApiClient, options: JoinOptions): Promise<JoinContext>;
+  openSignaling(context: JoinContext, options?: OpenSignalingOptions): Promise<SignalingSession>;
+  leave(context: JoinContext, session: SignalingSession): Promise<void>;
 }
 
 export class BaseBbbAdapter implements BbbAdapter {
-  async createMeeting(): Promise<never> {
-    throw new NotImplemented('createMeeting');
-  }
-
-  async join(): Promise<never> {
-    throw new NotImplemented('join');
-  }
-
-  async openSignaling(): Promise<never> {
-    throw new NotImplemented('openSignaling');
-  }
-
-  async subscribe(): Promise<never> {
-    throw new NotImplemented('subscribe');
-  }
-
-  async mutate(): Promise<never> {
-    throw new NotImplemented('mutate');
-  }
-
-  async negotiateMedia(): Promise<never> {
-    throw new NotImplemented('negotiateMedia');
-  }
-
-  async leave(): Promise<never> {
-    throw new NotImplemented('leave');
-  }
-
-  async detectVersion(): Promise<never> {
+  detectVersion(..._args: unknown[]): Promise<BbbVersion> {
     throw new NotImplemented('detectVersion');
   }
 
-  async detectMediaStack(): Promise<never> {
+  detectMediaStack(..._args: unknown[]): Promise<MediaStack> {
     throw new NotImplemented('detectMediaStack');
+  }
+
+  createMeeting(..._args: unknown[]): Promise<CreateMeetingResponse> {
+    throw new NotImplemented('createMeeting');
+  }
+
+  join(..._args: unknown[]): Promise<JoinContext> {
+    throw new NotImplemented('join');
+  }
+
+  openSignaling(..._args: unknown[]): Promise<SignalingSession> {
+    throw new NotImplemented('openSignaling');
+  }
+
+  leave(..._args: unknown[]): Promise<void> {
+    throw new NotImplemented('leave');
   }
 }
