@@ -191,21 +191,21 @@ export class BbbApiClient {
     options: CreateMeetingOptions
   ): Promise<CreateMeetingResponse> {
     const { signal, timeoutMs, ...params } = options;
-    const raw = await this.executeWithChecksumNegotiation<Record<string, any>>(
+    const raw = await this.executeWithChecksumNegotiation<Record<string, unknown>>(
       'create',
       params,
       { signal, timeoutMs }
     );
 
     return {
-      returncode: raw.returncode,
+      returncode: raw.returncode as 'SUCCESS' | 'FAILED',
       meetingID: String(raw.meetingID),
       internalMeetingID: String(raw.internalMeetingID),
       parentMeetingID: raw.parentMeetingID ? String(raw.parentMeetingID) : undefined,
       attendeePW: String(raw.attendeePW),
       moderatorPW: String(raw.moderatorPW),
       createTime: Number(raw.createTime),
-      voiceBridge: raw.voiceBridge,
+      voiceBridge: raw.voiceBridge as string | number | undefined,
       dialNumber: raw.dialNumber ? String(raw.dialNumber) : undefined,
       createDate: raw.createDate ? String(raw.createDate) : undefined,
       hasUserJoined: raw.hasUserJoined === true || raw.hasUserJoined === 'true',
@@ -229,14 +229,14 @@ export class BbbApiClient {
       redirect: false,
     };
 
-    const raw = await this.executeWithChecksumNegotiation<Record<string, any>>(
+    const raw = await this.executeWithChecksumNegotiation<Record<string, unknown>>(
       'join',
       joinParams,
       { signal, timeoutMs }
     );
 
     return {
-      returncode: raw.returncode,
+      returncode: raw.returncode as 'SUCCESS' | 'FAILED',
       messageKey: raw.messageKey ? String(raw.messageKey) : undefined,
       message: raw.message ? String(raw.message) : undefined,
       meeting_id: String(raw.meeting_id || raw.meetingID || ''),
@@ -254,14 +254,14 @@ export class BbbApiClient {
    */
   public async end(options: EndMeetingOptions): Promise<EndMeetingResponse> {
     const { signal, timeoutMs, ...params } = options;
-    const raw = await this.executeWithChecksumNegotiation<Record<string, any>>(
+    const raw = await this.executeWithChecksumNegotiation<Record<string, unknown>>(
       'end',
       params,
       { signal, timeoutMs }
     );
 
     return {
-      returncode: raw.returncode,
+      returncode: raw.returncode as 'SUCCESS' | 'FAILED',
       messageKey: raw.messageKey ? String(raw.messageKey) : undefined,
       message: raw.message ? String(raw.message) : undefined,
     };
@@ -275,7 +275,7 @@ export class BbbApiClient {
     options: IsMeetingRunningOptions
   ): Promise<IsMeetingRunningResponse> {
     const { signal, timeoutMs, ...params } = options;
-    const raw = await this.executeWithChecksumNegotiation<Record<string, any>>(
+    const raw = await this.executeWithChecksumNegotiation<Record<string, unknown>>(
       'isMeetingRunning',
       params,
       { signal, timeoutMs }
@@ -284,7 +284,7 @@ export class BbbApiClient {
     const isRunning = raw.running === true || raw.running === 'true';
 
     return {
-      returncode: raw.returncode,
+      returncode: raw.returncode as 'SUCCESS' | 'FAILED',
       running: isRunning,
       messageKey: raw.messageKey ? String(raw.messageKey) : undefined,
       message: raw.message ? String(raw.message) : undefined,
@@ -296,7 +296,7 @@ export class BbbApiClient {
    * Retrieves list of all active meetings on the BBB server.
    */
   public async getMeetings(options?: RequestOptions): Promise<GetMeetingsResponse> {
-    const raw = await this.executeWithChecksumNegotiation<Record<string, any>>(
+    const raw = await this.executeWithChecksumNegotiation<Record<string, unknown>>(
       'getMeetings',
       {},
       options
@@ -305,9 +305,11 @@ export class BbbApiClient {
     let meetingsList: MeetingSummary[] = [];
 
     if (raw.meetings) {
-      const meetingsObj = raw.meetings;
+      const meetingsObj = raw.meetings as {
+        meeting?: Record<string, unknown>[] | Record<string, unknown>;
+      };
       if (Array.isArray(meetingsObj.meeting)) {
-        meetingsList = meetingsObj.meeting.map((m: any) => ({
+        meetingsList = meetingsObj.meeting.map((m: Record<string, unknown>) => ({
           meetingID: String(m.meetingID),
           internalMeetingID: m.internalMeetingID ? String(m.internalMeetingID) : undefined,
           meetingName: m.meetingName ? String(m.meetingName) : undefined,
@@ -325,7 +327,7 @@ export class BbbApiClient {
           moderatorPW: m.moderatorPW ? String(m.moderatorPW) : undefined,
         }));
       } else if (meetingsObj.meeting && typeof meetingsObj.meeting === 'object') {
-        const m = meetingsObj.meeting;
+        const m = meetingsObj.meeting as Record<string, unknown>;
         meetingsList = [
           {
             meetingID: String(m.meetingID),
@@ -349,7 +351,7 @@ export class BbbApiClient {
     }
 
     return {
-      returncode: raw.returncode,
+      returncode: raw.returncode as 'SUCCESS' | 'FAILED',
       meetings: meetingsList,
       messageKey: raw.messageKey ? String(raw.messageKey) : undefined,
       message: raw.message ? String(raw.message) : undefined,
@@ -364,14 +366,14 @@ export class BbbApiClient {
     options: GetMeetingInfoOptions
   ): Promise<GetMeetingInfoResponse> {
     const { signal, timeoutMs, ...params } = options;
-    const raw = await this.executeWithChecksumNegotiation<Record<string, any>>(
+    const raw = await this.executeWithChecksumNegotiation<Record<string, unknown>>(
       'getMeetingInfo',
       params,
       { signal, timeoutMs }
     );
 
     return {
-      returncode: raw.returncode,
+      returncode: raw.returncode as 'SUCCESS' | 'FAILED',
       meetingID: String(raw.meetingID),
       internalMeetingID: raw.internalMeetingID ? String(raw.internalMeetingID) : undefined,
       meetingName: raw.meetingName ? String(raw.meetingName) : undefined,

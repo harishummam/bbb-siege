@@ -3,7 +3,6 @@ import { AuthFailedError, ClientBugError, ServerError } from './errors.js';
 
 const parser = new XMLParser({
   ignoreAttributes: false,
-  parseNodeValue: true,
   parseTagValue: true,
   isArray: (name: string): boolean => name === 'meeting' || name === 'attendee',
 });
@@ -13,14 +12,14 @@ export function parseXmlResponse<T = Record<string, unknown>>(xmlString: string)
     throw new ClientBugError('Empty or invalid XML response received from BBB server');
   }
 
-  let parsed: Record<string, any>;
+  let parsed: Record<string, unknown>;
   try {
-    parsed = parser.parse(xmlString);
+    parsed = parser.parse(xmlString) as Record<string, unknown>;
   } catch (err) {
     throw new ClientBugError('Failed to parse XML response from BBB server', err);
   }
 
-  const root = parsed.response || parsed;
+  const root = (parsed.response || parsed) as Record<string, unknown>;
 
   if (!root || typeof root !== 'object') {
     throw new ClientBugError('Invalid XML structure: missing <response> root element');
