@@ -83,7 +83,7 @@ export class SignalingBot {
         signal: controller.signal,
       });
       this.timings.apiJoinMs = performance.now() - joinStart;
-      this.log.info({ userId: context.userId, meetingId: context.meetingId }, 'joined via api');
+      this.log.debug({ userId: context.userId, meetingId: context.meetingId }, 'joined via api');
 
       const wsStart = performance.now();
       session = await this.adapter.openSignaling(context, {
@@ -92,12 +92,12 @@ export class SignalingBot {
         isMobile: this.config.isMobile,
       });
       this.timings.wsConnectMs = performance.now() - wsStart;
-      this.log.info('signaling connected');
+      this.log.debug('signaling connected');
 
       const userJoinStart = performance.now();
       await session.mutate(userJoinMutation(context.authToken), controller.signal);
       this.timings.userJoinMs = performance.now() - userJoinStart;
-      this.log.info('userJoinMeeting acknowledged');
+      this.log.debug('userJoinMeeting acknowledged');
 
       const specs = this.config.subscriptions ?? coreSubscriptions();
       this.consumeSubscriptions(session, specs, controller.signal, start);
@@ -118,7 +118,7 @@ export class SignalingBot {
       if (session) {
         try {
           await this.adapter.leave(context!, session);
-          this.log.info('left cleanly');
+          this.log.debug('left cleanly');
         } catch (error) {
           this.log.warn({ err: error }, 'error during leave');
         }

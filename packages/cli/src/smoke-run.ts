@@ -1,9 +1,9 @@
 import { BbbApiClient } from '@bbb-siege/api-client';
 import { SignalingBot } from '@bbb-siege/bot-headless';
 import { V30Adapter } from '@bbb-siege/protocol';
-import pino from 'pino';
+import { createLogger } from './log.js';
 
-const log = pino({ name: 'smoke' });
+const log = createLogger('smoke');
 
 function splitHosts(value: string | undefined): string[] {
   return value
