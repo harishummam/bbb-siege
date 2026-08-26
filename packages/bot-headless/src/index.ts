@@ -1,1 +1,3 @@
-export const BOT_HEADLESS_PLACEHOLDER = 'bot-headless';
+export { SignalingBot } from './bot.js';
+export type { SignalingBotConfig, PhaseTimings, BotOutcome } from './bot.js';
+export { SubscriptionState } from './subscription-state.js';
