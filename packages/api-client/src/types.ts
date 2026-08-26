@@ -77,6 +77,7 @@ export interface JoinMeetingResponse {
   session_token: string;
   guestStatus?: string;
   url: string;
+  sessionCookie?: string;
 }
 
 export interface EndMeetingOptions extends RequestOptions {

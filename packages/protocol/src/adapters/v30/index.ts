@@ -49,6 +49,7 @@ export class V30Adapter extends BaseBbbAdapter {
       clientSessionUUID: randomUUID(),
       graphqlWebsocketUrl: config.graphqlWebsocketUrl,
       joinUrl: joinResponse.url,
+      sessionCookie: joinResponse.sessionCookie,
     };
   }
 

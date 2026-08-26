@@ -29,9 +29,16 @@ export async function openV30Signaling(
     resolveClosed = resolve;
   });
 
+  const cookie = context.sessionCookie;
+  class CookieWebSocket extends WebSocket {
+    constructor(address: string | URL, protocols?: string | string[]) {
+      super(address, protocols, cookie ? { headers: { Cookie: cookie } } : undefined);
+    }
+  }
+
   const client: Client = createClient({
     url: context.graphqlWebsocketUrl,
-    webSocketImpl: WebSocket,
+    webSocketImpl: cookie ? CookieWebSocket : WebSocket,
     lazy: false,
     retryAttempts: 0,
     connectionParams: {

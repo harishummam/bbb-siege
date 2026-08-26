@@ -55,7 +55,20 @@ importers:
 
   packages/bot-media: {}
 
-  packages/cli: {}
+  packages/cli:
+    dependencies:
+      '@bbb-siege/api-client':
+        specifier: workspace:*
+        version: link:../api-client
+      '@bbb-siege/bot-headless':
+        specifier: workspace:*
+        version: link:../bot-headless
+      '@bbb-siege/protocol':
+        specifier: workspace:*
+        version: link:../protocol
+      pino:
+        specifier: ^9.6.0
+        version: 9.14.0
 
   packages/metrics: {}
 

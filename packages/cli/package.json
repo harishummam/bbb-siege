@@ -17,5 +17,11 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
+  },
+  "dependencies": {
+    "@bbb-siege/api-client": "workspace:*",
+    "@bbb-siege/protocol": "workspace:*",
+    "@bbb-siege/bot-headless": "workspace:*",
+    "pino": "^9.6.0"
   }
 }

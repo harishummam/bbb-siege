@@ -6,13 +6,24 @@ export async function discoverClientConfig(
   signal?: AbortSignal
 ): Promise<ClientConfig> {
   const url = normalizeBaseUrl(baseUrl);
-  const res = await fetch(url, { headers: { Accept: 'application/json' }, signal });
+  const res = await fetch(url, {
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    signal,
+  });
 
   if (!res.ok) {
     throw new ServerError(`Client config discovery failed (HTTP ${res.status})`, res.status);
   }
 
-  const body = (await res.json()) as { response?: Partial<ClientConfig> };
+  const text = await res.text();
+  if (!text.trimStart().startsWith('{')) {
+    throw new ClientBugError(
+      'Client config endpoint did not return JSON; expected Content-Type: application/json to trigger the JSON response',
+      text.slice(0, 200),
+    );
+  }
+
+  const body = JSON.parse(text) as { response?: Partial<ClientConfig> };
   const config = body.response;
 
   if (!config?.graphqlWebsocketUrl) {

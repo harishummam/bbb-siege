@@ -27,6 +27,7 @@ export interface JoinContext {
   clientSessionUUID: string;
   graphqlWebsocketUrl: string;
   joinUrl: string;
+  sessionCookie?: string;
 }
 
 export type JoinOptions = JoinMeetingOptions;

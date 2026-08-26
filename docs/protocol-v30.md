@@ -34,9 +34,13 @@ BigBlueButton 3.0 removed Meteor and MongoDB, replacing them with a GraphQL arch
   - `<session_token>`: Unique session token string.
   - `<auth_token>`: User authentication token.
   - `<url>`: HTML5 client join URL (`https://<host>/html5client/?sessionToken=<token>`).
+  - **Also sets the `JSESSIONID` HTTP cookie** (`Set-Cookie: JSESSIONID=...; Path=/; Secure; HttpOnly`) — verified against bbb.example.com, 2026-08-26.
 - **Behavior with `redirect=true`**:
   - Sets `JSESSIONID` HTTP cookie (`Path=/; Secure; HttpOnly`).
   - Responds with `302 Found` redirecting to `https://<host>/html5client/?sessionToken=<token>`.
+
+> [!IMPORTANT]
+> **CORRECTED (verified 2026-08-26):** The `JSESSIONID` cookie from the join response is **mandatory** for the GraphQL WebSocket. It must be sent as a `Cookie: JSESSIONID=...` header on the `/graphql` upgrade request (see §4). Without it the middleware returns an `error` frame `{"messageId":"check_authorization_error"}` and closes with code `4403` — even when all `connection_init` headers are present. A non-browser client must capture `Set-Cookie` from the `redirect=false` join and replay it on the WebSocket upgrade.
 
 > [!IMPORTANT]
 > `sessionToken` values are **single-use per join session**. Reusing a consumed token on a second browser instance results in `401 Unauthorized`.
@@ -46,7 +50,7 @@ BigBlueButton 3.0 removed Meteor and MongoDB, replacing them with a GraphQL arch
 ## 3. Phase 2: Client Config Discovery
 
 When the HTML5 client loads `https://<host>/html5client/?sessionToken=<token>`:
-1. The client makes a `GET` request to `/bigbluebutton/api` (or `/bigbluebutton/api/`).
+1. The client makes a `GET` request to `/bigbluebutton/api` (or `/bigbluebutton/api/`) with request header **`Content-Type: application/json`**.
 2. The server responds with JSON endpoints config:
 ```json
 {
@@ -54,12 +58,14 @@ When the HTML5 client loads `https://<host>/html5client/?sessionToken=<token>`:
     "returncode": "SUCCESS",
     "version": "2.0",
     "apiVersion": "2.0",
-    "bbbVersion": "3.0.19",
+    "bbbVersion": "",
     "graphqlWebsocketUrl": "wss://<host>/graphql",
     "graphqlApiUrl": "https://<host>/api/rest"
   }
 }
 ```
+
+> **CORRECTED (verified against bbb.example.com, 2026-08-26):** The JSON response is only returned when the request carries `Content-Type: application/json`. Without it the same endpoint returns the classic XML `<response>` document, and a JSON parse fails with `Unexpected token '<'`. Also note `bbbVersion` is observed **empty** (`""`) on this server, so version detection cannot rely on it from this endpoint.
 
 ---
 
@@ -68,6 +74,7 @@ When the HTML5 client loads `https://<host>/html5client/?sessionToken=<token>`:
 The client opens a WebSocket connection to `graphqlWebsocketUrl`:
 - **URL**: `wss://<host>/graphql`
 - **Subprotocol**: `graphql-transport-ws`
+- **Upgrade request header (mandatory)**: `Cookie: JSESSIONID=<value>` — the `JSESSIONID` set by the `join` response. Omitting it causes `check_authorization_error` / close `4403`. See §2.2.
 
 ### 4.1 Connection Init Frame
 The client MUST send a `connection_init` message with mandatory headers in `payload.headers`:

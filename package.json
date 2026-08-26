@@ -7,7 +7,8 @@
     "build": "pnpm --recursive run build",
     "test": "vitest run",
     "lint": "eslint .",
-    "typecheck": "pnpm --recursive run typecheck"
+    "typecheck": "pnpm --recursive run typecheck",
+    "smoke": "node --env-file=.env packages/cli/dist/smoke-run.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",

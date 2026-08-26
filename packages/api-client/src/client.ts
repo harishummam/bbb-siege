@@ -69,7 +69,8 @@ export class BbbApiClient {
     apiCall: string,
     params: Record<string, unknown>,
     algo: HashAlgorithm,
-    options?: RequestOptions
+    options?: RequestOptions,
+    capture?: { setCookie?: string[] }
   ): Promise<T> {
     const timeoutMs = options?.timeoutMs ?? this.config.defaultTimeoutMs;
     const callerSignal = options?.signal;
@@ -105,6 +106,10 @@ export class BbbApiClient {
       );
 
       const res = await fetch(url, { signal: combinedSignal });
+
+      if (capture) {
+        capture.setCookie = res.headers.getSetCookie?.() ?? [];
+      }
 
       if (res.status === 429 || res.status === 503) {
         throw new RateLimitedError(
@@ -155,11 +160,12 @@ export class BbbApiClient {
   private async executeWithChecksumNegotiation<T>(
     apiCall: string,
     params: Record<string, unknown>,
-    options?: RequestOptions
+    options?: RequestOptions,
+    capture?: { setCookie?: string[] }
   ): Promise<T> {
     const primaryAlgo = this.activeHashAlgorithm;
     try {
-      return await this.executeRequest<T>(apiCall, params, primaryAlgo, options);
+      return await this.executeRequest<T>(apiCall, params, primaryAlgo, options, capture);
     } catch (err) {
       if (
         err instanceof AuthFailedError &&
@@ -173,7 +179,8 @@ export class BbbApiClient {
             apiCall,
             params,
             fallbackAlgo,
-            options
+            options,
+            capture
           );
           // Checksum fallback succeeded — update active algorithm
           this.activeHashAlgorithm = fallbackAlgo;
@@ -233,10 +240,12 @@ export class BbbApiClient {
       redirect: false,
     };
 
+    const capture: { setCookie?: string[] } = {};
     const raw = await this.executeWithChecksumNegotiation<Record<string, unknown>>(
       'join',
       joinParams,
-      { signal, timeoutMs }
+      { signal, timeoutMs },
+      capture
     );
 
     return {
@@ -249,6 +258,7 @@ export class BbbApiClient {
       session_token: String(raw.session_token || raw.sessionToken || ''),
       guestStatus: raw.guestStatus ? String(raw.guestStatus) : undefined,
       url: String(raw.url || ''),
+      sessionCookie: extractSessionCookie(capture.setCookie),
     };
   }
 
@@ -397,4 +407,9 @@ export class BbbApiClient {
       message: raw.message ? String(raw.message) : undefined,
     };
   }
+}
+
+function extractSessionCookie(setCookie: string[] | undefined): string | undefined {
+  const jsession = setCookie?.find((cookie) => cookie.startsWith('JSESSIONID='));
+  return jsession?.split(';', 1)[0];
 }
