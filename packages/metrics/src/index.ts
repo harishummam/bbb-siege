@@ -1,5 +1,6 @@
 import http from 'node:http';
 import { Counter, Gauge, Histogram, Registry } from 'prom-client';
+import { DASHBOARD_HTML } from './dashboard.js';
 
 export type JoinPhase = 'api_join' | 'ws_connect' | 'user_join' | 'first_subscription_data';
 
@@ -76,15 +77,65 @@ export class SiegeMetrics {
   }
 }
 
+export interface LogEntry {
+  seq: number;
+  line: string;
+}
+
+export class LogBuffer {
+  private entries: LogEntry[] = [];
+  private counter = 0;
+
+  constructor(private readonly capacity = 2000) {}
+
+  push(line: string): void {
+    this.counter += 1;
+    this.entries.push({ seq: this.counter, line });
+    if (this.entries.length > this.capacity) {
+      this.entries.splice(0, this.entries.length - this.capacity);
+    }
+  }
+
+  since(after: number): LogEntry[] {
+    if (after <= 0) return this.entries.slice(-400);
+    return this.entries.filter((entry) => entry.seq > after);
+  }
+
+  get lastSeq(): number {
+    return this.counter;
+  }
+}
+
 export interface MetricsServer {
   port: number;
   close(): Promise<void>;
 }
 
-export function startMetricsServer(metrics: SiegeMetrics, port = DEFAULT_PORT): Promise<MetricsServer> {
+export interface MetricsServerOptions {
+  logBuffer?: LogBuffer;
+}
+
+export function startMetricsServer(
+  metrics: SiegeMetrics,
+  port = DEFAULT_PORT,
+  options: MetricsServerOptions = {}
+): Promise<MetricsServer> {
   return new Promise((resolve, reject) => {
     const server = http.createServer((req, res) => {
-      if (req.method === 'GET' && (req.url === '/metrics' || req.url === '/')) {
+      if (req.method === 'GET' && (req.url === '/' || req.url === '/dashboard')) {
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+        res.end(DASHBOARD_HTML);
+        return;
+      }
+      if (req.method === 'GET' && req.url && req.url.startsWith('/logs')) {
+        const after = Number.parseInt(new URL(req.url, 'http://localhost').searchParams.get('after') ?? '0', 10) || 0;
+        const buffer = options.logBuffer;
+        const lines = buffer ? buffer.since(after).map((entry) => entry.line) : [];
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ nextSeq: buffer ? buffer.lastSeq : 0, lines }));
+        return;
+      }
+      if (req.method === 'GET' && req.url === '/metrics') {
         metrics
           .metricsText()
           .then((text) => {

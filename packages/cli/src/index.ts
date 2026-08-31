@@ -1,6 +1,6 @@
 import { pathToFileURL } from 'node:url';
 import { BbbApiClient } from '@bbb-siege/api-client';
-import { SiegeMetrics, startMetricsServer, type MetricsServer } from '@bbb-siege/metrics';
+import { LogBuffer, SiegeMetrics, startMetricsServer, type MetricsServer } from '@bbb-siege/metrics';
 import { loadScenario, runScenario, type KneeResult } from '@bbb-siege/orchestrator';
 import { V30Adapter } from '@bbb-siege/protocol';
 import { Command } from 'commander';
@@ -24,7 +24,8 @@ interface RunOptions {
 }
 
 async function runCommand(scenarioPath: string, options: RunOptions): Promise<void> {
-  const log = createLogger('siege');
+  const logBuffer = new LogBuffer();
+  const log = createLogger('siege', logBuffer);
 
   let scenario;
   try {
@@ -45,8 +46,10 @@ async function runCommand(scenarioPath: string, options: RunOptions): Promise<vo
   const metrics = new SiegeMetrics();
   let metricsServer: MetricsServer | undefined;
   try {
-    metricsServer = await startMetricsServer(metrics, Number.parseInt(options.metricsPort, 10) || 9095);
-    log.info({ port: metricsServer.port }, 'metrics endpoint listening at /metrics');
+    metricsServer = await startMetricsServer(metrics, Number.parseInt(options.metricsPort, 10) || 9095, {
+      logBuffer,
+    });
+    log.info({ port: metricsServer.port }, 'dashboard at http://localhost:' + metricsServer.port + '/ · metrics at /metrics');
   } catch (error) {
     log.warn({ err: error }, 'metrics server failed to start; continuing without it');
   }

@@ -1,10 +1,11 @@
 import { BbbApiClient } from '@bbb-siege/api-client';
-import { SiegeMetrics, startMetricsServer, type MetricsServer } from '@bbb-siege/metrics';
+import { LogBuffer, SiegeMetrics, startMetricsServer, type MetricsServer } from '@bbb-siege/metrics';
 import { runFleet } from '@bbb-siege/orchestrator';
 import { V30Adapter } from '@bbb-siege/protocol';
 import { createLogger } from './log.js';
 
-const log = createLogger('fleet');
+const logBuffer = new LogBuffer();
+const log = createLogger('fleet', logBuffer);
 
 function splitHosts(value: string | undefined): string[] {
   return value ? value.split(/[,;]/).map((h) => h.trim()).filter(Boolean) : [];
@@ -45,8 +46,8 @@ async function main(): Promise<void> {
   let metricsServer: MetricsServer | undefined;
   if (process.env.METRICS_PORT) {
     metrics = new SiegeMetrics();
-    metricsServer = await startMetricsServer(metrics, intEnv('METRICS_PORT', 9095));
-    log.info({ port: metricsServer.port }, 'metrics endpoint listening at /metrics');
+    metricsServer = await startMetricsServer(metrics, intEnv('METRICS_PORT', 9095), { logBuffer });
+    log.info({ port: metricsServer.port }, 'dashboard at http://localhost:' + metricsServer.port + '/ · metrics at /metrics');
   }
 
   const controller = new AbortController();
