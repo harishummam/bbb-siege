@@ -72,11 +72,17 @@ async function runCommand(scenarioPath: string, options: RunOptions): Promise<vo
         scenario: report.scenarioName,
         peakUsers: report.peakUsers,
         plannedDurationMs: report.plannedDurationMs,
+        wallClockMs: Math.round(report.wallClockMs),
         completed: report.completed,
         failed: report.failed,
         skipped: report.skipped,
         byKind: report.byKind,
-        joinLatencyMs: report.timings.apiJoin,
+        timings: {
+          apiJoin: report.timings.apiJoin,
+          wsConnect: report.timings.wsConnect,
+          userJoin: report.timings.userJoin,
+          firstSubscriptionData: report.timings.firstSubscriptionData,
+        },
         knee: formatKnee(report.knee),
         meetingsEnded: report.meetingsEnded.length,
         meetingsCreated: report.meetingsCreated.length,
@@ -84,6 +90,15 @@ async function runCommand(scenarioPath: string, options: RunOptions): Promise<vo
       'RUN REPORT'
     );
     if (report.completed === 0) process.exitCode = 1;
+
+    process.off('SIGINT', onSigint);
+    if (!controller.signal.aborted && metricsServer) {
+      log.info(
+        { port: metricsServer.port },
+        'run complete — dashboard still live at http://localhost:' + metricsServer.port + '/ · press Ctrl-C to exit'
+      );
+      await new Promise<void>((resolve) => process.once('SIGINT', resolve));
+    }
   } catch (error) {
     log.error({ err: error }, 'scenario run failed');
     process.exitCode = 1;

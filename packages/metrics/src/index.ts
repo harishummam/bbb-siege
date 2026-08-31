@@ -157,7 +157,11 @@ export function startMetricsServer(
       const boundPort = typeof address === 'object' && address ? address.port : port;
       resolve({
         port: boundPort,
-        close: () => new Promise((done) => server.close(() => done())),
+        close: () =>
+          new Promise((done) => {
+            server.close(() => done());
+            server.closeAllConnections?.();
+          }),
       });
     });
   });

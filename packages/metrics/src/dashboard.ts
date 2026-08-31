@@ -20,15 +20,25 @@ export const DASHBOARD_HTML = `<!doctype html>
   }
   .wrap { max-width: 1180px; margin: 0 auto; }
   .topbar { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .brandwrap { display: flex; flex-direction: column; gap: 3px; }
   .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
   .dot.r { background: #34292b; } .dot.y { background: #34301f; } .dot.g { background: #1f3429; }
-  .brand { margin-left: 6px; color: var(--green); letter-spacing: 0.06em; text-shadow: 0 0 12px rgba(87,242,166,0.25); }
+  .brand { color: var(--green); letter-spacing: 0.06em; text-shadow: 0 0 12px rgba(87,242,166,0.25); }
   .brand b { font-weight: 600; }
   .endpoint { color: var(--muted); font-size: 12px; }
   .live { margin-left: auto; display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
   .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 9px var(--green); animation: pulse 1.6s ease-in-out infinite; }
   .pulse.off { background: var(--red); box-shadow: 0 0 9px var(--red); animation: none; }
+  .pulse.done { background: var(--cyan); box-shadow: 0 0 9px var(--cyan); animation: none; }
   @keyframes pulse { 0%,100% { opacity: 0.35; } 50% { opacity: 1; } }
+
+  .summary { margin-top: 12px; }
+  .sumbadge { margin-left: auto; color: var(--cyan); text-transform: none; letter-spacing: 0; font-size: 12px; }
+  .sumgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding: 16px 14px 6px; }
+  .sumitem .k { color: var(--label); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .sumitem .v { font-size: 19px; margin-top: 3px; font-variant-numeric: tabular-nums; color: var(--text); }
+  .sumitem .v.green { color: var(--green); } .sumitem .v.red { color: var(--red); } .sumitem .v.amber { color: var(--amber); } .sumitem .v.muted { color: var(--muted); }
+  .sumtext { padding: 8px 14px 18px; color: var(--text); font-size: 13px; line-height: 1.7; opacity: 0.88; }
 
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
   .panel { background: var(--panel); border: 1px solid var(--edge); border-radius: 10px; }
@@ -75,9 +85,10 @@ export const DASHBOARD_HTML = `<!doctype html>
 <body>
 <div class="wrap">
   <div class="topbar">
-    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-    <span class="brand"><b>bbb-siege</b> // live monitor</span>
-    <span class="endpoint" id="endpoint"></span>
+    <div class="brandwrap">
+      <span class="brand"><b>bbb-siege</b></span>
+      <span class="endpoint" id="endpoint"></span>
+    </div>
     <span class="live"><span class="pulse" id="pulse"></span><span id="conn">connecting</span></span>
   </div>
 
@@ -113,15 +124,22 @@ export const DASHBOARD_HTML = `<!doctype html>
       <div class="log" id="log"></div>
     </div>
   </div>
+
+  <div class="panel summary" id="summary" style="display:none">
+    <div class="loghead"><span>Run summary</span><span class="sumbadge">complete · frozen</span></div>
+    <div class="sumgrid" id="sumgrid"></div>
+    <div class="sumtext" id="sumtext"></div>
+  </div>
 </div>
 
 <script>
 (function () {
   var PHASES = ['api_join', 'ws_connect', 'user_join', 'first_subscription_data'];
   var COLORS = { api_join: '#57f2a6', ws_connect: '#59c1f2', user_join: '#f2c14e', first_subscription_data: '#c98bf2' };
-  var MAXPTS = 150;
+  var MAXPTS = 1500;
   var samples = [];
   var logSeq = 0;
+  var done = false;
 
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function el(id) { return document.getElementById(id); }
@@ -245,8 +263,53 @@ export const DASHBOARD_HTML = `<!doctype html>
       tb.appendChild(tr);
     }
     el('latNow').textContent = latNow.join('  ');
-    samples.push(sample); if (samples.length > MAXPTS) samples.shift();
+    if (!done) { samples.push(sample); if (samples.length > MAXPTS) samples.shift(); }
     renderCharts();
+  }
+
+  function fmtDur(ms) { var s = Math.round(ms / 1000); return Math.floor(s / 60) + 'm ' + pad2(s % 60) + 's'; }
+  function p95Of(o, phase) { return o.timings && o.timings[phase] ? Math.round(o.timings[phase].p95) : null; }
+
+  function renderSummary(o) {
+    var total = (o.completed || 0) + (o.failed || 0) + (o.skipped || 0);
+    var items = [
+      ['Scenario', o.scenario || '—', ''],
+      ['Peak users', o.peakUsers != null ? o.peakUsers : '—', 'amber'],
+      ['Meetings', o.meetingsCreated != null ? o.meetingsCreated : '—', ''],
+      ['Planned', o.plannedDurationMs != null ? fmtDur(o.plannedDurationMs) : '—', ''],
+      ['Wall clock', o.wallClockMs != null ? fmtDur(o.wallClockMs) : '—', ''],
+      ['Completed', o.completed || 0, 'green'],
+      ['Failed', o.failed || 0, o.failed ? 'red' : 'muted'],
+      ['api_join p95', fmtMs(p95Of(o, 'apiJoin')), ''],
+      ['ws_connect p95', fmtMs(p95Of(o, 'wsConnect')), ''],
+      ['user_join p95', fmtMs(p95Of(o, 'userJoin')), ''],
+      ['first_data p95', fmtMs(p95Of(o, 'firstSubscriptionData')), ''],
+      ['Knee', o.knee && o.knee.kneeUsers != null ? o.knee.kneeUsers + ' users' : 'none', o.knee && o.knee.kneeUsers != null ? 'amber' : 'green']
+    ];
+    var grid = el('sumgrid'); grid.innerHTML = '';
+    items.forEach(function (it) {
+      var d = document.createElement('div'); d.className = 'sumitem';
+      d.innerHTML = '<div class="k">' + it[0] + '</div><div class="v ' + it[2] + '"></div>';
+      d.querySelector('.v').textContent = String(it[1]);
+      grid.appendChild(d);
+    });
+    var sloS = o.knee && o.knee.sloP95Ms ? o.knee.sloP95Ms / 1000 + 's' : 'the SLO';
+    var kneeTxt = o.knee && o.knee.kneeUsers != null
+      ? 'A knee appeared at ~' + o.knee.kneeUsers + ' concurrent users, where p95 join latency crossed the ' + sloS + ' SLO.'
+      : 'No knee was found within ' + (o.peakUsers != null ? o.peakUsers : 'the peak') + ' users — p95 join latency stayed under the ' + sloS + ' SLO throughout.';
+    var failTxt = '';
+    if (o.failed) {
+      var kinds = o.byKind ? Object.keys(o.byKind).map(function (k) { return k + ' ' + o.byKind[k]; }).join(', ') : '';
+      failTxt = ' ' + o.failed + ' bot(s) failed' + (kinds ? ' (' + kinds + ')' : '') + '.';
+    }
+    el('sumtext').textContent =
+      'Ramped to ' + (o.peakUsers != null ? o.peakUsers : '?') + ' signaling users across ' +
+      (o.meetingsCreated != null ? o.meetingsCreated : '?') + ' meeting(s) over ' +
+      (o.plannedDurationMs != null ? fmtDur(o.plannedDurationMs) : '?') + '. ' +
+      (o.completed || 0) + ' of ' + total + ' bots joined and held successfully.' + failTxt +
+      ' p95 join latency — api ' + fmtMs(p95Of(o, 'apiJoin')) + ', ws ' + fmtMs(p95Of(o, 'wsConnect')) +
+      ', user_join ' + fmtMs(p95Of(o, 'userJoin')) + ', first-data ' + fmtMs(p95Of(o, 'firstSubscriptionData')) + '. ' + kneeTxt;
+    el('summary').style.display = '';
   }
 
   function levelInfo(lv) {
@@ -263,6 +326,7 @@ export const DASHBOARD_HTML = `<!doctype html>
     var div = document.createElement('div'); div.className = 'ln';
     try {
       var o = JSON.parse(raw);
+      if (o.msg === 'RUN REPORT') { done = true; try { renderSummary(o); } catch (e2) {} }
       var d = new Date(o.time || Date.now());
       var ts = pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds());
       var li = levelInfo(o.level || 30);
@@ -283,6 +347,7 @@ export const DASHBOARD_HTML = `<!doctype html>
   }
 
   function setConn(ok) {
+    if (done) { el('conn').textContent = 'complete'; el('pulse').className = 'pulse done'; return; }
     el('conn').textContent = ok ? 'live' : 'offline';
     el('pulse').className = ok ? 'pulse' : 'pulse off';
   }
@@ -298,7 +363,7 @@ export const DASHBOARD_HTML = `<!doctype html>
   renderLegend();
   window.addEventListener('resize', renderCharts);
   tick();
-  setInterval(tick, 1000);
+  setInterval(tick, 500);
 })();
 </script>
 </body>
