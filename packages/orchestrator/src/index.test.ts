@@ -2,7 +2,7 @@ import type { BbbApiClient } from '@bbb-siege/api-client';
 import type { BbbAdapter, JoinContext, SignalingSession, SubscriptionSpec } from '@bbb-siege/protocol';
 import pino from 'pino';
 import { describe, expect, it, vi } from 'vitest';
-import { percentiles, runFleet } from './index.js';
+import { parseScenario, percentiles, runFleet, runScenario } from './index.js';
 
 const silent = pino({ level: 'silent' });
 
@@ -98,6 +98,21 @@ describe('runFleet', () => {
     expect(report.meetingsEnded).toHaveLength(2);
     expect(client.endCalls.sort()).toEqual([...report.meetingsCreated].sort());
     expect(report.timings.apiJoin.count).toBe(6);
+  });
+
+  it('runs a scenario ramp: launches peak bots and ends every meeting', async () => {
+    const client = fakeClient();
+    const scenario = parseScenario(
+      `name: t\ntarget: { url: u, secret: s }\nmeeting: { count: 2 }\nramp:\n  - { at: 0s, users: 4 }\n  - { hold: 20ms }`,
+      {} as NodeJS.ProcessEnv
+    );
+    const report = await runScenario({ adapter: fakeAdapter(), client, scenario, logger: silent });
+
+    expect(report.scenarioName).toBe('t');
+    expect(report.peakUsers).toBe(4);
+    expect(report.completed).toBe(4);
+    expect(report.meetingsCreated).toHaveLength(2);
+    expect(report.meetingsEnded).toEqual(report.meetingsCreated);
   });
 
   it('ends created meetings even when aborted mid-run', async () => {

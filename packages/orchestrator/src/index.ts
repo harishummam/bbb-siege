@@ -1,6 +1,11 @@
 export { runFleet } from './fleet.js';
-export type { FleetConfig, FleetReport } from './fleet.js';
+export type { FleetConfig } from './fleet.js';
+export type { FleetReport, BotOutcome } from './run-core.js';
 export { percentiles } from './percentiles.js';
 export type { Percentiles } from './percentiles.js';
 export { loadScenario, parseScenario, interpolateEnv, scenarioSchema, ScenarioError } from './scenario.js';
 export type { Scenario, RampStep } from './scenario.js';
+export { computeLaunchSchedule } from './ramp.js';
+export type { LaunchSchedule } from './ramp.js';
+export { runScenario } from './scenario-run.js';
+export type { ScenarioRunConfig, ScenarioReport } from './scenario-run.js';
