@@ -15,6 +15,7 @@ import {
   type FleetReport,
   type MetricsRecorder,
 } from './run-core.js';
+import { KneeSampler } from './knee.js';
 
 export interface ScenarioRunConfig {
   scenario: Scenario;
@@ -52,6 +53,7 @@ export async function runScenario(
   const runId = randomUUID().slice(0, 8);
   const meetingsCreated: string[] = [];
   const meetingsEnded: string[] = [];
+  const sampler = new KneeSampler();
   const start = performance.now();
 
   try {
@@ -76,13 +78,21 @@ export async function runScenario(
           raiseHandProbability: scenario.behaviour?.raiseHandProbability,
           logger: log,
           metrics: config.metrics,
+          sampler,
           signal: controller.signal,
         });
       })()
     );
 
     const outcomes = await Promise.all(tasks);
-    const report = buildReport(outcomes, meetingsCreated, meetingsEnded, performance.now() - start);
+    const report = buildReport(
+      outcomes,
+      meetingsCreated,
+      meetingsEnded,
+      performance.now() - start,
+      sampler,
+      scenario.slo?.joinLatencyP95
+    );
     return {
       ...report,
       scenarioName: scenario.name,

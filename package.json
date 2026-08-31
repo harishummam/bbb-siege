@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "typecheck": "pnpm --recursive run typecheck",
     "smoke": "node --env-file=.env packages/cli/dist/smoke-run.js",
-    "fleet": "node --env-file=.env packages/cli/dist/fleet-run.js"
+    "fleet": "node --env-file=.env packages/cli/dist/fleet-run.js",
+    "siege": "node --env-file=.env packages/cli/dist/index.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",

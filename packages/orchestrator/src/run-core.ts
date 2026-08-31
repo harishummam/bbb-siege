@@ -3,6 +3,7 @@ import type { BbbAdapter } from '@bbb-siege/protocol';
 import { SignalingBot, type PhaseTimings } from '@bbb-siege/bot-headless';
 import type { Logger } from 'pino';
 import { percentiles, type Percentiles } from './percentiles.js';
+import { computeKnee, KneeSampler, type KneeResult } from './knee.js';
 
 export interface FleetReport {
   total: number;
@@ -19,6 +20,7 @@ export interface FleetReport {
   meetingsCreated: string[];
   meetingsEnded: string[];
   wallClockMs: number;
+  knee: KneeResult;
 }
 
 export type BotOutcome =
@@ -60,15 +62,15 @@ export interface BotRunParams {
   raiseHandProbability?: number;
   logger: Logger;
   metrics?: MetricsRecorder;
+  sampler?: KneeSampler;
   signal: AbortSignal;
 }
 
-const PHASE_KEYS: { phase: JoinPhase; key: keyof PhaseTimings }[] = [
-  { phase: 'api_join', key: 'apiJoinMs' },
-  { phase: 'ws_connect', key: 'wsConnectMs' },
-  { phase: 'user_join', key: 'userJoinMs' },
-  { phase: 'first_subscription_data', key: 'firstSubscriptionDataMs' },
-];
+function joinLatencyMs(timings: PhaseTimings): number | undefined {
+  const { apiJoinMs, wsConnectMs, userJoinMs } = timings;
+  if (apiJoinMs === undefined || wsConnectMs === undefined || userJoinMs === undefined) return undefined;
+  return apiJoinMs + wsConnectMs + userJoinMs;
+}
 
 export async function runOneBot(index: number, params: BotRunParams): Promise<BotOutcome> {
   if (params.signal.aborted) return { status: 'skipped' };
@@ -81,14 +83,17 @@ export async function runOneBot(index: number, params: BotRunParams): Promise<Bo
     chatMessagesPerMinute: params.chatMessagesPerMinute,
     raiseHandProbability: params.raiseHandProbability,
     logger: params.logger.child({ bot: index }),
+    onPhase: params.metrics ? (phase, ms) => params.metrics?.recordJoinPhase(phase, ms) : undefined,
   });
 
+  const usersAtStart = params.sampler ? params.sampler.enter() : 0;
   params.metrics?.botStarted();
   let botOutcome;
   try {
     botOutcome = await bot.run(params.signal);
   } finally {
     params.metrics?.botStopped();
+    params.sampler?.exit();
   }
 
   const outcome: BotOutcome =
@@ -96,11 +101,9 @@ export async function runOneBot(index: number, params: BotRunParams): Promise<Bo
       ? { status: 'completed', timings: botOutcome.timings }
       : { status: 'failed', kind: botOutcome.kind };
 
-  if (params.metrics && outcome.status === 'completed') {
-    for (const { phase, key } of PHASE_KEYS) {
-      const value = outcome.timings[key];
-      if (typeof value === 'number') params.metrics.recordJoinPhase(phase, value);
-    }
+  if (params.sampler && outcome.status === 'completed') {
+    const latency = joinLatencyMs(outcome.timings);
+    if (latency !== undefined) params.sampler.record(usersAtStart, latency);
   }
   params.metrics?.recordOutcome(outcome);
   return outcome;
@@ -154,7 +157,10 @@ export function buildReport(
   outcomes: BotOutcome[],
   meetingsCreated: string[],
   meetingsEnded: string[],
-  wallClockMs: number
+  wallClockMs: number,
+  sampler?: KneeSampler,
+  sloMs?: number,
+  bandSize?: number
 ): FleetReport {
   const byKind: Partial<Record<BbbErrorKind, number>> = {};
   const apiJoin: number[] = [];
@@ -196,6 +202,7 @@ export function buildReport(
     meetingsCreated,
     meetingsEnded,
     wallClockMs,
+    knee: computeKnee(sampler?.samples ?? [], bandSize ?? 25, sloMs),
   };
 }
 

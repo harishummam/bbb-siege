@@ -13,6 +13,7 @@ import {
   type FleetReport,
   type MetricsRecorder,
 } from './run-core.js';
+import { KneeSampler } from './knee.js';
 
 export interface FleetConfig {
   adapter: BbbAdapter;
@@ -59,6 +60,7 @@ export async function runFleet(
   const runId = randomUUID().slice(0, 8);
   const meetingsCreated: string[] = [];
   const meetingsEnded: string[] = [];
+  const sampler = new KneeSampler();
   const start = performance.now();
 
   try {
@@ -79,12 +81,13 @@ export async function runFleet(
         raiseHandProbability,
         logger: log,
         metrics: config.metrics,
+        sampler,
         signal: controller.signal,
       });
     });
 
     const outcomes = await Promise.all(tasks);
-    return buildReport(outcomes, meetingsCreated, meetingsEnded, performance.now() - start);
+    return buildReport(outcomes, meetingsCreated, meetingsEnded, performance.now() - start, sampler);
   } finally {
     externalSignal?.removeEventListener('abort', onExternalAbort);
     controller.abort();

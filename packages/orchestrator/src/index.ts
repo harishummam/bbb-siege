@@ -7,5 +7,7 @@ export { loadScenario, parseScenario, interpolateEnv, scenarioSchema, ScenarioEr
 export type { Scenario, RampStep } from './scenario.js';
 export { computeLaunchSchedule } from './ramp.js';
 export type { LaunchSchedule } from './ramp.js';
+export { computeKnee } from './knee.js';
+export type { KneeResult, LatencyBand, JoinSample } from './knee.js';
 export { runScenario } from './scenario-run.js';
 export type { ScenarioRunConfig, ScenarioReport } from './scenario-run.js';

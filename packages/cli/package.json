@@ -24,6 +24,7 @@
     "@bbb-siege/bot-headless": "workspace:*",
     "pino": "^9.6.0",
     "@bbb-siege/orchestrator": "workspace:*",
-    "@bbb-siege/metrics": "workspace:*"
+    "@bbb-siege/metrics": "workspace:*",
+    "commander": "^13.1.0"
   }
 }

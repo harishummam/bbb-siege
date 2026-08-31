@@ -24,6 +24,7 @@ export interface SignalingBotConfig {
   subscriptions?: SubscriptionSpec[];
   chatMessagesPerMinute?: number;
   raiseHandProbability?: number;
+  onPhase?: (phase: JoinPhaseName, ms: number) => void;
 }
 
 export interface PhaseTimings {
@@ -32,6 +33,8 @@ export interface PhaseTimings {
   userJoinMs?: number;
   firstSubscriptionDataMs?: number;
 }
+
+export type JoinPhaseName = 'api_join' | 'ws_connect' | 'user_join' | 'first_subscription_data';
 
 export type BotOutcome =
   | { status: 'completed'; timings: PhaseTimings; state: SubscriptionState }
@@ -86,6 +89,7 @@ export class SignalingBot {
         signal: controller.signal,
       });
       this.timings.apiJoinMs = performance.now() - joinStart;
+      this.config.onPhase?.('api_join', this.timings.apiJoinMs);
       this.log.debug({ userId: context.userId, meetingId: context.meetingId }, 'joined via api');
 
       const wsStart = performance.now();
@@ -95,11 +99,13 @@ export class SignalingBot {
         isMobile: this.config.isMobile,
       });
       this.timings.wsConnectMs = performance.now() - wsStart;
+      this.config.onPhase?.('ws_connect', this.timings.wsConnectMs);
       this.log.debug('signaling connected');
 
       const userJoinStart = performance.now();
       await session.mutate(userJoinMutation(context.authToken), controller.signal);
       this.timings.userJoinMs = performance.now() - userJoinStart;
+      this.config.onPhase?.('user_join', this.timings.userJoinMs);
       this.log.debug('userJoinMeeting acknowledged');
 
       const specs = this.config.subscriptions ?? coreSubscriptions();
@@ -199,6 +205,7 @@ export class SignalingBot {
         this.state.update(spec.operationName, data);
         if (this.timings.firstSubscriptionDataMs === undefined) {
           this.timings.firstSubscriptionDataMs = performance.now() - start;
+          this.config.onPhase?.('first_subscription_data', this.timings.firstSubscriptionDataMs);
         }
       }
     } catch (error) {
