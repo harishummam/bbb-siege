@@ -14,5 +14,8 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
+  },
+  "dependencies": {
+    "prom-client": "^15.1.3"
   }
 }

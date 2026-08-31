@@ -13,6 +13,7 @@ import {
   teardownMeetings,
   type BotOutcome,
   type FleetReport,
+  type MetricsRecorder,
 } from './run-core.js';
 
 export interface ScenarioRunConfig {
@@ -22,6 +23,7 @@ export interface ScenarioRunConfig {
   moderatorPW?: string;
   namePrefix?: string;
   connectTimeoutMs?: number;
+  metrics?: MetricsRecorder;
   logger?: Logger;
 }
 
@@ -73,6 +75,7 @@ export async function runScenario(
           chatMessagesPerMinute: scenario.behaviour?.chatMessagesPerMinute,
           raiseHandProbability: scenario.behaviour?.raiseHandProbability,
           logger: log,
+          metrics: config.metrics,
           signal: controller.signal,
         });
       })()

@@ -115,6 +115,32 @@ describe('runFleet', () => {
     expect(report.meetingsEnded).toEqual(report.meetingsCreated);
   });
 
+  it('drives the metrics recorder for started/stopped/phase/outcome', async () => {
+    const client = fakeClient();
+    const events: string[] = [];
+    const recorder = {
+      botStarted: () => events.push('start'),
+      botStopped: () => events.push('stop'),
+      recordJoinPhase: (phase: string) => events.push(`phase:${phase}`),
+      recordOutcome: (o: { status: string }) => events.push(`outcome:${o.status}`),
+    };
+    await runFleet({
+      adapter: fakeAdapter(),
+      client,
+      botCount: 2,
+      meetingCount: 1,
+      holdMs: 10,
+      startStaggerMs: 0,
+      metrics: recorder,
+      logger: silent,
+    });
+    expect(events.filter((e) => e === 'start')).toHaveLength(2);
+    expect(events.filter((e) => e === 'stop')).toHaveLength(2);
+    expect(events.filter((e) => e === 'outcome:completed')).toHaveLength(2);
+    expect(events).toContain('phase:api_join');
+    expect(events).toContain('phase:ws_connect');
+  });
+
   it('ends created meetings even when aborted mid-run', async () => {
     const client = fakeClient();
     const controller = new AbortController();

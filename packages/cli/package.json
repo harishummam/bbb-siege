@@ -23,6 +23,7 @@
     "@bbb-siege/protocol": "workspace:*",
     "@bbb-siege/bot-headless": "workspace:*",
     "pino": "^9.6.0",
-    "@bbb-siege/orchestrator": "workspace:*"
+    "@bbb-siege/orchestrator": "workspace:*",
+    "@bbb-siege/metrics": "workspace:*"
   }
 }

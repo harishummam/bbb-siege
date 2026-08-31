@@ -26,6 +26,15 @@ export type BotOutcome =
   | { status: 'failed'; kind: BbbErrorKind }
   | { status: 'skipped' };
 
+export type JoinPhase = 'api_join' | 'ws_connect' | 'user_join' | 'first_subscription_data';
+
+export interface MetricsRecorder {
+  botStarted(): void;
+  botStopped(): void;
+  recordJoinPhase(phase: JoinPhase, ms: number): void;
+  recordOutcome(outcome: BotOutcome): void;
+}
+
 export function delay(ms: number, signal: AbortSignal): Promise<void> {
   if (ms <= 0) return Promise.resolve();
   return new Promise((resolve) => {
@@ -50,8 +59,16 @@ export interface BotRunParams {
   chatMessagesPerMinute?: number;
   raiseHandProbability?: number;
   logger: Logger;
+  metrics?: MetricsRecorder;
   signal: AbortSignal;
 }
+
+const PHASE_KEYS: { phase: JoinPhase; key: keyof PhaseTimings }[] = [
+  { phase: 'api_join', key: 'apiJoinMs' },
+  { phase: 'ws_connect', key: 'wsConnectMs' },
+  { phase: 'user_join', key: 'userJoinMs' },
+  { phase: 'first_subscription_data', key: 'firstSubscriptionDataMs' },
+];
 
 export async function runOneBot(index: number, params: BotRunParams): Promise<BotOutcome> {
   if (params.signal.aborted) return { status: 'skipped' };
@@ -65,10 +82,28 @@ export async function runOneBot(index: number, params: BotRunParams): Promise<Bo
     raiseHandProbability: params.raiseHandProbability,
     logger: params.logger.child({ bot: index }),
   });
-  const outcome = await bot.run(params.signal);
-  return outcome.status === 'completed'
-    ? { status: 'completed', timings: outcome.timings }
-    : { status: 'failed', kind: outcome.kind };
+
+  params.metrics?.botStarted();
+  let botOutcome;
+  try {
+    botOutcome = await bot.run(params.signal);
+  } finally {
+    params.metrics?.botStopped();
+  }
+
+  const outcome: BotOutcome =
+    botOutcome.status === 'completed'
+      ? { status: 'completed', timings: botOutcome.timings }
+      : { status: 'failed', kind: botOutcome.kind };
+
+  if (params.metrics && outcome.status === 'completed') {
+    for (const { phase, key } of PHASE_KEYS) {
+      const value = outcome.timings[key];
+      if (typeof value === 'number') params.metrics.recordJoinPhase(phase, value);
+    }
+  }
+  params.metrics?.recordOutcome(outcome);
+  return outcome;
 }
 
 export async function createMeetings(

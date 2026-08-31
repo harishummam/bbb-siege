@@ -1,4 +1,5 @@
 import { BbbApiClient } from '@bbb-siege/api-client';
+import { SiegeMetrics, startMetricsServer, type MetricsServer } from '@bbb-siege/metrics';
 import { runFleet } from '@bbb-siege/orchestrator';
 import { V30Adapter } from '@bbb-siege/protocol';
 import { createLogger } from './log.js';
@@ -40,6 +41,14 @@ async function main(): Promise<void> {
   const chatMessagesPerMinute = intEnv('CHAT_PER_MIN', 0);
   const raiseHandProbability = floatEnv('RAISE_HAND_PROB', 0);
 
+  let metrics: SiegeMetrics | undefined;
+  let metricsServer: MetricsServer | undefined;
+  if (process.env.METRICS_PORT) {
+    metrics = new SiegeMetrics();
+    metricsServer = await startMetricsServer(metrics, intEnv('METRICS_PORT', 9095));
+    log.info({ port: metricsServer.port }, 'metrics endpoint listening at /metrics');
+  }
+
   const controller = new AbortController();
   const onSigint = (): void => {
     log.warn('SIGINT received, aborting bots and ending meetings');
@@ -62,6 +71,7 @@ async function main(): Promise<void> {
         startStaggerMs,
         chatMessagesPerMinute,
         raiseHandProbability,
+        metrics,
         logger: log,
       },
       controller.signal
@@ -85,6 +95,7 @@ async function main(): Promise<void> {
     if (report.completed === 0) process.exitCode = 1;
   } finally {
     process.off('SIGINT', onSigint);
+    await metricsServer?.close();
   }
 }
 

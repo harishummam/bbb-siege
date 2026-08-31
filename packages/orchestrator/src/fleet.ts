@@ -11,6 +11,7 @@ import {
   teardownMeetings,
   type BotOutcome,
   type FleetReport,
+  type MetricsRecorder,
 } from './run-core.js';
 
 export interface FleetConfig {
@@ -25,6 +26,7 @@ export interface FleetConfig {
   connectTimeoutMs?: number;
   chatMessagesPerMinute?: number;
   raiseHandProbability?: number;
+  metrics?: MetricsRecorder;
   logger?: Logger;
 }
 
@@ -76,6 +78,7 @@ export async function runFleet(
         chatMessagesPerMinute,
         raiseHandProbability,
         logger: log,
+        metrics: config.metrics,
         signal: controller.signal,
       });
     });
