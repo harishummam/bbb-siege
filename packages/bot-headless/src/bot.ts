@@ -8,7 +8,8 @@ import type {
   SignalingSession,
   SubscriptionSpec,
 } from '@bbb-siege/protocol';
-import { coreSubscriptions, userJoinMutation } from '@bbb-siege/protocol';
+import { chatSendMessage, coreSubscriptions, setRaiseHand, userJoinMutation } from '@bbb-siege/protocol';
+import type { MutationSpec } from '@bbb-siege/protocol';
 import pino, { type Logger } from 'pino';
 import { SubscriptionState } from './subscription-state.js';
 
@@ -21,6 +22,8 @@ export interface SignalingBotConfig {
   connectTimeoutMs?: number;
   isMobile?: boolean;
   subscriptions?: SubscriptionSpec[];
+  chatMessagesPerMinute?: number;
+  raiseHandProbability?: number;
 }
 
 export interface PhaseTimings {
@@ -102,10 +105,7 @@ export class SignalingBot {
       const specs = this.config.subscriptions ?? coreSubscriptions();
       this.consumeSubscriptions(session, specs, controller.signal, start);
 
-      await Promise.race([
-        delay(this.config.holdMs ?? 0, controller.signal),
-        session.closed,
-      ]);
+      await this.holdWithBehaviour(session, context, controller.signal);
 
       return { status: 'completed', timings: this.timings, state: this.state };
     } catch (error) {
@@ -122,6 +122,57 @@ export class SignalingBot {
         } catch (error) {
           this.log.warn({ err: error }, 'error during leave');
         }
+      }
+    }
+  }
+
+  private async holdWithBehaviour(
+    session: SignalingSession,
+    context: JoinContext,
+    signal: AbortSignal
+  ): Promise<void> {
+    const holdMs = this.config.holdMs ?? 0;
+    const chatRate = this.config.chatMessagesPerMinute ?? 0;
+    const raiseProb = this.config.raiseHandProbability ?? 0;
+
+    let raisedHand = false;
+    if (raiseProb > 0 && Math.random() < raiseProb) {
+      await this.safeMutate(session, setRaiseHand(context.userId, true), signal);
+      raisedHand = true;
+      this.log.debug('raised hand');
+    }
+
+    let chatTimer: ReturnType<typeof setInterval> | undefined;
+    if (chatRate > 0) {
+      const intervalMs = Math.max(1000, Math.round(60_000 / chatRate));
+      let count = 0;
+      chatTimer = setInterval(() => {
+        count += 1;
+        void this.safeMutate(session, chatSendMessage(`bbb-siege bot message ${count}`), signal);
+      }, intervalMs);
+    }
+
+    try {
+      await Promise.race([delay(holdMs, signal), session.closed]);
+    } finally {
+      if (chatTimer) clearInterval(chatTimer);
+      if (raisedHand && !signal.aborted) {
+        await this.safeMutate(session, setRaiseHand(context.userId, false), signal);
+      }
+    }
+  }
+
+  private async safeMutate(
+    session: SignalingSession,
+    spec: MutationSpec,
+    signal: AbortSignal
+  ): Promise<void> {
+    try {
+      await session.mutate(spec, signal);
+      this.log.debug({ op: spec.operationName }, 'behaviour mutation sent');
+    } catch (error) {
+      if (!signal.aborted) {
+        this.log.warn({ err: error, op: spec.operationName }, 'behaviour mutation failed');
       }
     }
   }

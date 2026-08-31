@@ -13,6 +13,9 @@ export {
   videoStreamsSubscription,
   raisedHandUsersSubscription,
   userJoinMutation,
+  chatSendMessage,
+  setRaiseHand,
+  MAIN_PUBLIC_CHAT_ID,
   type UserJoinVariables,
 } from './adapters/v30/operations.js';
 

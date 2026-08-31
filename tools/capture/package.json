@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "capture": "tsx capture.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "capture:actions": "tsx capture-actions.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.7",

@@ -54,7 +54,9 @@ async function main(): Promise<void> {
       adapter,
       client,
       join: { fullName: 'smoke-bot-1', meetingID, password: moderatorPW },
-      holdMs: 5000,
+      holdMs: 8000,
+      chatMessagesPerMinute: 30,
+      raiseHandProbability: 1,
       logger: log.child({ bot: 1 }),
     });
 

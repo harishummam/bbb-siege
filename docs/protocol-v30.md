@@ -132,6 +132,15 @@ Server sends updates via `type: "next"`:
 - Initial response: full document containing entity arrays.
 - Subsequent updates: JSON-patch delta objects containing `op`, `path`, `value` (e.g. `[{"op":"replace","path":"/0/layout/updatedAt","value":"..."}]`).
 
+> **Observed (live 2026-08-26):** across a captured single-user session, all `next` frames carried a full `payload.data` document (standard `graphql-transport-ws` `ExecutionResult`); no JSON-patch delta frames were seen. `graphql-ws` consumes them natively.
+
+### 5.3 Mutations (client → server)
+Mutations are sent as `type: "subscribe"` frames (graphql-transport-ws) and each returns one `next` then `complete`. Confirmed payloads (captured 2026-08-26 via `tools/capture/capture-actions.ts`):
+
+- **`UserJoin`** → `userJoinMeeting(authToken, clientType, clientIsMobile)` — registers presence; required after `connection_ack`.
+- **`ChatSendMessage`** → `chatSendMessage(chatId, chatMessageInMarkdownFormat, replyToMessageId)`; public chat id is `MAIN-PUBLIC-GROUP-CHAT`.
+- **`SetRaiseHand`** → `userSetRaiseHand(userId, raiseHand: Boolean)`.
+
 ---
 
 ## 6. Phase 5: WebRTC & SFU Media Negotiation

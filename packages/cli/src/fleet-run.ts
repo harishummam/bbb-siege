@@ -15,6 +15,12 @@ function intEnv(name: string, fallback: number): number {
   return Number.isFinite(parsed) ? parsed : fallback;
 }
 
+function floatEnv(name: string, fallback: number): number {
+  const raw = process.env[name];
+  const parsed = raw ? Number.parseFloat(raw) : NaN;
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
 async function main(): Promise<void> {
   const url = process.env.BBB_URL;
   const secret = process.env.BBB_SECRET;
@@ -31,6 +37,8 @@ async function main(): Promise<void> {
   const meetingCount = intEnv('MEETINGS', 1);
   const holdMs = intEnv('HOLD_MS', 10_000);
   const startStaggerMs = intEnv('STAGGER_MS', 50);
+  const chatMessagesPerMinute = intEnv('CHAT_PER_MIN', 0);
+  const raiseHandProbability = floatEnv('RAISE_HAND_PROB', 0);
 
   const controller = new AbortController();
   const onSigint = (): void => {
@@ -39,10 +47,23 @@ async function main(): Promise<void> {
   };
   process.on('SIGINT', onSigint);
 
-  log.info({ botCount, meetingCount, holdMs, startStaggerMs }, 'starting fleet');
+  log.info(
+    { botCount, meetingCount, holdMs, startStaggerMs, chatMessagesPerMinute, raiseHandProbability },
+    'starting fleet'
+  );
   try {
     const report = await runFleet(
-      { adapter, client, botCount, meetingCount, holdMs, startStaggerMs, logger: log },
+      {
+        adapter,
+        client,
+        botCount,
+        meetingCount,
+        holdMs,
+        startStaggerMs,
+        chatMessagesPerMinute,
+        raiseHandProbability,
+        logger: log,
+      },
       controller.signal
     );
     log.info(

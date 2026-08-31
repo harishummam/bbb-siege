@@ -10,7 +10,7 @@ Load and stress testing harness for self-hosted BigBlueButton 3.x.
 
 ## Architecture & Bot Tiers
 
-- **Tier 1 — Signaling bots (`@bbb-siege/bot-headless`)** — ✅ implemented. High-density signaling and GraphQL WebSocket load generator: full join handshake, `connection_init`/`ack`, `UserJoin`, and the core subscriptions. No media.
+- **Tier 1 — Signaling bots (`@bbb-siege/bot-headless`)** — ✅ implemented. High-density signaling and GraphQL WebSocket load generator: full join handshake, `connection_init`/`ack`, `UserJoin`, the core subscriptions, and behaviour mutations (chat, raise hand). No media.
 - **Tier 2 — Media bots (`@bbb-siege/bot-media`)** — 🔜 planned. Native WebRTC media load generator (LiveKit & mediasoup).
 - **Tier 3 — Browser bots (`@bbb-siege/bot-browser`)** — 🔜 planned. Playwright Chromium & Firefox probes measuring real QoE.
 
@@ -24,7 +24,7 @@ Load and stress testing harness for self-hosted BigBlueButton 3.x.
 | M3 | YAML scenarios, orchestrator, Prometheus metrics | ⏳ next |
 | M4–M7 | Browser bots, media bots, distributed fleet, release | 🔜 planned |
 
-The join/subscribe/leave lifecycle and the fleet runner are verified against a live BBB 3.0.x server. Chat / raise-hand behaviour mutations are pending a protocol re-capture.
+The join/subscribe/leave lifecycle, chat and raise-hand behaviour, and the fleet runner are all verified against a live BBB 3.0.x server.
 
 ## Monorepo Layout
 
@@ -75,10 +75,11 @@ Ramps `BOTS` signaling bots into `MEETINGS` meeting(s), reports p50/p95/p99 join
 pnpm fleet                                 # defaults: 10 bots, 1 meeting, 10s hold
 BOTS=100 STAGGER_MS=50 pnpm fleet          # 100 bots ramped over ~5s
 BOTS=100 MEETINGS=4 pnpm fleet             # spread across 4 meetings
+BOTS=50 CHAT_PER_MIN=4 RAISE_HAND_PROB=0.1 pnpm fleet   # add chat + raise-hand load
 pnpm fleet --verbose                       # per-bot lifecycle logs (or LOG_LEVEL=debug)
 ```
 
-Environment knobs: `BOTS`, `MEETINGS`, `HOLD_MS`, `STAGGER_MS`, `LOG_LEVEL`.
+Environment knobs: `BOTS`, `MEETINGS`, `HOLD_MS`, `STAGGER_MS`, `CHAT_PER_MIN`, `RAISE_HAND_PROB`, `LOG_LEVEL`.
 
 ## Development
 

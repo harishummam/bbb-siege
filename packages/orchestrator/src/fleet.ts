@@ -16,6 +16,8 @@ export interface FleetConfig {
   holdMs?: number;
   startStaggerMs?: number;
   connectTimeoutMs?: number;
+  chatMessagesPerMinute?: number;
+  raiseHandProbability?: number;
   logger?: Logger;
 }
 
@@ -68,6 +70,8 @@ export async function runFleet(
     holdMs = 10_000,
     startStaggerMs = 50,
     connectTimeoutMs,
+    chatMessagesPerMinute,
+    raiseHandProbability,
   } = config;
   const log = config.logger ?? pino({ name: 'fleet' });
 
@@ -112,6 +116,8 @@ export async function runFleet(
         holdMs,
         startStaggerMs,
         connectTimeoutMs,
+        chatMessagesPerMinute,
+        raiseHandProbability,
         logger: log,
         signal: controller.signal,
       })
@@ -144,6 +150,8 @@ interface LaunchArgs {
   holdMs: number;
   startStaggerMs: number;
   connectTimeoutMs?: number;
+  chatMessagesPerMinute?: number;
+  raiseHandProbability?: number;
   logger: Logger;
   signal: AbortSignal;
 }
@@ -162,6 +170,8 @@ async function launchBot(index: number, args: LaunchArgs): Promise<FleetOutcome>
     },
     holdMs: args.holdMs,
     connectTimeoutMs: args.connectTimeoutMs,
+    chatMessagesPerMinute: args.chatMessagesPerMinute,
+    raiseHandProbability: args.raiseHandProbability,
     logger: args.logger.child({ bot: index }),
   });
 

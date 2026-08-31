@@ -91,6 +91,29 @@ describe('SignalingBot', () => {
     expect(session.closeCalls).toBe(1);
   });
 
+  it('sends chat and raise-hand behaviour mutations during hold', async () => {
+    const session = fakeSession();
+    const adapter = fakeAdapter(session);
+    const bot = new SignalingBot({
+      adapter,
+      client,
+      join: joinOptions,
+      logger: silentLogger,
+      holdMs: 1200,
+      chatMessagesPerMinute: 120,
+      raiseHandProbability: 1,
+    });
+
+    const outcome = await bot.run();
+    expect(outcome.status).toBe('completed');
+
+    const ops = (session.mutate as ReturnType<typeof vi.fn>).mock.calls.map(
+      (c) => (c[0] as MutationSpec).operationName
+    );
+    expect(ops).toContain('ChatSendMessage');
+    expect(ops.filter((o) => o === 'SetRaiseHand').length).toBeGreaterThanOrEqual(1);
+  });
+
   it('classifies a join failure and never opens signaling', async () => {
     const session = fakeSession();
     const adapter = fakeAdapter(session, new AuthFailedError('bad checksum'));

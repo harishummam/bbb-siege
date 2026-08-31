@@ -79,3 +79,24 @@ export const coreSubscriptions = (): SubscriptionSpec[] => [
   videoStreamsSubscription(),
   raisedHandUsersSubscription(),
 ];
+
+export const MAIN_PUBLIC_CHAT_ID = 'MAIN-PUBLIC-GROUP-CHAT';
+
+const CHAT_SEND_MESSAGE_MUTATION = "mutation ChatSendMessage($chatId: String!, $chatMessageInMarkdownFormat: String!, $replyToMessageId: String) {\n  chatSendMessage(\n    chatId: $chatId\n    chatMessageInMarkdownFormat: $chatMessageInMarkdownFormat\n    replyToMessageId: $replyToMessageId\n  )\n}";
+
+const SET_RAISE_HAND_MUTATION = "mutation SetRaiseHand($userId: String!, $raiseHand: Boolean!) {\n  userSetRaiseHand(userId: $userId, raiseHand: $raiseHand)\n}";
+
+export const chatSendMessage = (
+  message: string,
+  chatId: string = MAIN_PUBLIC_CHAT_ID
+): MutationSpec => ({
+  operationName: 'ChatSendMessage',
+  query: CHAT_SEND_MESSAGE_MUTATION,
+  variables: { chatId, chatMessageInMarkdownFormat: message, replyToMessageId: null },
+});
+
+export const setRaiseHand = (userId: string, raiseHand: boolean): MutationSpec => ({
+  operationName: 'SetRaiseHand',
+  query: SET_RAISE_HAND_MUTATION,
+  variables: { userId, raiseHand },
+});
