@@ -65,6 +65,27 @@ export class BbbApiClient {
     return this.config.url;
   }
 
+  /**
+   * Builds a signed `join` URL for a browser to navigate (redirect=true by default).
+   */
+  public buildJoinUrl(options: {
+    fullName: string;
+    meetingID: string;
+    password: string;
+    userID?: string;
+    redirect?: boolean;
+    [key: string]: unknown;
+  }): string {
+    const { url } = buildApiUrl(
+      this.config.url,
+      'join',
+      { ...options, redirect: options.redirect ?? true },
+      this.config.secret,
+      this.activeHashAlgorithm
+    );
+    return url;
+  }
+
   private async executeRequest<T>(
     apiCall: string,
     params: Record<string, unknown>,

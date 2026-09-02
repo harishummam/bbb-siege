@@ -14,5 +14,10 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
+  },
+  "dependencies": {
+    "@bbb-siege/api-client": "workspace:*",
+    "playwright": "^1.50.1",
+    "pino": "^9.6.0"
   }
 }

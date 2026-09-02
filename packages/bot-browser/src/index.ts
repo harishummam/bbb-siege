@@ -1,1 +1,3 @@
-export const BOT_BROWSER_PLACEHOLDER = 'bot-browser';
+export { BrowserBot } from './browser-bot.js';
+export type { BrowserBotConfig, BrowserOutcome, BrowserKind, BrowserTimings } from './browser-bot.js';
+export { PROBE_INIT_SCRIPT } from './init-script.js';
