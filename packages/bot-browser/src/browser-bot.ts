@@ -22,15 +22,37 @@ export interface BrowserTimings {
   iceConnectedMs?: number;
 }
 
+export interface QoeStats {
+  turnRelayUsed: boolean;
+  rttMs?: number;
+  audio?: { jitterMs?: number; packetsLost?: number; packetsReceived?: number; kbps?: number };
+  video?: {
+    framesDecoded?: number;
+    fps?: number;
+    freezeCount?: number;
+    packetsLost?: number;
+    kbps?: number;
+    frameHeight?: number;
+  };
+}
+
 export type BrowserOutcome =
   | {
       status: 'completed';
       browser: BrowserKind;
       iceConnected: boolean;
+      iceStates: string[];
       pcCount: number;
       timings: BrowserTimings;
+      qoe?: QoeStats;
     }
   | { status: 'failed'; browser: BrowserKind; error: unknown; timings: BrowserTimings };
+
+type RawStat = Record<string, unknown> & { _pc?: number; id?: string; type?: string };
+
+function num(v: unknown): number | undefined {
+  return typeof v === 'number' && Number.isFinite(v) ? v : undefined;
+}
 
 interface IceEvent {
   t: number;
@@ -105,9 +127,17 @@ export class BrowserBot {
       }
 
       const pcCount = await page.evaluate(() => (window as unknown as { __probe?: { pcs: unknown[] } }).__probe?.pcs.length ?? 0);
-      await this.hold(page, signal);
 
-      return { status: 'completed', browser: this.browserKind, iceConnected, pcCount, timings: this.timings };
+      const before = iceConnected ? await this.collectStats(page) : [];
+      const statsStart = performance.now();
+      await this.hold(page, signal);
+      const qoe = iceConnected
+        ? this.summarizeQoe(before, await this.collectStats(page), performance.now() - statsStart)
+        : undefined;
+      if (qoe) this.log.info({ qoe }, 'QoE collected');
+
+      const iceStates = await this.collectIceStates(page);
+      return { status: 'completed', browser: this.browserKind, iceConnected, iceStates, pcCount, timings: this.timings, qoe };
     } catch (error) {
       this.log.error({ err: error }, 'browser probe failed');
       return { status: 'failed', browser: this.browserKind, error, timings: this.timings };
@@ -204,6 +234,87 @@ export class BrowserBot {
       await page.waitForTimeout(500);
     }
     return false;
+  }
+
+  private collectIceStates(page: Page): Promise<string[]> {
+    return page.evaluate(
+      () => (window as unknown as { __probe?: { ice: { state: string }[] } }).__probe?.ice.map((e) => e.state) ?? []
+    );
+  }
+
+  private collectStats(page: Page): Promise<RawStat[]> {
+    return page.evaluate(async () => {
+      const probe = (window as unknown as { __probe?: { pcs: RTCPeerConnection[] } }).__probe;
+      const out: Record<string, unknown>[] = [];
+      if (!probe) return out;
+      for (let i = 0; i < probe.pcs.length; i++) {
+        try {
+          const report = await probe.pcs[i].getStats();
+          report.forEach((r: Record<string, unknown>) => out.push({ ...r, _pc: i }));
+        } catch {
+          // peer connection may be closed
+        }
+      }
+      return out;
+    });
+  }
+
+  private summarizeQoe(before: RawStat[], after: RawStat[], windowMs: number): QoeStats {
+    const beforeIdx = new Map<string, RawStat>();
+    for (const r of before) beforeIdx.set(`${r._pc}:${r.id}`, r);
+    const afterById = new Map<string, RawStat>();
+    for (const r of after) afterById.set(String(r.id), r);
+
+    const secs = windowMs / 1000;
+    const delta = (r: RawStat, field: string): number | undefined => {
+      const now = num(r[field]);
+      if (now === undefined) return undefined;
+      const prev = num(beforeIdx.get(`${r._pc}:${r.id}`)?.[field]);
+      return prev === undefined ? now : now - prev;
+    };
+    const kbps = (r: RawStat): number | undefined => {
+      const d = delta(r, 'bytesReceived');
+      return d !== undefined && secs > 0 ? Math.round((d * 8) / 1000 / secs) : undefined;
+    };
+
+    const qoe: QoeStats = { turnRelayUsed: false };
+
+    for (const r of after) {
+      if (r.type !== 'inbound-rtp') continue;
+      const kind = r.kind ?? r.mediaType;
+      if (kind === 'audio') {
+        const jitter = num(r.jitter);
+        qoe.audio = {
+          jitterMs: jitter !== undefined ? Math.round(jitter * 1000) : undefined,
+          packetsLost: num(r.packetsLost),
+          packetsReceived: num(r.packetsReceived),
+          kbps: kbps(r),
+        };
+      } else if (kind === 'video') {
+        const dFrames = delta(r, 'framesDecoded');
+        qoe.video = {
+          framesDecoded: num(r.framesDecoded),
+          fps: dFrames !== undefined && secs > 0 ? Math.round(dFrames / secs) : undefined,
+          freezeCount: num(r.freezeCount),
+          packetsLost: num(r.packetsLost),
+          kbps: kbps(r),
+          frameHeight: num(r.frameHeight),
+        };
+      }
+    }
+
+    for (const r of after) {
+      if (r.type !== 'candidate-pair') continue;
+      const selected = r.nominated === true || r.selected === true || r.state === 'succeeded';
+      if (!selected) continue;
+      const rtt = num(r.currentRoundTripTime);
+      if (rtt !== undefined && qoe.rttMs === undefined) qoe.rttMs = Math.round(rtt * 1000);
+      const local = afterById.get(String(r.localCandidateId));
+      const remote = afterById.get(String(r.remoteCandidateId));
+      if (local?.candidateType === 'relay' || remote?.candidateType === 'relay') qoe.turnRelayUsed = true;
+    }
+
+    return qoe;
   }
 
   private async hold(page: Page, signal?: AbortSignal): Promise<void> {

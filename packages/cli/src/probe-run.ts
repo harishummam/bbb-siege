@@ -56,7 +56,16 @@ async function main(): Promise<void> {
     const outcome = await bot.run(controller.signal);
     if (outcome.status === 'completed') {
       log.info(
-        { browser: outcome.browser, iceConnected: outcome.iceConnected, pcCount: outcome.pcCount, timings: outcome.timings },
+        {
+          browser: outcome.browser,
+          iceConnected: outcome.iceConnected,
+          pcCount: outcome.pcCount,
+          turnRelayUsed: outcome.qoe?.turnRelayUsed,
+          rttMs: outcome.qoe?.rttMs,
+          audio: outcome.qoe?.audio,
+          video: outcome.qoe?.video,
+          timings: outcome.timings,
+        },
         'PROBE COMPLETED'
       );
       if (!outcome.iceConnected) process.exitCode = 1;
