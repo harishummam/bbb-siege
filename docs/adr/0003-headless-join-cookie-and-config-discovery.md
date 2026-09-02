@@ -5,7 +5,7 @@
 
 ## Context
 
-Running the first real bot against a live 3.0.x server (bbb.example.com) surfaced two
+Running the first real bot against a live 3.0.x server surfaced two
 protocol requirements that are invisible from a browser, because a browser handles them
 automatically. Both were found by the smoke run failing, not from documentation — the M0
 capture doc had them wrong or unstated.

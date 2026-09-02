@@ -34,7 +34,7 @@ BigBlueButton 3.0 removed Meteor and MongoDB, replacing them with a GraphQL arch
   - `<session_token>`: Unique session token string.
   - `<auth_token>`: User authentication token.
   - `<url>`: HTML5 client join URL (`https://<host>/html5client/?sessionToken=<token>`).
-  - **Also sets the `JSESSIONID` HTTP cookie** (`Set-Cookie: JSESSIONID=...; Path=/; Secure; HttpOnly`) — verified against bbb.example.com, 2026-08-26.
+  - **Also sets the `JSESSIONID` HTTP cookie** (`Set-Cookie: JSESSIONID=...; Path=/; Secure; HttpOnly`) — verified against a live test server, 2026-08-26.
 - **Behavior with `redirect=true`**:
   - Sets `JSESSIONID` HTTP cookie (`Path=/; Secure; HttpOnly`).
   - Responds with `302 Found` redirecting to `https://<host>/html5client/?sessionToken=<token>`.
@@ -65,7 +65,7 @@ When the HTML5 client loads `https://<host>/html5client/?sessionToken=<token>`:
 }
 ```
 
-> **CORRECTED (verified against bbb.example.com, 2026-08-26):** The JSON response is only returned when the request carries `Content-Type: application/json`. Without it the same endpoint returns the classic XML `<response>` document, and a JSON parse fails with `Unexpected token '<'`. Also note `bbbVersion` is observed **empty** (`""`) on this server, so version detection cannot rely on it from this endpoint.
+> **CORRECTED (verified against a live test server, 2026-08-26):** The JSON response is only returned when the request carries `Content-Type: application/json`. Without it the same endpoint returns the classic XML `<response>` document, and a JSON parse fails with `Unexpected token '<'`. Also note `bbbVersion` is observed **empty** (`""`) on this server, so version detection cannot rely on it from this endpoint.
 
 ---
 
@@ -149,4 +149,4 @@ Mutations are sent as `type: "subscribe"` frames (graphql-transport-ws) and each
 - Chromium executes WebRTC offer/answer directly.
 - Firefox non-compliance with ICE-lite falls back to TURN relay candidates provided by coturn.
 
-> **CORRECTED (live 2026-08-26, bbb.example.com):** Both Chromium and Firefox connect **without a TURN relay** (`getStats` selected candidate-pair uses host/srflx, not `relay`) with clean audio (0 loss, ~30–47ms RTT). The "Firefox requires TURN" rule is **stack-dependent, not universal** — this server behaves as if LiveKit (not ICE-lite mediasoup) is the active SFU. TURN-required behavior should be verified per-server, not assumed; detecting the active media stack (mediasoup vs LiveKit) is the reliable signal.
+> **Observed (live 2026-08-26):** Both Chromium and Firefox connect with clean audio (0 loss, ~30–47ms RTT) and the probe's selected candidate-pair is **not** a `relay` (`turnRelayUsed: false`). Per the operator, this server **does** run coturn (required because it sits behind a firewall) and Firefox support is deliberately configured in the BBB config. So `turnRelayUsed: false` means only that *this probe's network path reached the SFU directly / via STUN (srflx) and did not need to fall back to the TURN relay* — TURN is present and used only when a direct path fails (symmetric NAT, blocking firewalls). **Takeaway:** `turnRelayUsed` reports whether the relay was *used on a given path*, not whether TURN exists; it will flip to `true` from network positions that require relaying. Do not infer the media stack from it.
