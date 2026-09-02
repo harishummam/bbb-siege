@@ -148,3 +148,5 @@ Mutations are sent as `type: "subscribe"` frames (graphql-transport-ws) and each
 - Audio/video streams use WebRTC peer connections negotiated with `bbb-webrtc-sfu`.
 - Chromium executes WebRTC offer/answer directly.
 - Firefox non-compliance with ICE-lite falls back to TURN relay candidates provided by coturn.
+
+> **CORRECTED (live 2026-08-26, bbb.example.com):** Both Chromium and Firefox connect **without a TURN relay** (`getStats` selected candidate-pair uses host/srflx, not `relay`) with clean audio (0 loss, ~30–47ms RTT). The "Firefox requires TURN" rule is **stack-dependent, not universal** — this server behaves as if LiveKit (not ICE-lite mediasoup) is the active SFU. TURN-required behavior should be verified per-server, not assumed; detecting the active media stack (mediasoup vs LiveKit) is the reliable signal.

@@ -20,6 +20,8 @@ export interface BrowserBotConfig {
 export interface BrowserTimings {
   navigateMs?: number;
   iceConnectedMs?: number;
+  firstAudioPacketMs?: number;
+  firstVideoFrameMs?: number;
 }
 
 export interface QoeStats {
@@ -89,7 +91,6 @@ export class BrowserBot {
   }
 
   async run(signal?: AbortSignal): Promise<BrowserOutcome> {
-    const start = performance.now();
     const joinUrl = this.config.client.buildJoinUrl({
       fullName: this.config.fullName,
       meetingID: this.config.meetingID,
@@ -120,8 +121,17 @@ export class BrowserBot {
 
       const iceConnected = await this.waitForIce(page, this.config.iceTimeoutMs ?? 25_000);
       if (iceConnected) {
-        this.timings.iceConnectedMs = performance.now() - start;
-        this.log.info({ iceConnectedMs: Math.round(this.timings.iceConnectedMs) }, 'ICE connected');
+        const info = await page.evaluate(() => {
+          const p = (window as unknown as { __probe?: { t0: number; ice: { t: number; state: string }[] } }).__probe;
+          const connected = p?.ice.find((e) => e.state === 'connected' || e.state === 'completed');
+          return { t0: p?.t0 ?? 0, connectedAt: connected?.t ?? 0 };
+        });
+        if (info.t0 && info.connectedAt) this.timings.iceConnectedMs = info.connectedAt - info.t0;
+        this.log.info({ iceConnectedMs: Math.round(this.timings.iceConnectedMs ?? 0) }, 'ICE connected');
+
+        const onset = await this.measureMediaOnset(page, info.t0, 8000);
+        this.timings.firstAudioPacketMs = onset.firstAudioPacketMs;
+        this.timings.firstVideoFrameMs = onset.firstVideoFrameMs;
       } else {
         this.log.warn('ICE did not reach connected within timeout');
       }
@@ -240,6 +250,35 @@ export class BrowserBot {
     return page.evaluate(
       () => (window as unknown as { __probe?: { ice: { state: string }[] } }).__probe?.ice.map((e) => e.state) ?? []
     );
+  }
+
+  private async measureMediaOnset(
+    page: Page,
+    t0: number,
+    timeoutMs: number
+  ): Promise<{ firstAudioPacketMs?: number; firstVideoFrameMs?: number }> {
+    const deadline = Date.now() + timeoutMs;
+    let firstAudioPacketMs: number | undefined;
+    let firstVideoFrameMs: number | undefined;
+    while (Date.now() < deadline && (firstAudioPacketMs === undefined || firstVideoFrameMs === undefined)) {
+      const stats = await this.collectStats(page);
+      const now = Date.now();
+      const inbound = (kind: string): boolean =>
+        stats.some(
+          (r) => r.type === 'inbound-rtp' && (r.kind ?? r.mediaType) === kind && (num(r.packetsReceived) ?? 0) > 0
+        );
+      if (firstAudioPacketMs === undefined && inbound('audio') && t0) firstAudioPacketMs = now - t0;
+      if (
+        firstVideoFrameMs === undefined &&
+        t0 &&
+        stats.some((r) => r.type === 'inbound-rtp' && (r.kind ?? r.mediaType) === 'video' && (num(r.framesDecoded) ?? 0) > 0)
+      ) {
+        firstVideoFrameMs = now - t0;
+      }
+      if (firstAudioPacketMs !== undefined && firstVideoFrameMs !== undefined) break;
+      await page.waitForTimeout(250);
+    }
+    return { firstAudioPacketMs, firstVideoFrameMs };
   }
 
   private collectStats(page: Page): Promise<RawStat[]> {
