@@ -21,10 +21,18 @@ Load and stress testing harness for self-hosted BigBlueButton 3.x.
 | M0 | Protocol capture & `docs/protocol-v30.md` | ✅ done |
 | M1 | `api-client` — REST lifecycle, checksum auth, guardrails | ✅ done |
 | M2 | Tier 1 signaling bot; fleet of 100 from one process | ✅ core done |
-| M3 | YAML scenarios, orchestrator, Prometheus metrics | ⏳ next |
+| M3 | YAML scenarios, ramp scheduler, Prometheus metrics + live dashboard, `run` CLI, the knee | ✅ done |
 | M4–M7 | Browser bots, media bots, distributed fleet, release | 🔜 planned |
 
-The join/subscribe/leave lifecycle, chat and raise-hand behaviour, and the fleet runner are all verified against a live BBB 3.0.x server.
+The join/subscribe/leave lifecycle, chat and raise-hand behaviour, the fleet runner, and scenario-driven ramp runs (with the join-latency knee) are all verified against a live BBB 3.0.x server.
+
+## Scenario runs
+
+```bash
+MAX_USERS=300 pnpm siege run scenarios/signaling-ramp.yaml
+```
+
+Ramps signaling load per a declarative YAML scenario, serves a live dashboard at `http://localhost:9095/` (Prometheus metrics at `/metrics`), and reports the **knee** — the concurrency where p95 join latency crosses the scenario SLO. See [scenarios/signaling-ramp.yaml](scenarios/signaling-ramp.yaml) for the format and [docs/adr/](docs/adr/) for the design decisions.
 
 ## Monorepo Layout
 
