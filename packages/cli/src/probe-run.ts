@@ -64,6 +64,7 @@ async function main(): Promise<void> {
           rttMs: outcome.qoe?.rttMs,
           audio: outcome.qoe?.audio,
           video: outcome.qoe?.video,
+          outbound: outcome.qoe?.outbound,
           timings: outcome.timings,
         },
         'PROBE COMPLETED'

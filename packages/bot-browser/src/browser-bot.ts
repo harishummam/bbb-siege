@@ -3,6 +3,7 @@ import type { BbbApiClient } from '@bbb-siege/api-client';
 import { chromium, firefox, type Browser, type BrowserContext, type Page } from 'playwright';
 import pino, { type Logger } from 'pino';
 import { PROBE_INIT_SCRIPT } from './init-script.js';
+import { ensureFakeMedia } from './fake-media.js';
 
 export type BrowserKind = 'chromium' | 'firefox';
 
@@ -14,6 +15,9 @@ export interface BrowserBotConfig {
   browser?: BrowserKind;
   holdMs?: number;
   iceTimeoutMs?: number;
+  fakeMedia?: boolean;
+  fakeMediaDir?: string;
+  ffmpegPath?: string;
   logger?: Logger;
 }
 
@@ -36,6 +40,7 @@ export interface QoeStats {
     kbps?: number;
     frameHeight?: number;
   };
+  outbound?: { audioKbps?: number; videoKbps?: number; videoFps?: number; videoFrameHeight?: number };
 }
 
 export type BrowserOutcome =
@@ -159,8 +164,9 @@ export class BrowserBot {
     }
   }
 
-  private launch(): Promise<Browser> {
+  private async launch(): Promise<Browser> {
     if (this.browserKind === 'firefox') {
+      // Firefox has no --use-file-for-fake-*-capture equivalent; it uses its built-in fake device.
       return firefox.launch({
         headless: true,
         firefoxUserPrefs: {
@@ -169,10 +175,24 @@ export class BrowserBot {
         },
       });
     }
-    return chromium.launch({
-      headless: true,
-      args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', '--autoplay-policy=no-user-gesture-required'],
-    });
+    const args = [
+      '--use-fake-ui-for-media-stream',
+      '--use-fake-device-for-media-stream',
+      '--autoplay-policy=no-user-gesture-required',
+    ];
+    if (this.config.fakeMedia !== false) {
+      const media = await ensureFakeMedia({ dir: this.config.fakeMediaDir, ffmpegPath: this.config.ffmpegPath });
+      if (media) {
+        args.push(
+          `--use-file-for-fake-video-capture=${media.videoPath}`,
+          `--use-file-for-fake-audio-capture=${media.audioPath}`
+        );
+        this.log.debug({ video: media.videoPath }, 'using generated motion+noise fake media');
+      } else {
+        this.log.debug('ffmpeg fake media unavailable; using built-in fake device');
+      }
+    }
+    return chromium.launch({ headless: true, args });
   }
 
   private async joinMedia(page: Page): Promise<void> {
@@ -316,30 +336,60 @@ export class BrowserBot {
       return d !== undefined && secs > 0 ? Math.round((d * 8) / 1000 / secs) : undefined;
     };
 
+    // Pick the most-active report per (type, kind) so an inactive m-line doesn't shadow the real stream.
+    const best = (type: string, kind: string, activityField: string): RawStat | undefined => {
+      let chosen: RawStat | undefined;
+      let max = -1;
+      for (const r of after) {
+        if (r.type !== type || (r.kind ?? r.mediaType) !== kind) continue;
+        const v = num(r[activityField]) ?? 0;
+        if (v > max) {
+          max = v;
+          chosen = r;
+        }
+      }
+      return chosen;
+    };
+    const sentKbps = (r: RawStat): number | undefined => {
+      const d = delta(r, 'bytesSent');
+      return d !== undefined && secs > 0 ? Math.round((d * 8) / 1000 / secs) : undefined;
+    };
+
     const qoe: QoeStats = { turnRelayUsed: false };
 
-    for (const r of after) {
-      if (r.type !== 'inbound-rtp') continue;
-      const kind = r.kind ?? r.mediaType;
-      if (kind === 'audio') {
-        const jitter = num(r.jitter);
-        qoe.audio = {
-          jitterMs: jitter !== undefined ? Math.round(jitter * 1000) : undefined,
-          packetsLost: num(r.packetsLost),
-          packetsReceived: num(r.packetsReceived),
-          kbps: kbps(r),
-        };
-      } else if (kind === 'video') {
-        const dFrames = delta(r, 'framesDecoded');
-        qoe.video = {
-          framesDecoded: num(r.framesDecoded),
-          fps: dFrames !== undefined && secs > 0 ? Math.round(dFrames / secs) : undefined,
-          freezeCount: num(r.freezeCount),
-          packetsLost: num(r.packetsLost),
-          kbps: kbps(r),
-          frameHeight: num(r.frameHeight),
-        };
-      }
+    const audioIn = best('inbound-rtp', 'audio', 'packetsReceived');
+    if (audioIn) {
+      const jitter = num(audioIn.jitter);
+      qoe.audio = {
+        jitterMs: jitter !== undefined ? Math.round(jitter * 1000) : undefined,
+        packetsLost: num(audioIn.packetsLost),
+        packetsReceived: num(audioIn.packetsReceived),
+        kbps: kbps(audioIn),
+      };
+    }
+    const videoIn = best('inbound-rtp', 'video', 'framesDecoded');
+    if (videoIn) {
+      const dFrames = delta(videoIn, 'framesDecoded');
+      qoe.video = {
+        framesDecoded: num(videoIn.framesDecoded),
+        fps: dFrames !== undefined && secs > 0 ? Math.round(dFrames / secs) : undefined,
+        freezeCount: num(videoIn.freezeCount),
+        packetsLost: num(videoIn.packetsLost),
+        kbps: kbps(videoIn),
+        frameHeight: num(videoIn.frameHeight),
+      };
+    }
+    const audioOut = best('outbound-rtp', 'audio', 'bytesSent');
+    if (audioOut) qoe.outbound = { ...qoe.outbound, audioKbps: sentKbps(audioOut) };
+    const videoOut = best('outbound-rtp', 'video', 'bytesSent');
+    if (videoOut) {
+      const dFrames = delta(videoOut, 'framesEncoded');
+      qoe.outbound = {
+        ...qoe.outbound,
+        videoKbps: sentKbps(videoOut),
+        videoFps: dFrames !== undefined && secs > 0 ? Math.round(dFrames / secs) : undefined,
+        videoFrameHeight: num(videoOut.frameHeight),
+      };
     }
 
     for (const r of after) {

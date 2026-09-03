@@ -105,7 +105,7 @@ Or fold a small browser-probe control group into a scenario run (probe count der
 MAX_USERS=100 pnpm siege run scenarios/mixed-ramp.yaml
 ```
 
-Their QoE appears in the run report, on `/metrics`, and in a dedicated panel on the live dashboard.
+Their QoE appears in the run report, on `/metrics`, and in a dedicated panel on the live dashboard. Chromium probes publish **non-trivial motion+noise media** (generated once with `ffmpeg` into a temp dir) so their webcam/audio push realistic bandwidth rather than a near-empty test pattern; if `ffmpeg` isn't installed they fall back to the browser's built-in fake device.
 
 ## Development
 
