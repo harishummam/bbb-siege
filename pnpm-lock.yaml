@@ -103,6 +103,9 @@ importers:
       '@bbb-siege/api-client':
         specifier: workspace:*
         version: link:../api-client
+      '@bbb-siege/bot-browser':
+        specifier: workspace:*
+        version: link:../bot-browser
       '@bbb-siege/bot-headless':
         specifier: workspace:*
         version: link:../bot-headless

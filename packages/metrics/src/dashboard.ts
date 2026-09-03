@@ -125,6 +125,14 @@ export const DASHBOARD_HTML = `<!doctype html>
     </div>
   </div>
 
+  <div class="panel phdr" id="probesPanel" style="display:none; margin-top:12px;">
+    <div class="ttl">Browser probes — ground-truth QoE</div>
+    <table>
+      <thead><tr><th>browser</th><th>ICE ok</th><th>ICE fail</th><th>rtt</th><th>jitter</th><th>TURN relay</th></tr></thead>
+      <tbody id="probesBody"></tbody>
+    </table>
+  </div>
+
   <div class="panel summary" id="summary" style="display:none">
     <div class="loghead"><span>Run summary</span><span class="sumbadge">complete · frozen</span></div>
     <div class="sumgrid" id="sumgrid"></div>
@@ -265,6 +273,33 @@ export const DASHBOARD_HTML = `<!doctype html>
     el('latNow').textContent = latNow.join('  ');
     if (!done) { samples.push(sample); if (samples.length > MAXPTS) samples.shift(); }
     renderCharts();
+    renderProbes(m);
+  }
+
+  function renderProbes(m) {
+    var outcomes = m['bbb_siege_probe_outcomes_total'] || [];
+    if (!outcomes.length) return;
+    var rtt = {}, jit = {}, turn = {}, ice = {};
+    (m['bbb_siege_probe_rtt_ms'] || []).forEach(function (r) { rtt[r.labels.browser] = r.value; });
+    (m['bbb_siege_probe_jitter_ms'] || []).forEach(function (r) { jit[r.labels.browser] = r.value; });
+    (m['bbb_siege_probe_turn_relay_total'] || []).forEach(function (r) { turn[r.labels.browser] = r.value; });
+    outcomes.forEach(function (r) {
+      var b = r.labels.browser;
+      ice[b] = ice[b] || { connected: 0, failed: 0 };
+      ice[b][r.labels.ice] = (ice[b][r.labels.ice] || 0) + r.value;
+    });
+    var body = el('probesBody');
+    body.innerHTML = '';
+    Object.keys(ice).forEach(function (b) {
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td class="phase">' + b + '</td><td>' + Math.round(ice[b].connected || 0) +
+        '</td><td>' + Math.round(ice[b].failed || 0) +
+        '</td><td>' + (rtt[b] !== undefined ? Math.round(rtt[b]) + 'ms' : '—') +
+        '</td><td>' + (jit[b] !== undefined ? Math.round(jit[b]) + 'ms' : '—') +
+        '</td><td>' + Math.round(turn[b] || 0) + '</td>';
+      body.appendChild(tr);
+    });
+    el('probesPanel').style.display = '';
   }
 
   function fmtDur(ms) { var s = Math.round(ms / 1000); return Math.floor(s / 60) + 'm ' + pad2(s % 60) + 's'; }

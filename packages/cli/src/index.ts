@@ -63,8 +63,9 @@ async function runCommand(scenarioPath: string, options: RunOptions): Promise<vo
 
   log.info({ scenario: scenario.name }, 'starting scenario run');
   try {
+    const maxBrowserProbes = process.env.BROWSERS_MAX ? Number.parseInt(process.env.BROWSERS_MAX, 10) : undefined;
     const report = await runScenario(
-      { scenario, adapter: new V30Adapter(), client, metrics, logger: log },
+      { scenario, adapter: new V30Adapter(), client, metrics, maxBrowserProbes, logger: log },
       controller.signal
     );
     log.info(
@@ -84,6 +85,7 @@ async function runCommand(scenarioPath: string, options: RunOptions): Promise<vo
           firstSubscriptionData: report.timings.firstSubscriptionData,
         },
         knee: formatKnee(report.knee),
+        probes: report.probes,
         meetingsEnded: report.meetingsEnded.length,
         meetingsCreated: report.meetingsCreated.length,
       },

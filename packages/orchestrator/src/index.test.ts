@@ -4,6 +4,22 @@ import pino from 'pino';
 import { describe, expect, it, vi } from 'vitest';
 import { parseScenario, percentiles, runFleet, runScenario } from './index.js';
 
+vi.mock('@bbb-siege/bot-browser', () => ({
+  BrowserBot: class {
+    async run(): Promise<unknown> {
+      return {
+        status: 'completed',
+        browser: 'chromium',
+        iceConnected: true,
+        iceStates: [],
+        pcCount: 2,
+        timings: {},
+        qoe: { turnRelayUsed: false, rttMs: 40, audio: { jitterMs: 2 } },
+      };
+    }
+  },
+}));
+
 const silent = pino({ level: 'silent' });
 
 function fakeSession(): SignalingSession {
@@ -139,6 +155,32 @@ describe('runFleet', () => {
     expect(events.filter((e) => e === 'outcome:completed')).toHaveLength(2);
     expect(events).toContain('phase:api_join');
     expect(events).toContain('phase:ws_connect');
+  });
+
+  it('launches browser probes for a mix.browser scenario and records them', async () => {
+    const client = fakeClient();
+    const scenario = parseScenario(
+      'name: mixed\ntarget: { url: u, secret: s }\nmeeting: { count: 1 }\n' +
+        'ramp:\n  - { at: 0s, users: 4 }\n  - { hold: 10ms }\n' +
+        'mix:\n  signaling: { weight: 50 }\n  browser: { weight: 50, browsers: [chromium] }',
+      {} as NodeJS.ProcessEnv
+    );
+    const probeCalls: unknown[] = [];
+    const recorder = {
+      botStarted: () => {},
+      botStopped: () => {},
+      recordJoinPhase: () => {},
+      recordOutcome: () => {},
+      recordProbe: (r: unknown) => probeCalls.push(r),
+    };
+    const report = await runScenario(
+      { adapter: fakeAdapter(), client, scenario, metrics: recorder, logger: silent },
+      undefined
+    );
+    expect(report.probes.length).toBeGreaterThan(0);
+    expect(report.probes[0].iceConnected).toBe(true);
+    expect(report.probes[0].browser).toBe('chromium');
+    expect(probeCalls.length).toBe(report.probes.length);
   });
 
   it('ends created meetings even when aborted mid-run', async () => {

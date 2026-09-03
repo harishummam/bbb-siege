@@ -21,6 +21,7 @@
     "@bbb-siege/bot-headless": "workspace:*",
     "pino": "^9.6.0",
     "zod": "^3.24.1",
-    "yaml": "^2.7.0"
+    "yaml": "^2.7.0",
+    "@bbb-siege/bot-browser": "workspace:*"
   }
 }

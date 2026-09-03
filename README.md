@@ -12,7 +12,7 @@ Load and stress testing harness for self-hosted BigBlueButton 3.x.
 
 - **Tier 1 — Signaling bots (`@bbb-siege/bot-headless`)** — ✅ implemented. High-density signaling and GraphQL WebSocket load generator: full join handshake, `connection_init`/`ack`, `UserJoin`, the core subscriptions, and behaviour mutations (chat, raise hand). No media.
 - **Tier 2 — Media bots (`@bbb-siege/bot-media`)** — 🔜 planned. Native WebRTC media load generator (LiveKit & mediasoup).
-- **Tier 3 — Browser bots (`@bbb-siege/bot-browser`)** — 🔜 planned. Playwright Chromium & Firefox probes measuring real QoE.
+- **Tier 3 — Browser bots (`@bbb-siege/bot-browser`)** — ✅ implemented. Playwright Chromium & Firefox probes measuring real QoE via `getStats()`; standalone (`pnpm probe`) or mixed into scenario runs.
 
 ## Project status
 
@@ -22,7 +22,8 @@ Load and stress testing harness for self-hosted BigBlueButton 3.x.
 | M1 | `api-client` — REST lifecycle, checksum auth, guardrails | ✅ done |
 | M2 | Tier 1 signaling bot; fleet of 100 from one process | ✅ core done |
 | M3 | YAML scenarios, ramp scheduler, Prometheus metrics + live dashboard, `run` CLI, the knee | ✅ done |
-| M4–M7 | Browser bots, media bots, distributed fleet, release | 🔜 planned |
+| M4 | Tier 3 browser bots (Playwright Chromium/Firefox, getStats QoE) | ✅ core done |
+| M5–M7 | Media bots, distributed fleet, release | 🔜 planned |
 
 The join/subscribe/leave lifecycle, chat and raise-hand behaviour, the fleet runner, and scenario-driven ramp runs (with the join-latency knee) are all verified against a live BBB 3.0.x server.
 
@@ -42,7 +43,7 @@ Ramps signaling load per a declarative YAML scenario, serves a live dashboard at
 - `packages/orchestrator` — Fleet coordination, ramp scheduling, graceful teardown. ✅
 - `packages/cli` — Runnable entrypoints (`smoke`, `fleet`). ✅
 - `packages/bot-media` — Tier 2 media bot. 🔜
-- `packages/bot-browser` — Tier 3 Playwright browser bot. 🔜
+- `packages/bot-browser` — Tier 3 Playwright browser bot + getStats QoE. ✅
 - `packages/metrics` — Prometheus metrics exporter and report generation. 🔜
 
 ## Requirements
@@ -88,6 +89,23 @@ pnpm fleet --verbose                       # per-bot lifecycle logs (or LOG_LEVE
 ```
 
 Environment knobs: `BOTS`, `MEETINGS`, `HOLD_MS`, `STAGGER_MS`, `CHAT_PER_MIN`, `RAISE_HAND_PROB`, `LOG_LEVEL`.
+
+### Browser probe (Tier 3)
+
+Run a single real browser that joins with mic + webcam and reports ground-truth QoE (ICE, RTT, jitter, packet loss, TURN usage) via `getStats()`:
+
+```bash
+pnpm probe                 # one headless Chromium probe
+BROWSER=firefox pnpm probe # Firefox
+```
+
+Or fold a small browser-probe control group into a scenario run (probe count derived from `mix.browser`, capped at `BROWSERS_MAX`, default 3):
+
+```bash
+MAX_USERS=100 pnpm siege run scenarios/mixed-ramp.yaml
+```
+
+Their QoE appears in the run report, on `/metrics`, and in a dedicated panel on the live dashboard.
 
 ## Development
 

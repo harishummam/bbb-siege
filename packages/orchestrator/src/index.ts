@@ -1,6 +1,6 @@
 export { runFleet } from './fleet.js';
 export type { FleetConfig } from './fleet.js';
-export type { FleetReport, BotOutcome, MetricsRecorder, JoinPhase } from './run-core.js';
+export type { FleetReport, BotOutcome, MetricsRecorder, JoinPhase, ProbeResult } from './run-core.js';
 export { percentiles } from './percentiles.js';
 export type { Percentiles } from './percentiles.js';
 export { loadScenario, parseScenario, interpolateEnv, scenarioSchema, ScenarioError } from './scenario.js';

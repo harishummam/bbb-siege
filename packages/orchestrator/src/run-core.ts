@@ -30,11 +30,21 @@ export type BotOutcome =
 
 export type JoinPhase = 'api_join' | 'ws_connect' | 'user_join' | 'first_subscription_data';
 
+export interface ProbeResult {
+  browser: string;
+  status: 'completed' | 'failed';
+  iceConnected: boolean;
+  rttMs?: number;
+  jitterMs?: number;
+  turnRelayUsed?: boolean;
+}
+
 export interface MetricsRecorder {
   botStarted(): void;
   botStopped(): void;
   recordJoinPhase(phase: JoinPhase, ms: number): void;
   recordOutcome(outcome: BotOutcome): void;
+  recordProbe?(result: ProbeResult): void;
 }
 
 export function delay(ms: number, signal: AbortSignal): Promise<void> {

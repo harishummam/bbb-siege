@@ -1,0 +1,20 @@
+name: mixed-ramp-with-probes
+description: Ramp signaling load to ${MAX_USERS:-100} with a small browser-probe control group measuring real QoE under load.
+target:
+  url: ${BBB_URL}
+  secret: ${BBB_SECRET}
+  version: auto
+meeting:
+  count: ${MEETINGS:-2}
+ramp:
+  - { at: 0s, users: 10 }
+  - { at: 60s, users: ${MAX_USERS:-100} }
+  - { hold: 120s }
+mix:
+  signaling: { weight: 95 }
+  browser: { weight: 5, browsers: [chromium] }
+behaviour:
+  chatMessagesPerMinute: 2
+  raiseHandProbability: 0.05
+slo:
+  joinLatencyP95: 8s

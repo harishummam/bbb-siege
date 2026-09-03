@@ -9,6 +9,14 @@ type OutcomeInput =
   | { status: 'skipped' }
   | { status: 'failed'; kind: string };
 
+interface ProbeInput {
+  browser: string;
+  iceConnected: boolean;
+  rttMs?: number;
+  jitterMs?: number;
+  turnRelayUsed?: boolean;
+}
+
 const DEFAULT_PORT = 9095;
 
 export class SiegeMetrics {
@@ -17,6 +25,10 @@ export class SiegeMetrics {
   private readonly outcomes: Counter<'result' | 'kind'>;
   private readonly activeBots: Gauge;
   private readonly rateLimited: Counter;
+  private readonly probeOutcomes: Counter<'browser' | 'ice'>;
+  private readonly probeRtt: Gauge<'browser'>;
+  private readonly probeJitter: Gauge<'browser'>;
+  private readonly probeTurnRelay: Counter<'browser'>;
 
   constructor(prefix = 'bbb_siege') {
     this.registry = new Registry();
@@ -43,6 +55,37 @@ export class SiegeMetrics {
       help: 'Bot outcomes rejected by server rate limiting',
       registers: [this.registry],
     });
+    this.probeOutcomes = new Counter({
+      name: `${prefix}_probe_outcomes_total`,
+      help: 'Browser probe outcomes by browser and ICE result',
+      labelNames: ['browser', 'ice'],
+      registers: [this.registry],
+    });
+    this.probeRtt = new Gauge({
+      name: `${prefix}_probe_rtt_ms`,
+      help: 'Latest browser probe media round-trip time (ms) by browser',
+      labelNames: ['browser'],
+      registers: [this.registry],
+    });
+    this.probeJitter = new Gauge({
+      name: `${prefix}_probe_jitter_ms`,
+      help: 'Latest browser probe audio jitter (ms) by browser',
+      labelNames: ['browser'],
+      registers: [this.registry],
+    });
+    this.probeTurnRelay = new Counter({
+      name: `${prefix}_probe_turn_relay_total`,
+      help: 'Browser probes that used a TURN relay, by browser',
+      labelNames: ['browser'],
+      registers: [this.registry],
+    });
+  }
+
+  recordProbe(probe: ProbeInput): void {
+    this.probeOutcomes.labels(probe.browser, probe.iceConnected ? 'connected' : 'failed').inc();
+    if (probe.rttMs !== undefined) this.probeRtt.labels(probe.browser).set(probe.rttMs);
+    if (probe.jitterMs !== undefined) this.probeJitter.labels(probe.browser).set(probe.jitterMs);
+    if (probe.turnRelayUsed) this.probeTurnRelay.labels(probe.browser).inc();
   }
 
   botStarted(): void {
