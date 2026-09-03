@@ -26,6 +26,7 @@
     "@bbb-siege/orchestrator": "workspace:*",
     "@bbb-siege/metrics": "workspace:*",
     "commander": "^13.1.0",
-    "@bbb-siege/bot-browser": "workspace:*"
+    "@bbb-siege/bot-browser": "workspace:*",
+    "@bbb-siege/bot-media": "workspace:*"
   }
 }

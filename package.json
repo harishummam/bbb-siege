@@ -11,7 +11,8 @@
     "smoke": "node --env-file=.env packages/cli/dist/smoke-run.js",
     "fleet": "node --env-file=.env packages/cli/dist/fleet-run.js",
     "siege": "node --env-file=.env packages/cli/dist/index.js",
-    "probe": "node --env-file=.env packages/cli/dist/probe-run.js"
+    "probe": "node --env-file=.env packages/cli/dist/probe-run.js",
+    "detect:media": "node --env-file=.env packages/cli/dist/detect-media.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",

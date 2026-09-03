@@ -1,1 +1,2 @@
-export const BOT_MEDIA_PLACEHOLDER = 'bot-media';
+export { MediaBot } from './media-bot.js';
+export type { MediaBotConfig, MediaDetectResult } from './media-bot.js';
