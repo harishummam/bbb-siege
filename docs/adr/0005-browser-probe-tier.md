@@ -9,7 +9,7 @@ Signaling bots (Tier 1) stress the GraphQL backend but never touch media, so the
 report what a real user *experiences* — audio quality, ICE success, TURN usage, join-to-media
 latency. Real browsers can, but they are expensive (a full Chromium/Firefox process each), so
 they cannot be the bulk load. BBB also treats Firefox as a first-class client with distinct
-ICE/TURN behavior (§6), which must be measured, not assumed.
+ICE/TURN behavior, which must be measured, not assumed.
 
 ## Decision
 

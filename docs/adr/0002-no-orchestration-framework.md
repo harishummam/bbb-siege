@@ -11,7 +11,7 @@ or Nest (app framework). Adopting one would bring a large dependency surface and
 programming model, and none of them speak BBB's GraphQL join protocol — we would still write
 all the protocol code ourselves and then bend it to fit the framework's runner.
 
-AGENTS.md §4 requires an explicit decision record before adding any heavyweight framework.
+This project requires an explicit decision record (an ADR) before adding any heavyweight framework.
 
 ## Decision
 

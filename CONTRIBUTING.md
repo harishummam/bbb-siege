@@ -6,7 +6,7 @@ Thank you for your interest in contributing to `bbb-siege`!
 
 1. **Adapter Pattern**: All BigBlueButton internal protocol knowledge must be contained within `packages/protocol/src/adapters/`. Core orchestration, metrics, and CLI must only import from the `BbbAdapter` interface.
 2. **TypeScript Strict ESM**: All packages use strict TypeScript settings and Node ESM modules.
-3. **No Unapproved Dependencies**: Consult `AGENTS.md` before introducing external frameworks or libraries.
+3. **No Unapproved Dependencies**: Discuss in an issue or PR before introducing external frameworks or libraries, and record the rationale in an ADR under `docs/adr/`.
 4. **Structured Logging**: Use `pino` for structured JSON logging. Never use `console.log`.
 5. **Safety Guardrails**: Never point test runs at production servers without explicit `--i-understand` flags and host matching.
 

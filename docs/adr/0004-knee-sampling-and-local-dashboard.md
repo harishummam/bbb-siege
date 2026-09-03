@@ -11,9 +11,9 @@ crosses a configured SLO. We also wanted a live view of a run. Two design questi
 1. **How to compute the knee.** Prometheus histograms give p95 of join latency overall, but
    lose the correlation between a sample's latency and the concurrency present when that bot
    joined — which is exactly what the knee needs.
-2. **How to show a live dashboard.** A published claude.ai Artifact runs under a CSP that
+2. **How to show a live dashboard.** A third-party-hosted static page runs under a CSP that
    blocks requests to `localhost`, so it cannot poll the metrics endpoint of a locally-running
-   load test. A live view therefore cannot be an Artifact.
+   load test. A live view must therefore be served locally.
 
 ## Decision
 

@@ -29,8 +29,8 @@ capture doc had them wrong or unstated.
   on the `ws` upgrade through a `webSocketImpl` subclass.
 - `discoverClientConfig` sends `Content-Type: application/json` and guards the parse with a
   clear error if the body is not JSON.
-- Both facts are recorded in `docs/protocol-v30.md` (§2.2, §3, §4) and the AGENTS.md §6 table,
-  marked CONFIRMED with the verification date.
+- Both facts are recorded in `docs/protocol-v30.md` (§2.2, §3, §4), marked CONFIRMED with the
+  verification date.
 
 ## Consequences
 
