@@ -6,7 +6,8 @@
   "scripts": {
     "capture": "tsx capture.ts",
     "typecheck": "tsc --noEmit",
-    "capture:actions": "tsx capture-actions.ts"
+    "capture:actions": "tsx capture-actions.ts",
+    "capture:media": "tsx capture-media.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.7",

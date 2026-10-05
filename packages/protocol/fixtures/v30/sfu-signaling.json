@@ -1,0 +1,295 @@
+{
+  "capturedAt": "2026-10-05T07:01:40.897Z",
+  "bbbVersion": "3.0.x (mediasoup)",
+  "socket": {
+    "url": "wss://bbb.example.com/bbb-webrtc-sfu?sessionToken=<sessionToken>",
+    "requiresCookie": "JSESSIONID (HTTP 401 on upgrade without it)",
+    "heartbeat": {
+      "client": {
+        "id": "ping"
+      },
+      "server": {
+        "id": "pong"
+      },
+      "intervalMs": 15000
+    },
+    "socketsPerUser": "one per media session (audio and each camera use separate sockets)"
+  },
+  "stuns": {
+    "request": "GET https://bbb.example.com/bigbluebutton/api/stuns?sessionToken=<sessionToken>",
+    "response": {
+      "stunServers": [
+        {
+          "url": "stun:coturn.example.com"
+        }
+      ],
+      "turnServers": [
+        {
+          "username": "<expiry>:w_vaftbqozzify",
+          "password": "[REDACTED]",
+          "url": "turn:coturn.example.com:5349?transport=tcp",
+          "ttl": 86400
+        },
+        {
+          "username": "<expiry>:w_vaftbqozzify",
+          "password": "[REDACTED]",
+          "url": "turns:coturn.example.com:5349?transport=tcp",
+          "ttl": 86400
+        }
+      ],
+      "remoteIceCandidates": []
+    }
+  },
+  "flows": {
+    "fullAudio": {
+      "note": "server offers; startResponse.sdpAnswer carries the SERVER OFFER (a=setup:actpass), subscriberAnswer.sdpOffer carries the CLIENT ANSWER",
+      "messages": [
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "start",
+            "type": "audio",
+            "role": "sendrecv",
+            "clientSessionNumber": 1,
+            "extension": null,
+            "transparentListenOnly": true
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "audio",
+            "id": "startResponse",
+            "response": "accepted",
+            "sdpAnswer": "v=0\r\no=mediasoup-client 10000 1 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=ice-lite\r\na=fingerprint:sha-256 3D:E5:4C:4F:AE:C5:E0:16:62:D5:F5:A0:5B:23:68:E2:E3:83:06:BB:82:AF:BC:95:A4:05:73:24:E0:07:F6:5B\r\na=msid-semantic: WMS *\r\na=group:BUNDLE 0\r\nm=audio 7 UDP/TLS/RTP/SAVPF 111\r\nc=IN IP4 127.0.0.1\r\na=rtpmap:111 opus/48000/2\r\na=fmtp:111 useinbandfec=1; maxaveragebitrate=30000; maxplaybackrate=48000; ptime=20; minptime=10; maxptime=40\r\na=rtcp-fb:111 transport-cc\r\na=setup:actpass\r\na=mid:0\r\na=msid:8d26a926 10cd4632-713d-41a9-9987-918d29548aef\r\na=sendrecv\r\na=ice-ufrag:44kb1071e0akbsxyd5p0ahca7p3h85yf\r\na=ice-pwd:[REDACTED]\r\na=candidate:udpcandidate 1 udp 1076302079 203.0.113.10 29739 typ host\r\na=end-of-candidates\r\na=ice-options:renomination\r\na=ssrc:444134349 cname:ofHpAZz34WtyTx5A\r\na=ssrc:444134349 msid:ofHpAZz34WtyTx5A d74fd235-76b6-43c1-a474-38ee571c5a7b\r\na=rtcp-mux\r\na=rtcp-rsize\r\n"
+          }
+        },
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "subscriberAnswer",
+            "type": "audio",
+            "role": "sendrecv",
+            "sdpOffer": "v=0\r\no=- 6913029410087213094 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=msid-semantic: WMS 22dc74b7-21e3-429d-b74b-5b908e58dcb1\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:T5Wz\r\na=ice-pwd:[REDACTED]\r\na=ice-options:trickle\r\na=fingerprint:sha-256 61:97:13:65:4F:C8:B4:F5:DC:EF:03:E2:F8:06:00:1C:31:C9:2E:40:31:20:4A:73:02:7C:2D:DC:5B:7D:99:B1\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=msid:22dc74b7-21e3-429d-b74b-5b908e58dcb1 d1336b97-60fa-45d9-9ff7-7c2682334f61\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=ssrc:2343944451 cname:Reu0XKKgZlHd1C7i\r\n"
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "audio",
+            "id": "webRTCAudioSuccess",
+            "success": "MEDIA_FLOWING"
+          }
+        }
+      ]
+    },
+    "listenOnly": {
+      "note": "same as fullAudio with role passive-sendrecv; client answers recvonly",
+      "messages": [
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "start",
+            "type": "audio",
+            "role": "passive-sendrecv",
+            "clientSessionNumber": 1,
+            "extension": null,
+            "transparentListenOnly": true
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "audio",
+            "id": "startResponse",
+            "response": "accepted",
+            "sdpAnswer": "v=0\r\no=mediasoup-client 10000 1 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=ice-lite\r\na=fingerprint:sha-256 3D:E5:4C:4F:AE:C5:E0:16:62:D5:F5:A0:5B:23:68:E2:E3:83:06:BB:82:AF:BC:95:A4:05:73:24:E0:07:F6:5B\r\na=msid-semantic: WMS *\r\na=group:BUNDLE 0\r\nm=audio 7 UDP/TLS/RTP/SAVPF 111\r\nc=IN IP4 127.0.0.1\r\na=rtpmap:111 opus/48000/2\r\na=fmtp:111 useinbandfec=1; maxaveragebitrate=30000; maxplaybackrate=48000; ptime=20; minptime=10; maxptime=40\r\na=rtcp-fb:111 transport-cc\r\na=setup:actpass\r\na=mid:0\r\na=msid:d16da32f 4c636fd6-39fc-42bb-94af-d6a3570a6ef5\r\na=sendrecv\r\na=ice-ufrag:ax3ciwetij4vjjm8veoxzxzuzo18sgj9\r\na=ice-pwd:[REDACTED]\r\na=candidate:udpcandidate 1 udp 1076302079 203.0.113.10 31441 typ host\r\na=end-of-candidates\r\na=ice-options:renomination\r\na=ssrc:372758157 cname:ofHpAZz34WtyTx5A\r\na=ssrc:372758157 msid:ofHpAZz34WtyTx5A 2ffa05d3-bdba-4db3-aa75-cee4ecc218ca\r\na=rtcp-mux\r\na=rtcp-rsize\r\n"
+          }
+        },
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "subscriberAnswer",
+            "type": "audio",
+            "role": "passive-sendrecv",
+            "sdpOffer": "v=0\r\no=- 6550518103585672928 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=msid-semantic: WMS\r\nm=audio 9 UDP/TLS/RTP/SAVPF 111\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:Ez8D\r\na=ice-pwd:[REDACTED]\r\na=ice-options:trickle\r\na=fingerprint:sha-256 F0:7B:5D:36:DD:E9:58:92:86:ED:4E:22:0F:3F:FA:54:AE:60:2E:25:80:AE:39:20:57:DF:34:10:DD:F6:0B:A0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=msid:- a41c5bab-2c16-407e-a944-5ac401e70337\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtpmap:111 opus/48000/2\r\na=rtcp-fb:111 transport-cc\r\na=fmtp:111 minptime=10;useinbandfec=1\r\na=ssrc:3381475404 cname:bEUJC67H8TgsPJTC\r\n"
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "audio",
+            "id": "webRTCAudioSuccess",
+            "success": "MEDIA_FLOWING"
+          }
+        }
+      ]
+    },
+    "cameraShare": {
+      "note": "client offers (start.sdpOffer), server answers (startResponse.sdpAnswer), then playStart",
+      "messages": [
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "start",
+            "type": "video",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+            "role": "share",
+            "sdpOffer": "v=0\r\no=- 4460980968569621115 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=extmap-allow-mixed\r\na=msid-semantic: WMS 071bac53-be47-4e09-8bb8-f7f5f1f0d9be\r\nm=video 9 UDP/TLS/RTP/SAVPF 96 97 102 103 104 107 108 109 114 115 116 117 39 40 45 46 98 99 100 101 118 119 120\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:3ylM\r\na=ice-pwd:[REDACTED]\r\na=ice-options:trickle\r\na=fingerprint:sha-256 D4:0B:D3:C4:CA:1A:44:57:BA:28:29:0E:6A:DB:81:09:E3:15:0F:A2:FD:0C:AF:C3:70:5C:B7:7A:AE:A8:62:E8\r\na=setup:actpass\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:3 urn:3gpp:video-orientation\r\na=extmap:4 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:5 http://www.webrtc.org/experiments/rtp-hdrext/playout-delay\r\na=extmap:6 http://www.webrtc.org/experiments/rtp-hdrext/video-content-type\r\na=extmap:7 http://www.webrtc.org/experiments/rtp-hdrext/video-timing\r\na=extmap:8 http://www.webrtc.org/experiments/rtp-hdrext/color-space\r\na=extmap:9 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=extmap:10 urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id\r\na=extmap:11 urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id\r\na=sendonly\r\na=msid:071bac53-be47-4e09-8bb8-f7f5f1f0d9be 1532f88d-701f-44e2-8a30-71dac1b80958\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:96 rrtr\r\na=rtcp-fb:97 rrtr\r\na=rtcp-fb:102 rrtr\r\na=rtcp-fb:103 rrtr\r\na=rtcp-fb:104 rrtr\r\na=rtcp-fb:107 rrtr\r\na=rtcp-fb:108 rrtr\r\na=rtcp-fb:109 rrtr\r\na=rtcp-fb:114 rrtr\r\na=rtcp-fb:115 rrtr\r\na=rtcp-fb:116 rrtr\r\na=rtcp-fb:117 rrtr\r\na=rtcp-fb:39 rrtr\r\na=rtcp-fb:40 rrtr\r\na=rtcp-fb:45 rrtr\r\na=rtcp-fb:46 rrtr\r\na=rtcp-fb:98 rrtr\r\na=rtcp-fb:99 rrtr\r\na=rtcp-fb:100 rrtr\r\na=rtcp-fb:101 rrtr\r\na=rtcp-fb:118 rrtr\r\na=rtcp-fb:119 rrtr\r\na=rtcp-fb:120 rrtr\r\na=rtpmap:96 VP8/90000\r\na=rtcp-fb:96 goog-remb\r\na=rtcp-fb:96 transport-cc\r\na=rtcp-fb:96 ccm fir\r\na=rtcp-fb:96 nack\r\na=rtcp-fb:96 nack pli\r\na=rtpmap:97 rtx/90000\r\na=fmtp:97 apt=96\r\na=rtpmap:102 H264/90000\r\na=rtcp-fb:102 goog-remb\r\na=rtcp-fb:102 transport-cc\r\na=rtcp-fb:102 ccm fir\r\na=rtcp-fb:102 nack\r\na=rtcp-fb:102 nack pli\r\na=fmtp:102 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42001f\r\na=rtpmap:103 rtx/90000\r\na=fmtp:103 apt=102\r\na=rtpmap:104 H264/90000\r\na=rtcp-fb:104 goog-remb\r\na=rtcp-fb:104 transport-cc\r\na=rtcp-fb:104 ccm fir\r\na=rtcp-fb:104 nack\r\na=rtcp-fb:104 nack pli\r\na=fmtp:104 level-asymmetry-allowed=1;packetization-mode=0;profile-level-id=42001f\r\na=rtpmap:107 rtx/90000\r\na=fmtp:107 apt=104\r\na=rtpmap:108 H264/90000\r\na=rtcp-fb:108 goog-remb\r\na=rtcp-fb:108 transport-cc\r\na=rtcp-fb:108 ccm fir\r\na=rtcp-fb:108 nack\r\na=rtcp-fb:108 nack pli\r\na=fmtp:108 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=42e01f\r\na=rtpmap:109 rtx/90000\r\na=fmtp:109 apt=108\r\na=rtpmap:114 H264/90000\r\na=rtcp-fb:114 goog-remb\r\na=rtcp-fb:114 transport-cc\r\na=rtcp-fb:114 ccm fir\r\na=rtcp-fb:114 nack\r\na=rtcp-fb:114 nack pli\r\na=fmtp:114 level-asymmetry-allowed=1;packetization-mode=0;profile-level-id=42e01f\r\na=rtpmap:115 rtx/90000\r\na=fmtp:115 apt=114\r\na=rtpmap:116 H264/90000\r\na=rtcp-fb:116 goog-remb\r\na=rtcp-fb:116 transport-cc\r\na=rtcp-fb:116 ccm fir\r\na=rtcp-fb:116 nack\r\na=rtcp-fb:116 nack pli\r\na=fmtp:116 level-asymmetry-allowed=1;packetization-mode=1;profile-level-id=4d001f\r\na=rtpmap:117 rtx/90000\r\na=fmtp:117 apt=116\r\na=rtpmap:39 H264/90000\r\na=rtcp-fb:39 goog-remb\r\na=rtcp-fb:39 transport-cc\r\na=rtcp-fb:39 ccm fir\r\na=rtcp-fb:39 nack\r\na=rtcp-fb:39 nack pli\r\na=fmtp:39 level-asymmetry-allowed=1;packetization-mode=0;profile-level-id=4d001f\r\na=rtpmap:40 rtx/90000\r\na=fmtp:40 apt=39\r\na=rtpmap:45 AV1/90000\r\na=rtcp-fb:45 goog-remb\r\na=rtcp-fb:45 transport-cc\r\na=rtcp-fb:45 ccm fir\r\na=rtcp-fb:45 nack\r\na=rtcp-fb:45 nack pli\r\na=fmtp:45 level-idx=5;profile=0;tier=0\r\na=rtpmap:46 rtx/90000\r\na=fmtp:46 apt=45\r\na=rtpmap:98 VP9/90000\r\na=rtcp-fb:98 goog-remb\r\na=rtcp-fb:98 transport-cc\r\na=rtcp-fb:98 ccm fir\r\na=rtcp-fb:98 nack\r\na=rtcp-fb:98 nack pli\r\na=fmtp:98 profile-id=0\r\na=rtpmap:99 rtx/90000\r\na=fmtp:99 apt=98\r\na=rtpmap:100 VP9/90000\r\na=rtcp-fb:100 goog-remb\r\na=rtcp-fb:100 transport-cc\r\na=rtcp-fb:100 ccm fir\r\na=rtcp-fb:100 nack\r\na=rtcp-fb:100 nack pli\r\na=fmtp:100 profile-id=2\r\na=rtpmap:101 rtx/90000\r\na=fmtp:101 apt=100\r\na=rtpmap:118 red/90000\r\na=rtpmap:119 rtx/90000\r\na=fmtp:119 apt=118\r\na=rtpmap:120 ulpfec/90000\r\na=ssrc-group:FID 697045304 1966624684\r\na=ssrc:697045304 cname:/1m9FT/X+97D7AnO\r\na=ssrc:697045304 msid:071bac53-be47-4e09-8bb8-f7f5f1f0d9be 1532f88d-701f-44e2-8a30-71dac1b80958\r\na=ssrc:1966624684 cname:/1m9FT/X+97D7AnO\r\na=ssrc:1966624684 msid:071bac53-be47-4e09-8bb8-f7f5f1f0d9be 1532f88d-701f-44e2-8a30-71dac1b80958\r\n",
+            "bitrate": 200,
+            "record": true
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "video",
+            "role": "share",
+            "id": "startResponse",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+            "sdpAnswer": "v=0\r\no=mediasoup-client 10000 1 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=ice-lite\r\na=fingerprint:sha-512 A6:B5:B5:9E:9A:A2:D8:3A:29:CA:B0:8A:AF:54:E3:41:B6:52:8D:25:41:B7:D6:C3:53:C8:6E:DE:3F:E3:E1:96:1D:01:18:7F:41:29:22:AD:5A:8B:08:C4:F2:B4:5B:33:47:F4:9F:0F:EC:F3:76:EA:A9:76:04:CE:8C:13:8D:C6\r\na=msid-semantic: WMS *\r\na=group:BUNDLE 0\r\nm=video 7 UDP/TLS/RTP/SAVPF 96\r\nc=IN IP4 127.0.0.1\r\nb=TIAS:200000\r\nb=AS:200\r\na=rtpmap:96 VP8/90000\r\na=fmtp:96 \r\na=rtcp-fb:96 rrtr \r\na=rtcp-fb:96 goog-remb \r\na=rtcp-fb:96 transport-cc \r\na=rtcp-fb:96 ccm fir\r\na=rtcp-fb:96 nack \r\na=rtcp-fb:96 nack pli\r\na=extmap:1 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:4 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:9 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=extmap:10 urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id\r\na=extmap:11 urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id\r\na=setup:active\r\na=mid:0\r\na=msid:/1m9FT/X+97D7AnO e537b550-6e7a-4471-948f-f0a0d04c06d8\r\na=recvonly\r\na=ice-ufrag:qovw1ilxxcut4ujhrtchijq6a17ytngm\r\na=ice-pwd:[REDACTED]\r\na=candidate:udpcandidate 1 udp 1076302079 203.0.113.10 31070 typ host\r\na=end-of-candidates\r\na=ice-options:renomination\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=content:main\r\n"
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "video",
+            "role": "share",
+            "id": "playStart",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101"
+          }
+        }
+      ]
+    },
+    "cameraView": {
+      "note": "server offers (start.sdpOffer null -> startResponse.sdpAnswer is an OFFER), client answers in subscriberAnswer.answer, then playStart",
+      "messages": [
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "start",
+            "type": "video",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+            "role": "viewer",
+            "sdpOffer": null,
+            "bitrate": 200,
+            "record": true
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "video",
+            "role": "viewer",
+            "id": "startResponse",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+            "sdpAnswer": "v=0\r\no=mediasoup-client 10000 1 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=ice-lite\r\na=fingerprint:sha-512 A6:B5:B5:9E:9A:A2:D8:3A:29:CA:B0:8A:AF:54:E3:41:B6:52:8D:25:41:B7:D6:C3:53:C8:6E:DE:3F:E3:E1:96:1D:01:18:7F:41:29:22:AD:5A:8B:08:C4:F2:B4:5B:33:47:F4:9F:0F:EC:F3:76:EA:A9:76:04:CE:8C:13:8D:C6\r\na=msid-semantic: WMS *\r\na=group:BUNDLE 0\r\nm=video 7 UDP/TLS/RTP/SAVPF 96\r\nc=IN IP4 127.0.0.1\r\nb=TIAS:200000\r\nb=AS:200\r\na=rtpmap:96 VP8/90000\r\na=fmtp:96 \r\na=rtcp-fb:96 rrtr \r\na=rtcp-fb:96 ccm fir\r\na=rtcp-fb:96 nack \r\na=rtcp-fb:96 nack pli\r\na=rtcp-fb:96 goog-remb \r\na=rtcp-fb:96 transport-cc \r\na=extmap:1 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:4 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:9 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=extmap:10 urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id\r\na=extmap:11 urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id\r\na=setup:actpass\r\na=mid:0\r\na=msid:/1m9FT/X+97D7AnO cc3654f5-932d-406e-8970-26f1ec6f8d7d\r\na=sendonly\r\na=ice-ufrag:hpkm1kijhftcdq76iatz61f02cmxab0r\r\na=ice-pwd:[REDACTED]\r\na=candidate:udpcandidate 1 udp 1076302079 203.0.113.10 28455 typ host\r\na=end-of-candidates\r\na=ice-options:renomination\r\na=ssrc:938012242 cname:/1m9FT/X+97D7AnO\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=content:main\r\n"
+          }
+        },
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "subscriberAnswer",
+            "type": "video",
+            "role": "viewer",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+            "answer": "v=0\r\no=- 6499198651195462658 2 IN IP4 127.0.0.1\r\ns=-\r\nt=0 0\r\na=group:BUNDLE 0\r\na=msid-semantic: WMS\r\nm=video 9 UDP/TLS/RTP/SAVPF 96\r\nc=IN IP4 0.0.0.0\r\na=rtcp:9 IN IP4 0.0.0.0\r\na=ice-ufrag:81Ue\r\na=ice-pwd:[REDACTED]\r\na=ice-options:trickle\r\na=fingerprint:sha-256 6D:3B:26:45:F5:3E:BB:86:69:54:24:82:00:57:14:25:D0:52:C8:5C:74:A3:C1:DE:0F:AE:B9:D8:C8:DB:53:A4\r\na=setup:active\r\na=mid:0\r\na=extmap:1 urn:ietf:params:rtp-hdrext:toffset\r\na=extmap:2 http://www.webrtc.org/experiments/rtp-hdrext/abs-send-time\r\na=extmap:4 http://www.ietf.org/id/draft-holmer-rmcat-transport-wide-cc-extensions-01\r\na=extmap:9 urn:ietf:params:rtp-hdrext:sdes:mid\r\na=extmap:10 urn:ietf:params:rtp-hdrext:sdes:rtp-stream-id\r\na=extmap:11 urn:ietf:params:rtp-hdrext:sdes:repaired-rtp-stream-id\r\na=recvonly\r\na=rtcp-mux\r\na=rtcp-rsize\r\na=rtcp-xr:rcvr-rtt=all\r\na=rtcp-fb:96 rrtr\r\na=rtpmap:96 VP8/90000\r\na=rtcp-fb:96 goog-remb\r\na=rtcp-fb:96 transport-cc\r\na=rtcp-fb:96 ccm fir\r\na=rtcp-fb:96 nack\r\na=rtcp-fb:96 nack pli\r\n"
+          }
+        },
+        {
+          "direction": "server->client",
+          "message": {
+            "type": "video",
+            "role": "viewer",
+            "id": "playStart",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101"
+          }
+        }
+      ]
+    },
+    "cameraStop": {
+      "messages": [
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "stop",
+            "type": "video",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+            "role": "viewer"
+          }
+        },
+        {
+          "direction": "client->server",
+          "message": {
+            "id": "stop",
+            "type": "video",
+            "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+            "role": "share"
+          }
+        }
+      ]
+    }
+  },
+  "graphql": [
+    {
+      "role": "publisher",
+      "operationName": "UpdateUserClientEchoTestRunningAt",
+      "query": "mutation UpdateUserClientEchoTestRunningAt { userSetEchoTestRunning }",
+      "variables": {}
+    },
+    {
+      "role": "publisher",
+      "operationName": "UpdateUserClientEchoTestRunningAt",
+      "query": "mutation UpdateUserClientEchoTestRunningAt { userSetEchoTestRunning }",
+      "variables": {}
+    },
+    {
+      "role": "publisher",
+      "operationName": "UserSetListenOnlyInput",
+      "query": "mutation UserSetListenOnlyInput($listenOnlyInputDevice: Boolean!) { userSetListenOnlyInput(listenOnlyInputDevice: $listenOnlyInputDevice) }",
+      "variables": {
+        "listenOnlyInputDevice": false
+      }
+    },
+    {
+      "role": "publisher",
+      "operationName": "CameraBroadcastStart",
+      "query": "mutation CameraBroadcastStart($cameraId: String!, $contentType: String!) { cameraBroadcastStart(stream: $cameraId, contentType: $contentType) }",
+      "variables": {
+        "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101",
+        "contentType": "camera"
+      }
+    },
+    {
+      "role": "viewer",
+      "operationName": "Patched_VideoStreams",
+      "query": "subscription Patched_VideoStreams { user_camera { streamId user { name userId nameSortable pinned away disconnected role avatar color presenter clientType raiseHand isModerator reactionEmoji __typename } voice { floor lastFloorTime joined listenOnly userId deafened __typename } __typename } }",
+      "variables": {}
+    },
+    {
+      "role": "viewer",
+      "operationName": "UserSetListenOnlyInput",
+      "query": "mutation UserSetListenOnlyInput($listenOnlyInputDevice: Boolean!) { userSetListenOnlyInput(listenOnlyInputDevice: $listenOnlyInputDevice) }",
+      "variables": {
+        "listenOnlyInputDevice": true
+      }
+    },
+    {
+      "role": "viewer",
+      "operationName": "UserSetMuted",
+      "query": "mutation UserSetMuted($userId: String, $muted: Boolean!) { userSetMuted(userId: $userId, muted: $muted) }",
+      "variables": {
+        "muted": true,
+        "userId": "w_eywhrdyq4rax"
+      }
+    },
+    {
+      "role": "publisher",
+      "operationName": "CameraBroadcastStop",
+      "query": "mutation CameraBroadcastStop($cameraId: String!) { cameraBroadcastStop(stream: $cameraId) }",
+      "variables": {
+        "cameraId": "w_vaftbqozzify_be7a2c89-a2c1-461e-866f-0eb5f1562c2a_c4ab7d38c5df2a947500d195c105a16c5e4205ffbcb1cefc3a6a3724cc02d101"
+      }
+    }
+  ]
+}
