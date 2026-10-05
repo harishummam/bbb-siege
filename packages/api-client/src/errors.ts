@@ -40,6 +40,13 @@ export class AuthFailedError extends BbbApiError {
   }
 }
 
+export class IceFailedError extends BbbApiError {
+  constructor(message = 'ICE/DTLS connection failed', details?: unknown) {
+    super(message, 'IceFailed', { details });
+    this.name = 'IceFailedError';
+  }
+}
+
 export class TimeoutError extends BbbApiError {
   constructor(message = 'API request timed out') {
     super(message, 'Timeout');

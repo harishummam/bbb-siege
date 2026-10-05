@@ -3,3 +3,4 @@ packages:
   - 'tools/*'
 allowBuilds:
   esbuild: true
+  node-datachannel: false

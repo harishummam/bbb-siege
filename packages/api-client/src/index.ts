@@ -8,6 +8,7 @@ export {
   BbbApiError,
   RateLimitedError,
   AuthFailedError,
+  IceFailedError,
   TimeoutError,
   ServerError,
   ClientBugError,

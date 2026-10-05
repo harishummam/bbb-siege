@@ -18,6 +18,7 @@
   "dependencies": {
     "@bbb-siege/api-client": "workspace:*",
     "@bbb-siege/protocol": "workspace:*",
+    "node-datachannel": "^0.33.4",
     "pino": "^9.6.0"
   }
 }

@@ -197,7 +197,8 @@ These become `RTCPeerConnection({ iceServers })` (`url` → `urls`, `password` �
 | 4 | S→C | `{"id":"webRTCAudioSuccess","type":"audio","success":"MEDIA_FLOWING"}` |
 
 - **The field names are inverted:** `startResponse.sdpAnswer` holds the server's *offer* (`a=setup:actpass`), and the client's *answer* (`a=setup:active`) is sent in `subscriberAnswer.sdpOffer`.
-- Listen-only is identical with `role: "passive-sendrecv"`; the client answers without a send track.
+- Listen-only is identical with `role: "passive-sendrecv"`. The browser still answers `sendrecv` with an `a=ssrc` line even though it sends nothing.
+- **The answer must carry an `a=ssrc` line.** Observed with a native client: an otherwise valid `sendrecv` answer without one is silently ignored. ICE connects, but DTLS never completes and no error frame arrives. Adding an SSRC to the answer's audio section makes the same flow reach `webRTCAudioSuccess` in ~300 ms.
 - After `webRTCAudioSuccess` the client reports its input mode: `UserSetListenOnlyInput(listenOnlyInputDevice: false|true)`; the listen-only viewer additionally sent `UserSetMuted(userId, muted: true)`.
 - The browser's preceding echo test is a **local loopback** (two in-page peer connections, `UpdateUserClientEchoTestRunningAt` mutation) and never touches the SFU — a native bot can skip it.
 
