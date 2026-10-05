@@ -100,3 +100,35 @@ export const setRaiseHand = (userId: string, raiseHand: boolean): MutationSpec =
   query: SET_RAISE_HAND_MUTATION,
   variables: { userId, raiseHand },
 });
+
+const CAMERA_BROADCAST_START_MUTATION = "mutation CameraBroadcastStart($cameraId: String!, $contentType: String!) {\n  cameraBroadcastStart(stream: $cameraId, contentType: $contentType)\n}";
+
+const CAMERA_BROADCAST_STOP_MUTATION = "mutation CameraBroadcastStop($cameraId: String!) {\n  cameraBroadcastStop(stream: $cameraId)\n}";
+
+const USER_SET_LISTEN_ONLY_INPUT_MUTATION = "mutation UserSetListenOnlyInput($listenOnlyInputDevice: Boolean!) {\n  userSetListenOnlyInput(listenOnlyInputDevice: $listenOnlyInputDevice)\n}";
+
+const USER_SET_MUTED_MUTATION = "mutation UserSetMuted($userId: String, $muted: Boolean!) {\n  userSetMuted(userId: $userId, muted: $muted)\n}";
+
+export const cameraBroadcastStart = (cameraId: string): MutationSpec => ({
+  operationName: 'CameraBroadcastStart',
+  query: CAMERA_BROADCAST_START_MUTATION,
+  variables: { cameraId, contentType: 'camera' },
+});
+
+export const cameraBroadcastStop = (cameraId: string): MutationSpec => ({
+  operationName: 'CameraBroadcastStop',
+  query: CAMERA_BROADCAST_STOP_MUTATION,
+  variables: { cameraId },
+});
+
+export const userSetListenOnlyInput = (listenOnlyInputDevice: boolean): MutationSpec => ({
+  operationName: 'UserSetListenOnlyInput',
+  query: USER_SET_LISTEN_ONLY_INPUT_MUTATION,
+  variables: { listenOnlyInputDevice },
+});
+
+export const userSetMuted = (userId: string, muted: boolean): MutationSpec => ({
+  operationName: 'UserSetMuted',
+  query: USER_SET_MUTED_MUTATION,
+  variables: { muted, userId },
+});

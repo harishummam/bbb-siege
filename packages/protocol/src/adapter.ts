@@ -1,10 +1,13 @@
 import type { BbbApiClient, CreateMeetingOptions, CreateMeetingResponse } from '@bbb-siege/api-client';
 import type {
   BbbVersion,
+  IceServer,
   JoinContext,
   JoinOptions,
   MediaStack,
+  OpenSfuOptions,
   OpenSignalingOptions,
+  SfuConnection,
   SignalingSession,
 } from './types.js';
 
@@ -22,6 +25,9 @@ export interface BbbAdapter {
   join(client: BbbApiClient, options: JoinOptions): Promise<JoinContext>;
   openSignaling(context: JoinContext, options?: OpenSignalingOptions): Promise<SignalingSession>;
   leave(context: JoinContext, session: SignalingSession): Promise<void>;
+  fetchIceServers(context: JoinContext, signal?: AbortSignal): Promise<IceServer[]>;
+  openSfu(context: JoinContext, options?: OpenSfuOptions): Promise<SfuConnection>;
+  cameraStreamId(context: JoinContext, deviceId: string): string;
 }
 
 export class BaseBbbAdapter implements BbbAdapter {
@@ -47,5 +53,17 @@ export class BaseBbbAdapter implements BbbAdapter {
 
   leave(..._args: unknown[]): Promise<void> {
     throw new NotImplemented('leave');
+  }
+
+  fetchIceServers(..._args: unknown[]): Promise<IceServer[]> {
+    throw new NotImplemented('fetchIceServers');
+  }
+
+  openSfu(..._args: unknown[]): Promise<SfuConnection> {
+    throw new NotImplemented('openSfu');
+  }
+
+  cameraStreamId(..._args: unknown[]): string {
+    throw new NotImplemented('cameraStreamId');
   }
 }

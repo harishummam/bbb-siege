@@ -56,3 +56,52 @@ export interface OpenSignalingOptions {
   connectTimeoutMs?: number;
   isMobile?: boolean;
 }
+
+export interface IceServer {
+  urls: string;
+  username?: string;
+  credential?: string;
+}
+
+export type SfuCameraRole = 'share' | 'viewer';
+
+export interface SfuFlowOptions {
+  signal?: AbortSignal;
+  timeoutMs?: number;
+}
+
+export interface SfuAudioRequest extends SfuFlowOptions {
+  listenOnly?: boolean;
+  answer(offerSdp: string): Promise<string>;
+}
+
+export interface SfuCameraShareRequest extends SfuFlowOptions {
+  cameraId: string;
+  offerSdp: string;
+  applyAnswer(answerSdp: string): Promise<void>;
+  bitrate?: number;
+  record?: boolean;
+}
+
+export interface SfuCameraViewRequest extends SfuFlowOptions {
+  cameraId: string;
+  answer(offerSdp: string): Promise<string>;
+  bitrate?: number;
+  record?: boolean;
+}
+
+export interface SfuConnection {
+  startAudio(request: SfuAudioRequest): Promise<void>;
+  startCameraShare(request: SfuCameraShareRequest): Promise<void>;
+  startCameraView(request: SfuCameraViewRequest): Promise<void>;
+  stopCamera(cameraId: string, role: SfuCameraRole): void;
+  close(): Promise<void>;
+  readonly closed: Promise<void>;
+}
+
+export interface OpenSfuOptions {
+  signal?: AbortSignal;
+  connectTimeoutMs?: number;
+  heartbeatMs?: number;
+  url?: string;
+}

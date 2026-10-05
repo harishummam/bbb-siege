@@ -4,13 +4,17 @@ import { ClientBugError } from '@bbb-siege/api-client';
 import { BaseBbbAdapter } from '../../adapter.js';
 import type {
   BbbVersion,
+  IceServer,
   JoinContext,
   JoinOptions,
   MediaStack,
+  OpenSfuOptions,
   OpenSignalingOptions,
+  SfuConnection,
   SignalingSession,
 } from '../../types.js';
 import { discoverClientConfig, parseVersion } from './config.js';
+import { cameraStreamId, fetchV30IceServers, openV30Sfu } from './sfu.js';
 import { openV30Signaling } from './signaling.js';
 
 export class V30Adapter extends BaseBbbAdapter {
@@ -62,5 +66,17 @@ export class V30Adapter extends BaseBbbAdapter {
 
   override async leave(_context: JoinContext, session: SignalingSession): Promise<void> {
     await session.close();
+  }
+
+  override fetchIceServers(context: JoinContext, signal?: AbortSignal): Promise<IceServer[]> {
+    return fetchV30IceServers(context, signal);
+  }
+
+  override openSfu(context: JoinContext, options?: OpenSfuOptions): Promise<SfuConnection> {
+    return openV30Sfu(context, options);
+  }
+
+  override cameraStreamId(context: JoinContext, deviceId: string): string {
+    return cameraStreamId(context, deviceId);
   }
 }
